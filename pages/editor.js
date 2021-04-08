@@ -3,12 +3,9 @@ import Link from 'next/link'
 export default function Editor() {
   return (
     <>
-      <nav className="bg-gray-800 flex justify-between p-4">
+      <nav className="bg-gray-800 flex justify-between p-4 align-center">
         <Link href="/">
-          <a href="#">
-            <span className="sr-only">Readme</span>
-            <img className="h-8 w-auto sm:h-10" src="readme.svg" alt />
-          </a>
+          <img className="h-8 mt-1 w-auto cursor-pointer" src="readme.svg" alt />
         </Link>
         <button
           type="button"

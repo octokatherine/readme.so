@@ -74,10 +74,9 @@ export default function Home() {
               >
                 <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
                   <div className="flex items-center justify-between w-full md:w-auto">
-                    <a href="#">
-                      <span className="sr-only">Readme</span>
-                      <img className="h-8 w-auto sm:h-10" src="readme.svg" alt />
-                    </a>
+                    <Link href="/">
+                      <img className="h-8 mt-1 w-auto cursor-pointer" src="readme.svg" alt />
+                    </Link>
                   </div>
                 </div>
               </nav>
