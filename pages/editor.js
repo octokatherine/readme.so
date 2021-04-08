@@ -55,8 +55,8 @@ export default function Editor() {
             <textarea
               id="markdown"
               name="markdown"
-              rows="6"
-              class="shadow-sm block w-full focus:ring-green-500 focus:border-green-500 sm:text-sm border-gray-800 rounded-md p-6"
+              rows="12"
+              class="shadow-sm block w-full focus:ring-green-500 focus:border-green-500 sm:text-sm border-gray-800 rounded-md p-6 bg-gray-700 text-white"
             ></textarea>
           </div>
           <div className="px-3 w-1/2 flex-1">
