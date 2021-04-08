@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -74,7 +75,7 @@ export default function Home() {
                 <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
                   <div className="flex items-center justify-between w-full md:w-auto">
                     <a href="#">
-                      <span className="sr-only">Workflow</span>
+                      <span className="sr-only">Readme</span>
                       <img className="h-8 w-auto sm:h-10" src="readme.svg" alt />
                     </a>
                   </div>
@@ -95,12 +96,14 @@ export default function Home() {
               </div>
               <div className="flex justify-center mt-6">
                 <span className="inline-flex rounded-md shadow">
-                  <a
-                    href="#"
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-green-700 bg-white hover:text-indigo-500"
-                  >
-                    Get Started
-                  </a>
+                  <Link href="/editor">
+                    <a
+                      href="#"
+                      className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-green-700 bg-white hover:text-green-500"
+                    >
+                      Get Started
+                    </a>
+                  </Link>
                 </span>
               </div>
               <div className="text-center">
