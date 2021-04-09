@@ -5,6 +5,7 @@ import { EditorColumn } from '../components/EditorColumn'
 import { PreviewColumn } from '../components/PreviewColumn'
 import { templates } from '../data/section-templates'
 import { DownloadModal } from '../components/DownloadModal'
+import Head from 'next/head'
 
 export default function Editor() {
   const [selectedSections, setSelectedSections] = useState([])
@@ -14,6 +15,20 @@ export default function Editor() {
 
   return (
     <>
+      <Head>
+        <script
+          data-name="BMC-Widget"
+          data-cfasync="false"
+          src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+          data-id="katherinecodes"
+          data-description="Support me on Buy me a coffee!"
+          data-message=""
+          data-color="#FFDD00"
+          data-position="Right"
+          data-x_margin="18"
+          data-y_margin="18"
+        ></script>
+      </Head>
       <Nav selectedSections={selectedSections} setShowModal={setShowModal} />
       {showModal && <DownloadModal setShowModal={setShowModal} />}
       <div className="flex p-6">

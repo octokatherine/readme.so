@@ -22,7 +22,7 @@ export const SectionsColumn = ({
             onClick={() => setFocusedSectionSlug(s.slug)}
             className={`bg-white shadow rounded-md pl-3 pr-6 py-2 flex items-center cursor-pointer ${
               s.slug === focusedSectionSlug
-                ? 'bg-gradient-to-r from-orange-300 via-orange-200 to-orange-300'
+                ? 'bg-gradient-to-r from-emerald-300 via-emerald-200 to-emerald-300'
                 : ''
             }`}
           >
