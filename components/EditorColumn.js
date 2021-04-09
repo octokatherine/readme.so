@@ -24,6 +24,20 @@ export const EditorColumn = ({ focusedSectionSlug, selectedSections, setSelected
     })
   }
 
+  const handleTabs = (e) => {
+    if (e.key == 'Tab') {
+      e.preventDefault()
+      var start = e.target.selectionStart
+      var end = e.target.selectionEnd
+
+      // set textarea value to: text before caret + tab + text after caret
+      e.target.value = e.target.value.substring(0, start) + '\t' + e.target.value.substring(end)
+
+      // put caret at right position again
+      e.target.selectionStart = e.target.selectionEnd = start + 1
+    }
+  }
+
   return (
     <div className="px-3 w-1/2 flex-1">
       <h3 className="text-lg leading-6 font-medium text-gray-900 mb-3">Editor</h3>
@@ -34,7 +48,8 @@ export const EditorColumn = ({ focusedSectionSlug, selectedSections, setSelected
           rows="12"
           className="shadow-sm block w-full focus:ring-orange-500 focus:border-orange-500 sm:text-sm border-gray-800 rounded-md p-6 bg-gray-700 text-white"
           value={markdown}
-          onChange={(e) => onEdit(e)}
+          onChange={onEdit}
+          onKeyDown={handleTabs}
         ></textarea>
       ) : (
         <p className="font-sm text-orange-500 max-w-[16rem] mx-auto mt-10">
