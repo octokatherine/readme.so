@@ -12,7 +12,7 @@ export default function Editor() {
 
   return (
     <>
-      <Nav />
+      <Nav selectedSections={selectedSections} />
       <div className="flex p-6">
         <SectionsColumn
           selectedSections={selectedSections}
