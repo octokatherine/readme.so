@@ -6,7 +6,6 @@ import { PreviewColumn } from '../components/PreviewColumn'
 import { templates } from '../data/section-templates'
 
 export default function Editor() {
-  const [markdown, setMarkdown] = useState('')
   const [selectedSections, setSelectedSections] = useState([])
   const [sections, setSections] = useState(templates)
 
@@ -21,8 +20,8 @@ export default function Editor() {
           setSections={setSections}
         />
         <div className="flex flex-1">
-          <EditorColumn setMarkdown={setMarkdown} />
-          <PreviewColumn markdown={markdown} />
+          <EditorColumn />
+          <PreviewColumn selectedSections={selectedSections} />
         </div>
       </div>
     </>
