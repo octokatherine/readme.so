@@ -40,7 +40,7 @@ export default function Editor() {
           setFocusedSectionSlug={setFocusedSectionSlug}
           focusedSectionSlug={focusedSectionSlug}
         />
-        <div className="flex flex-1">
+        <div className="flex flex-col flex-1 lg:flex-row">
           <EditorColumn
             focusedSectionSlug={focusedSectionSlug}
             selectedSections={selectedSections}
