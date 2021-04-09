@@ -50,6 +50,7 @@ Leaving: "ease-in duration-200"
                     Thanks for using readme.so! Feel free to reach out to me on{' '}
                     <a
                       href="https://twitter.com/katherinecodes"
+                      target="_blank"
                       className="text-emerald-500 hover:text-emerald-400"
                     >
                       Twitter
