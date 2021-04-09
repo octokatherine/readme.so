@@ -1,13 +1,28 @@
-import { useMemo } from 'react'
+import { useState, useEffect } from 'react'
 
 export const EditorColumn = ({ focusedSectionSlug, selectedSections, setSelectedSections }) => {
   const getMarkdown = () => {
     const section = selectedSections.find((s) => s.slug === focusedSectionSlug)
     return section ? section.markdown : ''
   }
-  const markdown = useMemo(getMarkdown, [focusedSectionSlug, selectedSections])
+  const [markdown, setMarkdown] = useState(getMarkdown())
 
-  const onEdit = () => {}
+  useEffect(() => {
+    const markdown = getMarkdown()
+    setMarkdown(markdown)
+  }, [focusedSectionSlug, selectedSections])
+
+  const onEdit = (e) => {
+    setMarkdown(e.target.value)
+    setSelectedSections((prev) => {
+      return prev.map((section) => {
+        if (section.slug === focusedSectionSlug) {
+          return { ...section, markdown: e.target.value }
+        }
+        return section
+      })
+    })
+  }
 
   return (
     <div className="px-3 w-1/2 flex-1">
@@ -19,7 +34,7 @@ export const EditorColumn = ({ focusedSectionSlug, selectedSections, setSelected
           rows="12"
           className="shadow-sm block w-full focus:ring-orange-500 focus:border-orange-500 sm:text-sm border-gray-800 rounded-md p-6 bg-gray-700 text-white"
           value={markdown}
-          onChange={() => {}}
+          onChange={(e) => onEdit(e)}
         ></textarea>
       ) : (
         <p className="font-sm text-orange-500 max-w-[16rem] mx-auto mt-10">
