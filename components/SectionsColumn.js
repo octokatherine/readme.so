@@ -5,7 +5,6 @@ import {
   PointerSensor,
   useSensor,
   useSensors,
-  DragOverlay,
 } from '@dnd-kit/core'
 import {
   arrayMove,
@@ -13,10 +12,9 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
-import { restrictToVerticalAxis, restrictToWindowEdges } from '@dnd-kit/modifiers'
+import { restrictToVerticalAxis } from '@dnd-kit/modifiers'
 import { useState } from 'react'
 import { SortableItem } from './SortableItem'
-import { Item } from './Item'
 
 export const SectionsColumn = ({
   selectedSections,
@@ -25,6 +23,7 @@ export const SectionsColumn = ({
   setSections,
   setFocusedSectionSlug,
   focusedSectionSlug,
+  getTemplate,
 }) => {
   const [activeId, setActiveId] = useState(null)
   const sensors = useSensors(
@@ -35,18 +34,18 @@ export const SectionsColumn = ({
   )
 
   const onAddSection = (e, section) => {
-    setSections((prev) => prev.filter((s) => s.slug !== section.slug))
+    setSections((prev) => prev.filter((s) => s !== section))
     setSelectedSections((prev) => [...prev, section])
-    setFocusedSectionSlug(section.slug)
+    setFocusedSectionSlug(section)
   }
 
   const handleDragEnd = (event) => {
     const { active, over } = event
-
     if (active.id !== over.id) {
       setSelectedSections((sections) => {
-        const oldIndex = sections.findIndex((s) => s.slug === active.id)
-        const newIndex = sections.findIndex((s) => s.slug === over.id)
+        const oldIndex = sections.findIndex((s) => s === active.id)
+        const newIndex = sections.findIndex((s) => s === over.id)
+
         return arrayMove(sections, oldIndex, newIndex)
       })
     }
@@ -74,23 +73,14 @@ export const SectionsColumn = ({
           <SortableContext items={selectedSections} strategy={verticalListSortingStrategy}>
             {selectedSections.map((s) => (
               <SortableItem
-                key={s.slug}
-                id={s.slug}
-                section={s}
+                key={s}
+                id={s}
+                section={getTemplate(s)}
                 focusedSectionSlug={focusedSectionSlug}
                 setFocusedSectionSlug={setFocusedSectionSlug}
               />
             ))}
           </SortableContext>
-          <DragOverlay modifiers={[restrictToWindowEdges]}>
-            {activeId ? (
-              <Item
-                id={activeId}
-                name={selectedSections.find((s) => s.slug === activeId).name}
-                focusedSectionSlug={focusedSectionSlug}
-              />
-            ) : null}
-          </DragOverlay>
         </DndContext>
       </ul>
       <h4 className="text-xs leading-6 text-gray-900 mb-3">
@@ -100,10 +90,10 @@ export const SectionsColumn = ({
         {sections.map((s) => (
           <li
             onClick={(e) => onAddSection(e, s)}
-            key={s.name}
+            key={s}
             className="bg-white shadow rounded-md pl-3 pr-6 py-2 flex items-center cursor-pointer"
           >
-            <p>{s.name}</p>
+            <p>{getTemplate(s).name}</p>
           </li>
         ))}
       </ul>

@@ -1,8 +1,9 @@
 import Link from 'next/link'
 
-export const Nav = ({ selectedSections, setShowModal }) => {
+export const Nav = ({ selectedSections, setShowModal, getTemplate }) => {
   const markdown = selectedSections.reduce((acc, section) => {
-    return `${acc}${section.markdown}`
+    const template = getTemplate(section)
+    return `${acc}${template.markdown}`
   }, ``)
 
   const downloadMarkdownFile = () => {

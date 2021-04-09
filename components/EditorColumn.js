@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
+import { templates } from '../data/section-templates'
 
-export const EditorColumn = ({ focusedSectionSlug, selectedSections, setSelectedSections }) => {
+export const EditorColumn = ({ focusedSectionSlug, selectedSections, templates, setTemplates }) => {
   const getMarkdown = () => {
-    const section = selectedSections.find((s) => s.slug === focusedSectionSlug)
+    const section = templates.find((s) => s.slug === focusedSectionSlug)
     return section ? section.markdown : ''
   }
   const [markdown, setMarkdown] = useState(getMarkdown())
@@ -14,12 +15,12 @@ export const EditorColumn = ({ focusedSectionSlug, selectedSections, setSelected
 
   const onEdit = (e) => {
     setMarkdown(e.target.value)
-    setSelectedSections((prev) => {
-      return prev.map((section) => {
-        if (section.slug === focusedSectionSlug) {
-          return { ...section, markdown: e.target.value }
+    setTemplates((prev) => {
+      return prev.map((template) => {
+        if (template.slug === focusedSectionSlug) {
+          return { ...template, markdown: e.target.value }
         }
-        return section
+        return template
       })
     })
   }

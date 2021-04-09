@@ -1,4 +1,4 @@
-export const templates = [
+export const sectionTemplates = [
   {
     slug: 'title_and_description',
     name: 'Title and Description',
