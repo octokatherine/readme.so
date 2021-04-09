@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { templates } from '../data/section-templates'
 
 export const EditorColumn = ({ focusedSectionSlug, selectedSections, templates, setTemplates }) => {
   const getMarkdown = () => {

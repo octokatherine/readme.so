@@ -59,6 +59,12 @@ export const SectionsColumn = ({
     setActiveId(active.id)
   }
 
+  const onDeleteSection = (sectionSlug) => {
+    setSelectedSections((prev) => prev.filter((s) => s !== sectionSlug))
+    setSections((prev) => [...prev, sectionSlug])
+    setFocusedSectionSlug(null)
+  }
+
   return (
     <div className="sections px-3">
       <h3 className="text-lg leading-6 font-medium text-gray-900 mb-3">Sections</h3>
@@ -78,6 +84,7 @@ export const SectionsColumn = ({
                 section={getTemplate(s)}
                 focusedSectionSlug={focusedSectionSlug}
                 setFocusedSectionSlug={setFocusedSectionSlug}
+                onDeleteSection={onDeleteSection}
               />
             ))}
           </SortableContext>

@@ -10,8 +10,12 @@ export function SortableItem(props) {
     transition,
   }
 
-  const onClick = () => {
+  const onClickSection = () => {
     props.setFocusedSectionSlug(props.id)
+  }
+
+  const onClickTrash = () => {
+    props.onDeleteSection(props.section.slug)
   }
 
   return (
@@ -19,8 +23,8 @@ export function SortableItem(props) {
       ref={setNodeRef}
       style={style}
       {...attributes}
-      onClick={onClick}
-      className={`bg-white shadow rounded-md pl-3 pr-6 py-2 flex items-center cursor-pointer focus:outline-none  ${
+      onClick={onClickSection}
+      className={`bg-white shadow rounded-md pl-3 pr-6 py-2 flex items-center cursor-pointer focus:outline-none relative  ${
         props.section.slug === props.focusedSectionSlug
           ? 'bg-gradient-to-r from-emerald-300 via-emerald-200 to-emerald-300'
           : ''
@@ -28,6 +32,9 @@ export function SortableItem(props) {
     >
       <img className="h-5 w-5 mr-2" src="drag.svg" {...listeners} />
       <p>{props.section.name}</p>
+      {props.section.slug === props.focusedSectionSlug && (
+        <img onClick={onClickTrash} className="h-5 w-auto absolute right-2" src="trash.svg" />
+      )}
     </li>
   )
 }
