@@ -17,12 +17,12 @@ export const EditorColumn = ({ focusedSectionSlug, selectedSections, setSelected
           id="markdown"
           name="markdown"
           rows="12"
-          className="shadow-sm block w-full focus:ring-green-500 focus:border-green-500 sm:text-sm border-gray-800 rounded-md p-6 bg-gray-700 text-white"
+          className="shadow-sm block w-full focus:ring-orange-500 focus:border-orange-500 sm:text-sm border-gray-800 rounded-md p-6 bg-gray-700 text-white"
           value={markdown}
           onChange={() => {}}
         ></textarea>
       ) : (
-        <p className="font-sm text-green-700 max-w-[16rem] mx-auto mt-10">
+        <p className="font-sm text-orange-500 max-w-[16rem] mx-auto mt-10">
           Select a section from the left sidebar to edit the contents
         </p>
       )}
