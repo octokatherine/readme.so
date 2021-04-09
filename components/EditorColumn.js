@@ -10,7 +10,7 @@ export const EditorColumn = ({ focusedSectionSlug, selectedSections, templates, 
   useEffect(() => {
     const markdown = getMarkdown()
     setMarkdown(markdown)
-  }, [focusedSectionSlug, selectedSections])
+  }, [focusedSectionSlug])
 
   const onEdit = (e) => {
     setMarkdown(e.target.value)

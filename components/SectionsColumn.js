@@ -35,7 +35,6 @@ export const SectionsColumn = ({
   const onAddSection = (e, section) => {
     setSections((prev) => prev.filter((s) => s !== section))
     setSelectedSections((prev) => [...prev, section])
-    setFocusedSectionSlug(section)
   }
 
   const handleDragEnd = (event) => {
@@ -59,6 +58,9 @@ export const SectionsColumn = ({
   return (
     <div className="sections px-3">
       <h3 className="text-lg leading-6 font-medium text-gray-900 mb-3">Sections</h3>
+      <h4 className="text-xs leading-6 text-gray-900 mb-3">
+        Click on a section below to edit the contents
+      </h4>
       <ul className="space-y-3 mb-12">
         <DndContext
           sensors={sensors}

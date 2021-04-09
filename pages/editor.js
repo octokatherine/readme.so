@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Nav } from '../components/nav'
 import { SectionsColumn } from '../components/SectionsColumn'
 import { EditorColumn } from '../components/EditorColumn'
@@ -17,6 +17,10 @@ export default function Editor() {
   const getTemplate = (slug) => {
     return templates.find((t) => t.slug === slug)
   }
+
+  useEffect(() => {
+    setFocusedSectionSlug(null)
+  }, [selectedSections])
 
   return (
     <>
