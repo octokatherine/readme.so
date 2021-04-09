@@ -25,7 +25,6 @@ export const SectionsColumn = ({
   focusedSectionSlug,
   getTemplate,
 }) => {
-  const [activeId, setActiveId] = useState(null)
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -49,14 +48,6 @@ export const SectionsColumn = ({
         return arrayMove(sections, oldIndex, newIndex)
       })
     }
-
-    setActiveId(null)
-  }
-
-  const handleDragStart = (event) => {
-    const { active } = event
-
-    setActiveId(active.id)
   }
 
   const onDeleteSection = (sectionSlug) => {
@@ -73,7 +64,6 @@ export const SectionsColumn = ({
           sensors={sensors}
           collisionDetection={closestCenter}
           onDragEnd={handleDragEnd}
-          onDragStart={handleDragStart}
           modifiers={[restrictToVerticalAxis]}
         >
           <SortableContext items={selectedSections} strategy={verticalListSortingStrategy}>
