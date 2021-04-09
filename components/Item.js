@@ -11,7 +11,7 @@ export const Item = forwardRef(({ id, ...props }, ref) => {
           : ''
       }`}
     >
-      <img className="h-5 w-5 mr-2" src="drag.svg" alt />
+      <img className="h-5 w-5 mr-2" src="drag.svg" />
       <p>{props.name}</p>
     </div>
   )

@@ -13,6 +13,7 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
+import { restrictToVerticalAxis, restrictToWindowEdges } from '@dnd-kit/modifiers'
 import { useState } from 'react'
 import { SortableItem } from './SortableItem'
 import { Item } from './Item'
@@ -68,6 +69,7 @@ export const SectionsColumn = ({
           collisionDetection={closestCenter}
           onDragEnd={handleDragEnd}
           onDragStart={handleDragStart}
+          modifiers={[restrictToVerticalAxis]}
         >
           <SortableContext items={selectedSections} strategy={verticalListSortingStrategy}>
             {selectedSections.map((s) => (
@@ -80,12 +82,12 @@ export const SectionsColumn = ({
               />
             ))}
           </SortableContext>
-          <DragOverlay>
+          <DragOverlay modifiers={[restrictToWindowEdges]}>
             {activeId ? (
               <Item
                 id={activeId}
-                focusedSectionSlug={focusedSectionSlug}
                 name={selectedSections.find((s) => s.slug === activeId).name}
+                focusedSectionSlug={focusedSectionSlug}
               />
             ) : null}
           </DragOverlay>
