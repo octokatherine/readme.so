@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export const Nav = ({ selectedSections }) => {
+export const Nav = ({ selectedSections, setShowModal }) => {
   const markdown = selectedSections.reduce((acc, section) => {
     return `${acc}${section.markdown}`
   }, ``)
@@ -11,6 +11,7 @@ export const Nav = ({ selectedSections }) => {
     a.href = URL.createObjectURL(blob)
     a.download = 'README.md'
     a.click()
+    setShowModal(true)
   }
 
   return (

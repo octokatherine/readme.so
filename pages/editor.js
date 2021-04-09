@@ -4,15 +4,18 @@ import { SectionsColumn } from '../components/SectionsColumn'
 import { EditorColumn } from '../components/EditorColumn'
 import { PreviewColumn } from '../components/PreviewColumn'
 import { templates } from '../data/section-templates'
+import { DownloadModal } from '../components/DownloadModal'
 
 export default function Editor() {
   const [selectedSections, setSelectedSections] = useState([])
   const [sections, setSections] = useState(templates)
   const [focusedSectionSlug, setFocusedSectionSlug] = useState(null)
+  const [showModal, setShowModal] = useState(false)
 
   return (
     <>
-      <Nav selectedSections={selectedSections} />
+      <Nav selectedSections={selectedSections} setShowModal={setShowModal} />
+      {showModal && <DownloadModal setShowModal={setShowModal} />}
       <div className="flex p-6">
         <SectionsColumn
           selectedSections={selectedSections}
