@@ -25,9 +25,7 @@ export function SortableItem(props) {
       {...attributes}
       onClick={onClickSection}
       className={`bg-white shadow rounded-md pl-3 pr-6 py-2 flex items-center cursor-pointer focus:outline-none relative  ${
-        props.section.slug === props.focusedSectionSlug
-          ? 'bg-gradient-to-r from-emerald-300 via-emerald-200 to-emerald-300'
-          : ''
+        props.section.slug === props.focusedSectionSlug ? 'focus:ring-2' : ''
       }`}
     >
       <img className="h-5 w-5 mr-2" src="drag.svg" {...listeners} />
