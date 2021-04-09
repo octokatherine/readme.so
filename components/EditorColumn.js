@@ -6,7 +6,7 @@ export const EditorColumn = ({ setMarkdown }) => {
         id="markdown"
         name="markdown"
         rows="12"
-        class="shadow-sm block w-full focus:ring-green-500 focus:border-green-500 sm:text-sm border-gray-800 rounded-md p-6 bg-gray-700 text-white"
+        className="shadow-sm block w-full focus:ring-green-500 focus:border-green-500 sm:text-sm border-gray-800 rounded-md p-6 bg-gray-700 text-white"
         onChange={(e) => setMarkdown(e.target.value)}
       ></textarea>
     </div>

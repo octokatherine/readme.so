@@ -1,13 +1,15 @@
 export const templates = [
   {
-    title: 'Title and Description',
+    slug: 'title_and_description',
+    name: 'Title and Description',
     markdown: `
       # Project Title
       A brief description of what this project does and who it's for
     `,
   },
   {
-    title: 'Installation',
+    slug: 'installation',
+    name: 'Installation',
     markdown: `
       ## Installation 
       Install my-project with npm
