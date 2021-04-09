@@ -3,10 +3,13 @@ export const SectionsColumn = ({
   setSelectedSections,
   sections,
   setSections,
+  setFocusedSectionSlug,
+  focusedSectionSlug,
 }) => {
   const onAddSection = (e, section) => {
     setSections((prev) => prev.filter((s) => s.slug !== section.slug))
     setSelectedSections((prev) => [...prev, section])
+    setFocusedSectionSlug(section.slug)
   }
 
   return (
@@ -14,7 +17,15 @@ export const SectionsColumn = ({
       <h3 className="text-lg leading-6 font-medium text-gray-900 mb-3">Sections</h3>
       <ul className="space-y-3 mb-12">
         {selectedSections.map((s) => (
-          <li key={s.slug} className="bg-white shadow rounded-md pl-3 pr-6 py-2 flex items-center">
+          <li
+            key={s.slug}
+            onClick={() => setFocusedSectionSlug(s.slug)}
+            className={`bg-white shadow rounded-md pl-3 pr-6 py-2 flex items-center cursor-pointer ${
+              s.slug === focusedSectionSlug
+                ? 'bg-gradient-to-r from-green-300 via-green-200 to-green-300'
+                : ''
+            }`}
+          >
             <img className="h-5 w-5 mr-2" src="drag.svg" alt />
             <p>{s.name}</p>
           </li>

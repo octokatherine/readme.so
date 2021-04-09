@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply bg-gray-50;
+  }
+
   .preview h1 {
     box-sizing: border-box;
     color: #24292e;

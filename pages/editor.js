@@ -8,6 +8,7 @@ import { templates } from '../data/section-templates'
 export default function Editor() {
   const [selectedSections, setSelectedSections] = useState([])
   const [sections, setSections] = useState(templates)
+  const [focusedSectionSlug, setFocusedSectionSlug] = useState(null)
 
   return (
     <>
@@ -18,9 +19,15 @@ export default function Editor() {
           setSelectedSections={setSelectedSections}
           sections={sections}
           setSections={setSections}
+          setFocusedSectionSlug={setFocusedSectionSlug}
+          focusedSectionSlug={focusedSectionSlug}
         />
         <div className="flex flex-1">
-          <EditorColumn />
+          <EditorColumn
+            focusedSectionSlug={focusedSectionSlug}
+            selectedSections={selectedSections}
+            setSelectedSections={setSelectedSections}
+          />
           <PreviewColumn selectedSections={selectedSections} />
         </div>
       </div>
