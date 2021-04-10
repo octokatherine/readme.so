@@ -123,8 +123,9 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 
 ## Roadmap
 
-[x] Additional browser support
-[] Add more integrations
+- [x] Additional browser support
+
+- [ ] Add more integrations
 
 ## Authors and Acknowledgement
 
@@ -141,6 +142,7 @@ Any questions or suggestions? Please reach out to us at fake@fake.com
 ## Related
 
 Here are some related projects
+
 [Awesome README](https://github.com/matiassingers/awesome-readme)
 
 ## Demo
