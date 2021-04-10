@@ -68,9 +68,7 @@ function App() {
 
 ## API Reference
 
-### REST API
-
-##### Get all items
+#### Get all items
 
 ```http
   GET /api/items
@@ -80,7 +78,7 @@ function App() {
 | :-------- | :------- | :------------------------- |
 | `api_key` | `string` | **Required**. Your API key |
 
-##### Get item
+#### Get item
 
 ```http
   GET /api/items/${id}
@@ -90,9 +88,7 @@ function App() {
 | :-------- | :------- | :-------------------------------- |
 | `id`      | `string` | **Required**. Id of item to fetch |
 
-### Methods
-
-##### add(num1, num2)
+#### add(num1, num2)
 
 Takes two numbers and returns the sum.
 
@@ -119,6 +115,7 @@ To run tests, run the following command
 ## Badges
 
 Add badges from somewhere like: [shields.io](https://shields.io/)
+
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 [![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
@@ -152,6 +149,7 @@ Insert gif or link to demo
 ## Tech Stack
 
 **Client:** React, Redux, TailwindCSS
+
 **Server:** Node, Express
 
 ## Optimizations
@@ -164,11 +162,11 @@ What did you learn while building this project? What challenges did you face and
 
 ## FAQ
 
-##### Question 1
+#### Question 1
 
 Answer 1
 
-##### Question 2
+#### Question 2
 
 Answer 2
 
