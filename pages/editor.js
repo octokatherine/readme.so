@@ -19,10 +19,6 @@ export default function Editor() {
   }
 
   useEffect(() => {
-    setFocusedSectionSlug(null)
-  }, [selectedSections])
-
-  useEffect(() => {
     const section = 'title-and-description'
     setSections((prev) => prev.filter((s) => s !== section))
     setSelectedSections((prev) => [...prev, section])
