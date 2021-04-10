@@ -190,9 +190,9 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
     markdown: `
 ## Roadmap
 
-- [x] Additional browser support
+- Additional browser support
 
-- [ ] Add more integrations
+- Add more integrations
   `,
   },
   {
