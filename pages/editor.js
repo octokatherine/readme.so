@@ -13,7 +13,7 @@ export default function Editor() {
   const [focusedSectionSlug, setFocusedSectionSlug] = useState(null)
   const [showModal, setShowModal] = useState(false)
   const [templates, setTemplates] = useState(sectionTemplates)
-  console.log('focusedSectionSlug :>> ', focusedSectionSlug)
+
   const getTemplate = (slug) => {
     return templates.find((t) => t.slug === slug)
   }
