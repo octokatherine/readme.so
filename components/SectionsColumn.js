@@ -49,7 +49,8 @@ export const SectionsColumn = ({
     }
   }
 
-  const onDeleteSection = (sectionSlug) => {
+  const onDeleteSection = (e, sectionSlug) => {
+    e.stopPropagation()
     setSelectedSections((prev) => prev.filter((s) => s !== sectionSlug))
     setSections((prev) => [...prev, sectionSlug])
     setFocusedSectionSlug(null)

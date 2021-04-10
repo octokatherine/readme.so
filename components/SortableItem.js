@@ -14,8 +14,8 @@ export function SortableItem(props) {
     props.setFocusedSectionSlug(props.id)
   }
 
-  const onClickTrash = () => {
-    props.onDeleteSection(props.section.slug)
+  const onClickTrash = (e) => {
+    props.onDeleteSection(e, props.section.slug)
   }
 
   return (
