@@ -13,6 +13,7 @@ export default function Editor() {
   const [focusedSectionSlug, setFocusedSectionSlug] = useState(null)
   const [showModal, setShowModal] = useState(false)
   const [templates, setTemplates] = useState(sectionTemplates)
+  const [isMobile, setIsMobile] = useState(false)
 
   const getTemplate = (slug) => {
     return templates.find((t) => t.slug === slug)
@@ -24,9 +25,13 @@ export default function Editor() {
     setSelectedSections((prev) => [...prev, section])
   }, [])
 
+  useEffect(() => {
+    setIsMobile(/Mobi|Android/i.test(navigator.userAgent))
+  }, [])
+
   return (
     <>
-      {/Mobi|Android/i.test(navigator.userAgent) ? (
+      {isMobile ? (
         <div className="p-3">
           <div className="bg-white shadow rounded-lg mt-2.5">
             <div className="px-4 py-5 sm:p-6">
