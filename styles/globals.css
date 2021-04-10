@@ -226,7 +226,7 @@
     word-wrap: break-word;
   }
 
-  .preview :hover {
+  .preview a :hover {
     outline: 0;
     text-decoration: underline;
   }
