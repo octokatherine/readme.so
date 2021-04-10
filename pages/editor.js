@@ -23,6 +23,7 @@ export default function Editor() {
     const section = 'title-and-description'
     setSections((prev) => prev.filter((s) => s !== section))
     setSelectedSections((prev) => [...prev, section])
+    setFocusedSectionSlug(section)
   }, [])
 
   useEffect(() => {
