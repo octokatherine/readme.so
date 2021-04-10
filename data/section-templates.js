@@ -67,7 +67,7 @@ Start the server
     markdown: `
 ## Screenshots
 
-![App Screenshot](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/thnlpymky4kq5n54t4np.png)
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
   `,
   },
   {
