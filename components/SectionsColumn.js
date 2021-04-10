@@ -34,6 +34,7 @@ export const SectionsColumn = ({
   const onAddSection = (e, section) => {
     setSections((prev) => prev.filter((s) => s !== section))
     setSelectedSections((prev) => [...prev, section])
+    setFocusedSectionSlug(section)
   }
 
   const handleDragEnd = (event) => {
