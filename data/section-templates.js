@@ -65,6 +65,8 @@ Start the server
     slug: 'screenshots',
     name: 'Screenshots',
     markdown: `
+## Screenshots
+
 ![App Screenshot](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/thnlpymky4kq5n54t4np.png)
   `,
   },
