@@ -7,6 +7,10 @@
     @apply bg-gray-50;
   }
 
+  .logo {
+    font-family: 'Mali', cursive;
+  }
+
   .preview p {
     margin-bottom: 16px;
   }

@@ -4,6 +4,10 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <>
+      <Head>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Mali&display=swap" rel="stylesheet" />
+      </Head>
       <div className="bg-gray-50">
         <div className="relative overflow-hidden">
           <div className="absolute inset-y-0 h-full w-full" aria-hidden="true">
@@ -75,7 +79,10 @@ export default function Home() {
                 <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
                   <div className="flex items-center justify-between w-full md:w-auto">
                     <Link href="/">
-                      <img className="h-8 mt-1 w-auto cursor-pointer" src="readme.svg" alt />
+                      <div className="flex items-center">
+                        <img className="h-8 mt-1 w-auto cursor-pointer" src="readme.svg" />
+                        <p className="logo text-gray-800 ml-2 -mb-2 text-md">readme.so</p>
+                      </div>
                     </Link>
                   </div>
                 </div>
@@ -118,7 +125,7 @@ export default function Home() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
               <img
                 className="relative rounded-lg shadow-lg"
-                src="https://tailwindui.com/img/component-images/top-nav-with-multi-column-layout-screenshot.jpg"
+                src="/screenshot.png"
                 alt="App screenshot"
               />
             </div>

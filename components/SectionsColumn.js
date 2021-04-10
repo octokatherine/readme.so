@@ -13,7 +13,6 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers'
-import { useState } from 'react'
 import { SortableItem } from './SortableItem'
 
 export const SectionsColumn = ({
@@ -58,9 +57,11 @@ export const SectionsColumn = ({
   return (
     <div className="sections px-3">
       <h3 className="text-lg leading-6 font-medium text-gray-900 mb-3">Sections</h3>
-      <h4 className="text-xs leading-6 text-gray-900 mb-3">
-        Click on a section below to edit the contents
-      </h4>
+      {selectedSections.length > 0 && (
+        <h4 className="text-xs leading-6 text-gray-900 mb-3">
+          Click on a section below to edit the contents
+        </h4>
+      )}
       <ul className="space-y-3 mb-12">
         <DndContext
           sensors={sensors}
@@ -82,9 +83,11 @@ export const SectionsColumn = ({
           </SortableContext>
         </DndContext>
       </ul>
-      <h4 className="text-xs leading-6 text-gray-900 mb-3">
-        Click on a section below to add it to your readme
-      </h4>
+      {sections.length > 0 && (
+        <h4 className="text-xs leading-6 text-gray-900 mb-3">
+          Click on a section below to add it to your readme
+        </h4>
+      )}
       <ul className="space-y-3 mb-12">
         {sections.map((s) => (
           <li

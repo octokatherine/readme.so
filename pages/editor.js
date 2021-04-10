@@ -22,9 +22,17 @@ export default function Editor() {
     setFocusedSectionSlug(null)
   }, [selectedSections])
 
+  useEffect(() => {
+    const section = 'title-and-description'
+    setSections((prev) => prev.filter((s) => s !== section))
+    setSelectedSections((prev) => [...prev, section])
+  }, [])
+
   return (
     <>
       <Head>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Mali&display=swap" rel="stylesheet" />
         <script
           data-name="BMC-Widget"
           data-cfasync="false"
