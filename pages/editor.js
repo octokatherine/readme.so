@@ -26,49 +26,69 @@ export default function Editor() {
 
   return (
     <>
-      <Head>
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Mali&display=swap" rel="stylesheet" />
-        <script
-          data-name="BMC-Widget"
-          data-cfasync="false"
-          src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-          data-id="katherinecodes"
-          data-description="Support me on Buy me a coffee!"
-          data-message=""
-          data-color="#FFDD00"
-          data-position="Right"
-          data-x_margin="18"
-          data-y_margin="18"
-        ></script>
-      </Head>
-      <Nav
-        selectedSections={selectedSections}
-        setShowModal={setShowModal}
-        getTemplate={getTemplate}
-      />
-      {showModal && <DownloadModal setShowModal={setShowModal} />}
-      <div className="flex p-6">
-        <SectionsColumn
-          selectedSections={selectedSections}
-          setSelectedSections={setSelectedSections}
-          sections={sections}
-          setSections={setSections}
-          setFocusedSectionSlug={setFocusedSectionSlug}
-          focusedSectionSlug={focusedSectionSlug}
-          getTemplate={getTemplate}
-        />
-        <div className="flex flex-col flex-1 lg:flex-row">
-          <EditorColumn
-            focusedSectionSlug={focusedSectionSlug}
-            selectedSections={selectedSections}
-            setSelectedSections={setSelectedSections}
-            templates={templates}
-            setTemplates={setTemplates}
-          />
-          <PreviewColumn selectedSections={selectedSections} getTemplate={getTemplate} />
+      {/Mobi|Android/i.test(navigator.userAgent) ? (
+        <div className="p-3">
+          <div className="bg-white shadow rounded-lg mt-2.5">
+            <div className="px-4 py-5 sm:p-6">
+              <h3 className="text-lg leading-6 font-medium text-gray-900">
+                This site is optimized for desktop
+              </h3>
+              <div className="mt-2 max-w-xl text-sm text-gray-500">
+                <p>Please visit readme.so on a desktop to create your readme!</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div>
+          <Head>
+            <link rel="preconnect" href="https://fonts.gstatic.com" />
+            <link
+              href="https://fonts.googleapis.com/css2?family=Mali&display=swap"
+              rel="stylesheet"
+            />
+            <script
+              data-name="BMC-Widget"
+              data-cfasync="false"
+              src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+              data-id="katherinecodes"
+              data-description="Support me on Buy me a coffee!"
+              data-message=""
+              data-color="#FFDD00"
+              data-position="Right"
+              data-x_margin="18"
+              data-y_margin="18"
+            ></script>
+          </Head>
+          <Nav
+            selectedSections={selectedSections}
+            setShowModal={setShowModal}
+            getTemplate={getTemplate}
+          />
+          {showModal && <DownloadModal setShowModal={setShowModal} />}
+          <div className="flex p-6">
+            <SectionsColumn
+              selectedSections={selectedSections}
+              setSelectedSections={setSelectedSections}
+              sections={sections}
+              setSections={setSections}
+              setFocusedSectionSlug={setFocusedSectionSlug}
+              focusedSectionSlug={focusedSectionSlug}
+              getTemplate={getTemplate}
+            />
+            <div className="flex flex-col flex-1 lg:flex-row">
+              <EditorColumn
+                focusedSectionSlug={focusedSectionSlug}
+                selectedSections={selectedSections}
+                setSelectedSections={setSelectedSections}
+                templates={templates}
+                setTemplates={setTemplates}
+              />
+              <PreviewColumn selectedSections={selectedSections} getTemplate={getTemplate} />
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }
