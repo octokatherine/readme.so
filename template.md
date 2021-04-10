@@ -14,7 +14,7 @@ Install my-project with npm
 
 ## Run Locally
 
-Clone the Project
+Clone the project
 
 ```bash
   git clone https://link-to-project
@@ -26,13 +26,13 @@ Go to the project directory
   cd my-project
 ```
 
-Install Dependencies
+Install dependencies
 
 ```bash
   npm install
 ```
 
-Start the Server
+Start the server
 
 ```bash
   npm run start
