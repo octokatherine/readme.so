@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Nav } from '../components/nav'
+import { Nav } from '../components/Nav'
 import { SectionsColumn } from '../components/SectionsColumn'
 import { EditorColumn } from '../components/EditorColumn'
 import { PreviewColumn } from '../components/PreviewColumn'
