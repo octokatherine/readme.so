@@ -12,7 +12,7 @@ export default {
 		title: 'readme.so - Easiest Way to Create A README',
 		description: `Use readme.so's markdown editor and ready made templates to easily create a simple README for your repositories`,
 		images: [{
-			url: 'https://www.example.ie/og-image.jpg',
+			url: 'https://raw.githubusercontent.com/rohitjmathew/readme.so/main/public/readme.png',
 			width: 375,
 			height: 375,
 			alt: 'Og Image Alt',
