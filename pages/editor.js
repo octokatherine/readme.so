@@ -49,7 +49,6 @@ export default function Editor() {
       ) : (
         <div className="min-w-[1440px]">
           <Head>
-            <title>readme.so - Easiest Way to Create A README</title>
             <link rel="preconnect" href="https://fonts.gstatic.com" />
             <link
               href="https://fonts.googleapis.com/css2?family=Mali&display=swap"
