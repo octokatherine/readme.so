@@ -88,7 +88,7 @@ To run this project, you will need to add the following environment variables to
   `,
   },
   {
-    slug: 'featurs',
+    slug: 'features',
     name: 'Features',
     markdown: `
 ## Features
@@ -236,6 +236,9 @@ For support, email fake@fake.com or join our Slack channel.
     slug: 'feedback',
     name: 'Feedback',
     markdown: `
+## Feedback
+
+If you have any feedback, please reach out to us at fake@fake.com
 
   `,
   },
