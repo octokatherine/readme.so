@@ -5,7 +5,7 @@ export default {
         type: 'website',
         locale: 'en_US',
         url: 'https://readme.so/',
-        title: 'readme.so',
+        title: 'readme.so - Easiest Way to Create A README',
         description: 'Easiest Way to Create A README',
         image: 'https://github.com/katherinepeterson/readme.so/blob/main/public/readme.png',
         site_name: 'readme.so',
