@@ -79,10 +79,10 @@ export default function Home() {
                 <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
                   <div className="flex items-center justify-between w-full md:w-auto">
                     <Link href="/">
-                      <a className="flex items-center">
+                      <div className="flex items-center">
                         <img className="w-auto h-8 mt-1 cursor-pointer" src="readme.svg" />
-                        <span className="ml-2 -mb-2 text-gray-800 logo text-md">readme.so</span>
-                      </a>
+                        <p className="ml-2 -mb-2 text-gray-800 logo text-md">readme.so</p>
+                      </div>
                     </Link>
                   </div>
                 </div>
