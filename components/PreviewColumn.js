@@ -1,8 +1,8 @@
 import ReactMarkdown from 'react-markdown'
 const gfm = require('remark-gfm')
 
-export const PreviewColumn = ({ selectedSections, getTemplate }) => {
-  const markdown = selectedSections.reduce((acc, section) => {
+export const PreviewColumn = ({ selectedSectionSlugs, getTemplate }) => {
+  const markdown = selectedSectionSlugs.reduce((acc, section) => {
     const template = getTemplate(section)
     return `${acc}${template.markdown}`
   }, ``)

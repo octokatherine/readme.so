@@ -16,10 +16,10 @@ import { restrictToVerticalAxis } from '@dnd-kit/modifiers'
 import { SortableItem } from './SortableItem'
 
 export const SectionsColumn = ({
-  selectedSections,
-  setSelectedSections,
-  sections,
-  setSections,
+  selectedSectionSlugs,
+  setSelectedSectionSlugs,
+  sectionSlugs,
+  setSectionSlugs,
   setFocusedSectionSlug,
   focusedSectionSlug,
   getTemplate,
@@ -32,15 +32,15 @@ export const SectionsColumn = ({
   )
 
   const onAddSection = (e, section) => {
-    setSections((prev) => prev.filter((s) => s !== section))
-    setSelectedSections((prev) => [...prev, section])
+    setSectionSlugs((prev) => prev.filter((s) => s !== section))
+    setSelectedSectionSlugs((prev) => [...prev, section])
     setFocusedSectionSlug(section)
   }
 
   const handleDragEnd = (event) => {
     const { active, over } = event
     if (active.id !== over.id) {
-      setSelectedSections((sections) => {
+      setSelectedSectionSlugs((sections) => {
         const oldIndex = sections.findIndex((s) => s === active.id)
         const newIndex = sections.findIndex((s) => s === over.id)
 
@@ -51,8 +51,8 @@ export const SectionsColumn = ({
 
   const onDeleteSection = (e, sectionSlug) => {
     e.stopPropagation()
-    setSelectedSections((prev) => prev.filter((s) => s !== sectionSlug))
-    setSections((prev) => [...prev, sectionSlug])
+    setSelectedSectionSlugs((prev) => prev.filter((s) => s !== sectionSlug))
+    setSectionSlugs((prev) => [...prev, sectionSlug])
     setFocusedSectionSlug(null)
   }
 
@@ -60,7 +60,7 @@ export const SectionsColumn = ({
     <div className="sections">
       <h3 className="text-lg leading-6 font-medium text-gray-900 mb-3">Sections</h3>
       <div className="max-h-screen overflow-scroll px-3 pr-4">
-        {selectedSections.length > 0 && (
+        {selectedSectionSlugs.length > 0 && (
           <h4 className="text-xs leading-6 text-gray-900 mb-3">
             Click on a section below to edit the contents
           </h4>
@@ -72,8 +72,8 @@ export const SectionsColumn = ({
             onDragEnd={handleDragEnd}
             modifiers={[restrictToVerticalAxis]}
           >
-            <SortableContext items={selectedSections} strategy={verticalListSortingStrategy}>
-              {selectedSections.map((s) => (
+            <SortableContext items={selectedSectionSlugs} strategy={verticalListSortingStrategy}>
+              {selectedSectionSlugs.map((s) => (
                 <SortableItem
                   key={s}
                   id={s}
@@ -86,13 +86,13 @@ export const SectionsColumn = ({
             </SortableContext>
           </DndContext>
         </ul>
-        {sections.length > 0 && (
+        {sectionSlugs.length > 0 && (
           <h4 className="text-xs leading-6 text-gray-900 mb-3">
             Click on a section below to add it to your readme
           </h4>
         )}
         <ul className="space-y-3 mb-12">
-          {sections.map((s) => (
+          {sectionSlugs.map((s) => (
             <li
               onClick={(e) => onAddSection(e, s)}
               key={s}

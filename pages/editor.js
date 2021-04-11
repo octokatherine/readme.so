@@ -8,8 +8,8 @@ import { DownloadModal } from '../components/DownloadModal'
 import Head from 'next/head'
 
 export default function Editor() {
-  const [selectedSections, setSelectedSections] = useState([])
-  const [sections, setSections] = useState(sectionTemplates.map((t) => t.slug))
+  const [selectedSectionSlugs, setSelectedSectionSlugs] = useState([])
+  const [sectionSlugs, setSectionSlugs] = useState(sectionTemplates.map((t) => t.slug))
   const [focusedSectionSlug, setFocusedSectionSlug] = useState(null)
   const [showModal, setShowModal] = useState(false)
   const [templates, setTemplates] = useState(sectionTemplates)
@@ -21,8 +21,8 @@ export default function Editor() {
 
   useEffect(() => {
     const section = 'title-and-description'
-    setSections((prev) => prev.filter((s) => s !== section))
-    setSelectedSections((prev) => [...prev, section])
+    setSectionSlugs((prev) => prev.filter((s) => s !== section))
+    setSelectedSectionSlugs((prev) => [...prev, section])
     setFocusedSectionSlug(section)
   }, [])
 
@@ -67,17 +67,17 @@ export default function Editor() {
             ></script>
           </Head>
           <Nav
-            selectedSections={selectedSections}
+            selectedSectionSlugs={selectedSectionSlugs}
             setShowModal={setShowModal}
             getTemplate={getTemplate}
           />
           {showModal && <DownloadModal setShowModal={setShowModal} />}
           <div className="flex p-6">
             <SectionsColumn
-              selectedSections={selectedSections}
-              setSelectedSections={setSelectedSections}
-              sections={sections}
-              setSections={setSections}
+              selectedSectionSlugs={selectedSectionSlugs}
+              setSelectedSectionSlugs={setSelectedSectionSlugs}
+              sectionSlugs={sectionSlugs}
+              setSectionSlugs={setSectionSlugs}
               setFocusedSectionSlug={setFocusedSectionSlug}
               focusedSectionSlug={focusedSectionSlug}
               getTemplate={getTemplate}
@@ -85,12 +85,15 @@ export default function Editor() {
             <div className="flex flex-col flex-1 lg:flex-row">
               <EditorColumn
                 focusedSectionSlug={focusedSectionSlug}
-                selectedSections={selectedSections}
-                setSelectedSections={setSelectedSections}
+                selectedSectionSlugs={selectedSectionSlugs}
+                setSelectedSectionSlugs={setSelectedSectionSlugs}
                 templates={templates}
                 setTemplates={setTemplates}
               />
-              <PreviewColumn selectedSections={selectedSections} getTemplate={getTemplate} />
+              <PreviewColumn
+                selectedSectionSlugs={selectedSectionSlugs}
+                getTemplate={getTemplate}
+              />
             </div>
           </div>
         </div>

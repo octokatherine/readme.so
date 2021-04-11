@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react'
 
-export const EditorColumn = ({ focusedSectionSlug, selectedSections, templates, setTemplates }) => {
+export const EditorColumn = ({
+  focusedSectionSlug,
+  selectedSectionSlugs,
+  templates,
+  setTemplates,
+}) => {
   const getMarkdown = () => {
     const section = templates.find((s) => s.slug === focusedSectionSlug)
     return section ? section.markdown : ''
