@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
 import Editor from '@monaco-editor/react'
+import { useEffect, useState } from 'react'
 
 export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) => {
   const getMarkdown = () => {
@@ -26,8 +26,8 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
   }
 
   return (
-    <div className="px-3 flex-1">
-      <h3 className="text-lg leading-6 font-medium text-gray-900 mb-3">Editor</h3>
+    <div className="flex-1 px-3">
+      <h3 className="mb-3 text-lg font-medium leading-6 text-gray-900">Editor</h3>
       {focusedSectionSlug ? (
         <Editor
           wrapperClassName="rounded-sm border border-gray-500"

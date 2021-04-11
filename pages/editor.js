@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react'
-import { Nav } from '../components/Nav'
-import { SectionsColumn } from '../components/SectionsColumn'
-import { EditorColumn } from '../components/EditorColumn'
-import { PreviewColumn } from '../components/PreviewColumn'
-import { sectionTemplates } from '../data/section-templates'
-import { DownloadModal } from '../components/DownloadModal'
 import Head from 'next/head'
+import { useEffect, useState } from 'react'
+
+import { DownloadModal } from '../components/DownloadModal'
+import { EditorColumn } from '../components/EditorColumn'
+import { Nav } from '../components/Nav'
+import { PreviewColumn } from '../components/PreviewColumn'
+import { SectionsColumn } from '../components/SectionsColumn'
+import { sectionTemplates } from '../data/section-templates'
 
 export default function Editor() {
   const [selectedSectionSlugs, setSelectedSectionSlugs] = useState([])
@@ -36,10 +37,10 @@ export default function Editor() {
         <div className="p-3">
           <div className="bg-white shadow rounded-lg mt-2.5">
             <div className="px-4 py-5 sm:p-6">
-              <h3 className="text-lg leading-6 font-medium text-gray-900">
+              <h3 className="text-lg font-medium leading-6 text-gray-900">
                 This site is optimized for desktop
               </h3>
-              <div className="mt-2 max-w-xl text-sm text-gray-500">
+              <div className="max-w-xl mt-2 text-sm text-gray-500">
                 <p>Please visit readme.so on a desktop to create your readme!</p>
               </div>
             </div>
