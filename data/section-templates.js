@@ -6,6 +6,7 @@ export const sectionTemplates = [
 # Project Title
 
 A brief description of what this project does and who it's for
+
 `,
   },
   {
@@ -27,6 +28,7 @@ Install my-project with npm
     name: 'Logo',
     markdown: `
 ![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+
     `,
   },
   {
@@ -68,6 +70,7 @@ Start the server
 ## Screenshots
 
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
   `,
   },
   {
@@ -81,6 +84,7 @@ To run this project, you will need to add the following environment variables to
 \`API_KEY\`
 
 \`ANOTHER_API_KEY\`
+
   `,
   },
   {
@@ -93,6 +97,7 @@ To run this project, you will need to add the following environment variables to
 - Live previews
 - Fullscreen mode
 - Cross platform
+
   `,
   },
   {
@@ -108,6 +113,7 @@ function App() {
   return <Component />
 }
 \`\`\`
+
   `,
   },
   {
@@ -139,6 +145,7 @@ function App() {
 #### add(num1, num2)
 
 Takes two numbers and returns the sum.
+
   `,
   },
   {
@@ -152,6 +159,7 @@ Contributions are always welcome!
 See \`contributing.md\` for ways to get started.
 
 Please adhere to this project's \`code of conduct\`.
+
   `,
   },
   {
@@ -165,15 +173,17 @@ To run tests, run the following command
 \`\`\`bash
   npm run test
 \`\`\`
+
   `,
   },
   {
     slug: 'license',
     name: 'License',
     markdown: `
-  ## License
+## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
   `,
   },
   {
@@ -187,6 +197,7 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 [![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
+
   `,
   },
   {
@@ -198,6 +209,7 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 - Additional browser support
 
 - Add more integrations
+
   `,
   },
   {
@@ -207,6 +219,7 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 ## Authors and Acknowledgement
 
 - [@katherinepeterson](https://www.github.com/katherinepeterson) for development and design.
+
   `,
   },
   {
@@ -216,6 +229,7 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 ## Support
 
 For support, email fake@fake.com or join our Slack channel.
+
   `,
   },
   {
@@ -234,6 +248,7 @@ For support, email fake@fake.com or join our Slack channel.
 Here are some related projects
 
 [Awesome README](https://github.com/matiassingers/awesome-readme)
+
   `,
   },
   {
@@ -243,6 +258,7 @@ Here are some related projects
 ## Demo
 
 Insert gif or link to demo
+
   `,
   },
   {
@@ -254,6 +270,7 @@ Insert gif or link to demo
 **Client:** React, Redux, TailwindCSS
 
 **Server:** Node, Express
+
   `,
   },
   {
@@ -263,6 +280,7 @@ Insert gif or link to demo
 ## Optimizations
 
 What optimizations did you make in your code? E.g. refactors, performance improvements, accessibility
+
   `,
   },
   {
@@ -272,6 +290,7 @@ What optimizations did you make in your code? E.g. refactors, performance improv
 ## Lessons Learned
 
 What did you learn while building this project? What challenges did you face and how did you overcome them?
+
   `,
   },
   {
@@ -287,6 +306,7 @@ Answer 1
 #### Question 2
 
 Answer 2
+
   `,
   },
   {
@@ -299,6 +319,7 @@ This project is used by the following companies:
 
 - Company 1
 - Company 2
+
   `,
   },
   {
@@ -308,6 +329,7 @@ This project is used by the following companies:
 ## Documentation
 
 [Documentation](https://linktodocumentation)
+
   `,
   },
   {
@@ -321,6 +343,7 @@ To deploy this project run
 \`\`\`bash
   npm run deploy
 \`\`\`
+
   `,
   },
   {
@@ -330,6 +353,7 @@ To deploy this project run
 ## Appendix
 
 Any additional information goes here
+
   `,
   },
 ]
