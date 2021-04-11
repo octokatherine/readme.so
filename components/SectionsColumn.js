@@ -59,7 +59,7 @@ export const SectionsColumn = ({
   return (
     <div className="sections">
       <h3 className="text-lg leading-6 font-medium text-gray-900 mb-3">Sections</h3>
-      <div className="max-h-screen overflow-scroll px-3 pr-4">
+      <div className="max-h-screen overflow-y-scroll px-3 pr-4">
         {selectedSectionSlugs.length > 0 && (
           <h4 className="text-xs leading-6 text-gray-900 mb-3">
             Click on a section below to edit the contents
