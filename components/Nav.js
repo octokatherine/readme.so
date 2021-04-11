@@ -18,10 +18,10 @@ export const Nav = ({ selectedSectionSlugs, setShowModal, getTemplate }) => {
   return (
     <nav className="flex justify-between p-4 bg-gray-800 align-center">
       <Link href="/">
-        <div className="flex items-center">
+        <a className="flex items-center">
           <img className="w-auto h-8 mt-1 cursor-pointer" src="readme.svg" />
-          <p className="ml-2 -mb-2 text-white logo text-md">readme.so</p>
-        </div>
+          <span className="ml-2 -mb-2 text-white logo text-md">readme.so</span>
+        </a>
       </Link>
       <button
         type="button"

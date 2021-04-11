@@ -79,10 +79,10 @@ export default function Home() {
                 <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
                   <div className="flex items-center justify-between w-full md:w-auto">
                     <Link href="/">
-                      <div className="flex items-center">
+                      <a className="flex items-center">
                         <img className="w-auto h-8 mt-1 cursor-pointer" src="readme.svg" />
-                        <p className="ml-2 -mb-2 text-gray-800 logo text-md">readme.so</p>
-                      </div>
+                        <span className="ml-2 -mb-2 text-gray-800 logo text-md">readme.so</span>
+                      </a>
                     </Link>
                   </div>
                 </div>
@@ -103,10 +103,7 @@ export default function Home() {
               <div className="flex justify-center mt-6">
                 <span className="inline-flex rounded-md shadow">
                   <Link href="/editor">
-                    <a
-                      href="#"
-                      className="inline-flex items-center px-4 py-2 text-base font-medium bg-white border border-transparent rounded-md text-emerald-500 hover:text-emerald-400"
-                    >
+                    <a className="inline-flex items-center px-4 py-2 text-base font-medium bg-white border border-transparent rounded-md text-emerald-500 hover:text-emerald-400">
                       Get Started
                     </a>
                   </Link>
