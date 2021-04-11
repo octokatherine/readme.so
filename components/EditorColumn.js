@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react'
+import Editor from '@monaco-editor/react'
 
-export const EditorColumn = ({
-  focusedSectionSlug,
-  selectedSectionSlugs,
-  templates,
-  setTemplates,
-}) => {
+export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) => {
   const getMarkdown = () => {
     const section = templates.find((s) => s.slug === focusedSectionSlug)
     return section ? section.markdown : ''
@@ -17,45 +13,31 @@ export const EditorColumn = ({
     setMarkdown(markdown)
   }, [focusedSectionSlug])
 
-  const onEdit = (e) => {
-    setMarkdown(e.target.value)
+  const onEdit = (val) => {
+    setMarkdown(val)
     setTemplates((prev) => {
       return prev.map((template) => {
         if (template.slug === focusedSectionSlug) {
-          return { ...template, markdown: e.target.value }
+          return { ...template, markdown: val }
         }
         return template
       })
     })
   }
 
-  const handleTabs = (e) => {
-    if (e.key == 'Tab') {
-      e.preventDefault()
-      var start = e.target.selectionStart
-      var end = e.target.selectionEnd
-
-      // set textarea value to: text before caret + tab + text after caret
-      e.target.value = e.target.value.substring(0, start) + ' ' + e.target.value.substring(end)
-
-      // put caret at right position again
-      e.target.selectionStart = e.target.selectionEnd = start + 1
-    }
-  }
-
   return (
     <div className="px-3 flex-1">
       <h3 className="text-lg leading-6 font-medium text-gray-900 mb-3">Editor</h3>
       {focusedSectionSlug ? (
-        <textarea
-          id="markdown"
-          name="markdown"
-          rows="12"
-          className="shadow-sm block w-full focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm border-gray-800 rounded-md p-6 bg-gray-700 text-white"
+        <Editor
+          wrapperClassName="rounded-sm border border-gray-500"
+          height="100vh" // By default, it fully fits with its parent
+          theme="vs-dark"
+          language="markdown"
           value={markdown}
           onChange={onEdit}
-          onKeyDown={handleTabs}
-        ></textarea>
+          loading={'Loading...'}
+        />
       ) : (
         <p className="font-sm text-emerald-500 max-w-[16rem] mx-auto mt-10">
           Select a section from the left sidebar to edit the contents
