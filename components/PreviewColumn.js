@@ -1,4 +1,5 @@
 import ReactMarkdown from 'react-markdown'
+
 const gfm = require('remark-gfm')
 
 export const PreviewColumn = ({ selectedSectionSlugs, getTemplate }) => {

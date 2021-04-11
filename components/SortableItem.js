@@ -1,4 +1,3 @@
-import React from 'react'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 
@@ -28,10 +27,10 @@ export function SortableItem(props) {
         props.section.slug === props.focusedSectionSlug ? 'ring-2 ring-emerald-400' : ''
       }`}
     >
-      <img className="h-5 w-5 mr-2" src="drag.svg" {...listeners} />
+      <img className="w-5 h-5 mr-2" src="drag.svg" {...listeners} />
       <p>{props.section.name}</p>
       {props.section.slug === props.focusedSectionSlug && (
-        <img onClick={onClickTrash} className="h-5 w-auto absolute right-2" src="trash.svg" />
+        <img onClick={onClickTrash} className="absolute w-auto h-5 right-2" src="trash.svg" />
       )}
     </li>
   )
