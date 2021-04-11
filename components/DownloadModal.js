@@ -51,7 +51,7 @@ Leaving: "ease-in duration-200"
                     <a
                       href="https://twitter.com/katherinecodes"
                       target="_blank"
-                      className="text-emerald-500 hover:text-emerald-400"
+                      className="text-green-500 hover:text-green-400"
                     >
                       Twitter
                     </a>{' '}

@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import Link from 'next/link'
+import Head from 'next/head';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -93,7 +93,7 @@ export default function Home() {
               <div className="text-center">
                 <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
                   <span className="block">The easiest way to create a</span>
-                  <span className="block text-emerald-500">README</span>
+                  <span className="block text-green-500">README</span>
                 </h1>
                 <p className="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
                   Our simple editor allows you to quickly add and customize all the sections you
@@ -105,7 +105,7 @@ export default function Home() {
                   <Link href="/editor">
                     <a
                       href="#"
-                      className="inline-flex items-center px-4 py-2 text-base font-medium bg-white border border-transparent rounded-md text-emerald-500 hover:text-emerald-400"
+                      className="inline-flex items-center px-4 py-2 text-base font-medium bg-white border border-transparent rounded-md text-green-500 hover:text-green-400"
                     >
                       Get Started
                     </a>
@@ -136,7 +136,7 @@ export default function Home() {
             <h2 className="text-sm font-semibold tracking-wide text-center text-gray-400">
               Made with &#9825; by{' '}
               <a
-                className="hover:text-emerald-500"
+                className="hover:text-green-500"
                 target="_blank"
                 href="https://twitter.com/katherinecodes"
               >

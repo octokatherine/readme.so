@@ -1,5 +1,5 @@
-import Editor from '@monaco-editor/react'
-import { useEffect, useState } from 'react'
+import Editor from '@monaco-editor/react';
+import { useEffect, useState } from 'react';
 
 export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) => {
   const getMarkdown = () => {
@@ -39,7 +39,7 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
           loading={'Loading...'}
         />
       ) : (
-        <p className="font-sm text-emerald-500 max-w-[16rem] mx-auto mt-10">
+        <p className="font-sm text-green-500 max-w-[16rem] mx-auto mt-10">
           Select a section from the left sidebar to edit the contents
         </p>
       )}
