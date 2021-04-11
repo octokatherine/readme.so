@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
 export const Nav = ({ selectedSectionSlugs, setShowModal, getTemplate }) => {
   const markdown = selectedSectionSlugs.reduce((acc, section) => {
@@ -25,7 +25,7 @@ export const Nav = ({ selectedSectionSlugs, setShowModal, getTemplate }) => {
       </Link>
       <button
         type="button"
-        className="relative inline-flex items-center px-4 py-2 text-sm font-bold tracking-wide text-white border border-transparent rounded-md shadow-sm bg-green-500 hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-green-500"
+        className="relative inline-flex items-center px-4 py-2 text-sm font-bold tracking-wide text-white bg-green-500 border border-transparent rounded-md shadow-sm hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-green-500"
         onClick={downloadMarkdownFile}
       >
         <img className="w-auto h-6 mr-2 cursor-pointer" src="download.svg" />

@@ -1,5 +1,5 @@
-import Head from 'next/head';
-import Link from 'next/link';
+import Head from 'next/head'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -105,7 +105,7 @@ export default function Home() {
                   <Link href="/editor">
                     <a
                       href="#"
-                      className="inline-flex items-center px-4 py-2 text-base font-medium bg-white border border-transparent rounded-md text-green-500 hover:text-green-400"
+                      className="inline-flex items-center px-4 py-2 text-base font-medium text-green-500 bg-white border border-transparent rounded-md hover:text-green-400"
                     >
                       Get Started
                     </a>

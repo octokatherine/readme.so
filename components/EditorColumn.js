@@ -1,5 +1,5 @@
-import Editor from '@monaco-editor/react';
-import { useEffect, useState } from 'react';
+import Editor from '@monaco-editor/react'
+import { useEffect, useState } from 'react'
 
 export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) => {
   const getMarkdown = () => {
