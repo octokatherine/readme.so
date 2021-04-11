@@ -145,7 +145,7 @@ export default function Home() {
             </h2>
             <div className="flex justify-center mt-4">
               <a href="https://github.com/katherinepeterson/readme.so" target="_blank">
-                <img className="w-auto h-6 cursor-pointer" src="github.svg" />
+                <img className="w-auto h-6" src="github.svg" />
               </a>
             </div>
           </div>
