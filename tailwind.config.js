@@ -12,13 +12,7 @@ module.exports = {
       black: colors.black,
       white: colors.white,
       gray: colors.trueGray,
-      indigo: colors.indigo,
-      red: colors.rose,
-      yellow: colors.amber,
       emerald: colors.emerald,
-      blue: colors.blue,
-      orange: colors.orange,
-      teal: colors.teal,
     },
   },
   variants: {
