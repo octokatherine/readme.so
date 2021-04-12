@@ -1,7 +1,12 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-export default function Home() {
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
+const Home = () => {
+  const { t } = useTranslation('common')
+
   return (
     <>
       <Head>
@@ -86,18 +91,59 @@ export default function Home() {
                     </Link>
                   </div>
                 </div>
+
+                <div className="relative items-center flex-1 md:absolute md:inset-y-0 md:right-0">
+                  <div className="group inline-block relative">
+                    <button
+                      className="text-gray-800 py-2 px-4 rounded inline-flex items-center"
+                    >
+                      <span className="mr-1">{t('language')}</span>
+                      <svg
+                        className="fill-current h-4 w-3"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                        />
+                      </svg>
+                    </button>
+                    <ul className="absolute hidden text-gray-800 pt-1 group-hover:block">
+                      <li className="">
+                        <a
+                          className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                          href="/"
+                        >{t('english')}</a
+                        >
+                      </li>
+                      <li className="">
+                        <a
+                          className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                          href="/fr"
+                        >{t('french')}</a
+                        >
+                      </li>
+                      <li className="">
+                        <a
+                          className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                          href="/es"
+                        >{t('spanish')}</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </nav>
             </div>
 
             <div className="px-4 mx-auto mt-16 max-w-7xl sm:mt-24 sm:px-6">
               <div className="text-center">
                 <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-                  <span className="block">The easiest way to create a</span>
-                  <span className="block text-emerald-500">README</span>
+                  <span className="block">{t('title')}</span>
+                  <span className="block text-emerald-500">{t('readme')}</span>
                 </h1>
                 <p className="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                  Our simple editor allows you to quickly add and customize all the sections you
-                  need for your project's readme
+                  {t('description')}
                 </p>
               </div>
               <div className="flex justify-center mt-6">
@@ -105,7 +151,7 @@ export default function Home() {
                   <span className="inline-flex rounded-md shadow ">
                     <Link href="/editor">
                       <a className="inline-flex items-center px-4 py-2 text-base font-medium bg-emerald-500 hover:bg-emerald-400 border border-transparent rounded-md text-white w-[250px] justify-center">
-                        Get Started
+                        {t('get-started')}
                       </a>
                     </Link>
                   </span>
@@ -125,7 +171,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="text-center">
-                <p className="mx-auto mt-3 text-sm text-gray-900">100% Free</p>
+                <p className="mx-auto mt-3 text-sm text-gray-900">{t('100-free')}</p>
               </div>
             </div>
           </div>
@@ -146,7 +192,7 @@ export default function Home() {
         <div className="bg-gray-800">
           <div className="px-4 py-16 mx-auto max-w-7xl sm:py-24 sm:px-6 lg:px-8">
             <h2 className="text-sm font-semibold tracking-wide text-center text-gray-400">
-              Made with &#9825; by{' '}
+              {t('made-with-love')}&#9825;{t('by')}{' '}
               <a
                 className="hover:text-emerald-500"
                 target="_blank"
@@ -163,6 +209,16 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+
     </>
   )
 }
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common', 'footer']),
+  },
+})
+
+export default Home
