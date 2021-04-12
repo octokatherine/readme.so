@@ -37,6 +37,12 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
           value={markdown}
           onChange={onEdit}
           loading={'Loading...'}
+          options={{
+            minimap: {
+              enabled: false,
+            },
+            lineNumbers: false,
+          }}
         />
       ) : (
         <p className="font-sm text-emerald-500 max-w-[16rem] mx-auto mt-10">
