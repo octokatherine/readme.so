@@ -94,12 +94,14 @@ export const SectionsColumn = ({
         )}
         <ul className="mb-12 space-y-3">
           {sectionSlugs.map((s) => (
-            <li
-              onClick={(e) => onAddSection(e, s)}
-              key={s}
-              className="flex items-center py-2 pl-3 pr-6 bg-white rounded-md shadow cursor-pointer"
-            >
-              <p>{getTemplate(s).name}</p>
+            <li key={s}>
+              <button
+                className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 w-full h-full flex items-center py-2 pl-3 pr-6 bg-white rounded-md shadow cursor-pointer block"
+                type="button"
+                onClick={(e) => onAddSection(e, s)}
+              >
+                <span>{getTemplate(s).name}</span>
+              </button>
             </li>
           ))}
         </ul>

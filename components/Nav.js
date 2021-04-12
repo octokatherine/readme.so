@@ -18,8 +18,8 @@ export const Nav = ({ selectedSectionSlugs, setShowModal, getTemplate }) => {
   return (
     <nav className="flex justify-between p-4 bg-gray-800 align-center">
       <Link href="/">
-        <a className="flex items-center">
-          <img className="w-auto h-8 mt-1 cursor-pointer" src="readme.svg" />
+        <a className="focus:outline-none focus:ring-2 focus:ring-emerald-400 flex items-center">
+          <img className="w-auto h-8 mt-1" src="readme.svg" />
           <span className="ml-2 -mb-2 text-white logo text-md">readme.so</span>
         </a>
       </Link>
@@ -28,7 +28,7 @@ export const Nav = ({ selectedSectionSlugs, setShowModal, getTemplate }) => {
         className="relative inline-flex items-center px-4 py-2 text-sm font-bold tracking-wide text-white border border-transparent rounded-md shadow-sm bg-emerald-500 hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-emerald-500"
         onClick={downloadMarkdownFile}
       >
-        <img className="w-auto h-6 mr-2 cursor-pointer" src="download.svg" />
+        <img className="w-auto h-6 mr-2" src="download.svg" />
         <span>Download</span>
       </button>
     </nav>
