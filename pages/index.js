@@ -94,8 +94,8 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="relative items-center flex-1 md:absolute md:inset-y-0 md:right-0">
-                  <LanguageDropDown/>
+                <div className="relative w-28 items-center flex-1 md:absolute md:inset-y-0 md:right-0">
+                  <LanguageDropDown />
                 </div>
               </nav>
             </div>

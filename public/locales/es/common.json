@@ -9,5 +9,6 @@
 	"language": "Idioma",
 	"english": "Inglés",
 	"french": "Francés",
-	"spanish": "Español"
+	"spanish": "Español",
+	"translation-error": "La traducción es incorrecta?"
 }

@@ -19,11 +19,10 @@ export function LanguageDropDown({ posts }) {
                     />
                 </svg>
             </button>
-            <div id='container'></div>
             <ul className="absolute hidden text-gray-800 pt-1 group-hover:block">
                 <li className="">
                     <a
-                        className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                        className="w-32 bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
                         href="/"
                     >{t('english')}</a
                     >
@@ -40,6 +39,14 @@ export function LanguageDropDown({ posts }) {
                         className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
                         href="/es"
                     >{t('spanish')}</a
+                    >
+                </li>
+                <li className="">
+                    <a
+                        className="bg-gray-200 hover:bg-gray-400 text-xs break-words py-2 px-4 block whitespace-no-wrap"
+                        href="https://github.com/katherinepeterson/readme.so/issues/new"
+                        target="_blank"
+                    >{t('translation-error')}</a
                     >
                 </li>
             </ul>
