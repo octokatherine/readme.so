@@ -7,6 +7,7 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
     return section ? section.markdown : ''
   }
   const [markdown, setMarkdown] = useState(getMarkdown())
+  const [toggleState, setToggleState] = useState({ theme: 'vs-dark', img: 'toggle_sun.svg' })
 
   useEffect(() => {
     const markdown = getMarkdown()
@@ -25,14 +26,23 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
     })
   }
 
+  const toggleTheme = () => {
+    toggleDarkMode(toggleState, setToggleState)
+  }
+
   return (
     <div className="flex-1 px-3">
-      <h3 className="mb-3 text-lg font-medium leading-6 text-gray-900">Editor</h3>
+      <h3 className="mb-3 text-lg font-medium leading-6 text-gray-900">
+        Editor
+        <button onClick={toggleTheme} aria-label="Color Mode" className="focus:outline-none">
+          <img className="w-auto h-6 mr-2" src={toggleState.img} />
+        </button>
+      </h3>
       {focusedSectionSlug ? (
         <Editor
           wrapperClassName="rounded-sm border border-gray-500"
           height="100vh" // By default, it fully fits with its parent
-          theme="vs-dark"
+          theme={toggleState.theme}
           language="markdown"
           value={markdown}
           onChange={onEdit}
@@ -51,4 +61,10 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
       )}
     </div>
   )
+}
+
+const toggleDarkMode = (toggleState, setToggleState) => {
+  toggleState.theme == 'vs-dark'
+    ? setToggleState({ theme: 'light', img: 'toggle_moon.svg' })
+    : setToggleState({ theme: 'vs-dark', img: 'toggle_sun.svg' })
 }
