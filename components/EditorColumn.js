@@ -37,12 +37,9 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
         <button
           onClick={toggleTheme}
           aria-label="Color Mode"
-          className="toggle-dark-mode shadow md:shadow-lg focus:outline-none rounded-full flex items-center justify-center transition duration-500 ease-in-out transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none"
+          className="toggle-dark-mode focus:outline-none transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none"
         >
-          <img
-            className="toggle-img w-auto width: -webkit-fill-available h-8 mr-2"
-            src={toggleState.img}
-          />
+          <img className="w-auto h-8 mr-2" src={toggleState.img} />
         </button>
       </h3>
 
