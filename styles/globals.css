@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.full-screen{
+  max-height: calc(100vh - 160px);
+}
+
 @layer base {
   html {
     @apply bg-gray-50;

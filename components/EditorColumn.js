@@ -26,12 +26,12 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
   }
 
   return (
-    <div className="flex-1 px-3">
+    <div className="flex-1 px-3 full-screen">
       <h3 className="mb-3 text-lg font-medium leading-6 text-gray-900">Editor</h3>
       {focusedSectionSlug ? (
         <Editor
           wrapperClassName="rounded-sm border border-gray-500"
-          height="100vh" // By default, it fully fits with its parent
+          className="full-screen" // By default, it fully fits with its parent
           theme="vs-dark"
           language="markdown"
           value={markdown}
