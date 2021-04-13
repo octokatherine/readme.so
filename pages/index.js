@@ -101,13 +101,28 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex justify-center mt-6">
-                <span className="inline-flex rounded-md shadow">
-                  <Link href="/editor">
-                    <a className="inline-flex items-center px-4 py-2 text-base font-medium bg-white border border-transparent rounded-md text-emerald-500 hover:text-emerald-400">
-                      Get Started
-                    </a>
-                  </Link>
-                </span>
+                <div className="flex flex-col items-center">
+                  <span className="inline-flex rounded-md shadow ">
+                    <Link href="/editor">
+                      <a className="inline-flex items-center px-4 py-2 text-base font-medium bg-emerald-500 hover:bg-emerald-400 border border-transparent rounded-md text-white w-[250px] justify-center">
+                        Get Started
+                      </a>
+                    </Link>
+                  </span>
+                  <a
+                    className="mt-3"
+                    href="https://www.producthunt.com/posts/readme-so?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-readme-so"
+                    target="_blank"
+                  >
+                    <img
+                      src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=291731&theme=light"
+                      alt="readme.so - Easily create the perfect readme for your project | Product Hunt"
+                      style={{ width: '250px', height: '54px' }}
+                      width="250"
+                      height="54"
+                    />
+                  </a>
+                </div>
               </div>
               <div className="text-center">
                 <p className="mx-auto mt-3 text-sm text-gray-900">100% Free</p>
