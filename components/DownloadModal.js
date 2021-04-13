@@ -1,4 +1,8 @@
+import { useTranslation } from 'next-i18next'
+
 export const DownloadModal = ({ setShowModal }) => {
+  const { t } = useTranslation("editor")
+
   return (
     <>
       {/* This example requires Tailwind CSS v2.0+ */}
@@ -43,22 +47,22 @@ Leaving: "ease-in duration-200"
               <p className="text-center text-7xl">🎉</p>
               <div className="mt-3 text-center sm:mt-5">
                 <h3 className="text-lg font-medium leading-6 text-gray-900" id="modal-title">
-                  Readme Generated!
+                  {t('download-readme-generated')}
                 </h3>
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">
-                    Thanks for using readme.so! Feel free to reach out to me on{' '}
+                    {t('download-reach-out')}{' '}
                     <a
                       href="https://twitter.com/katherinecodes"
                       target="_blank"
                       className="text-emerald-500 hover:text-emerald-400"
                     >
-                      Twitter
+                      Twitter 
                     </a>{' '}
-                    with any feedback.
+                    {t('download-feedback')}
                   </p>
                   <p className="mt-3 text-sm text-gray-500">
-                    If you found this product helpful, consider supporting me with a cup of coffee!
+                    {t('download-coffee')}
                   </p>
                 </div>
               </div>

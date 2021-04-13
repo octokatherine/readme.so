@@ -7,8 +7,12 @@ import { Nav } from '../components/Nav'
 import { PreviewColumn } from '../components/PreviewColumn'
 import { SectionsColumn } from '../components/SectionsColumn'
 import { sectionTemplates } from '../data/section-templates'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 export default function Editor() {
+  const { t } = useTranslation("editor")
+
   const [selectedSectionSlugs, setSelectedSectionSlugs] = useState([])
   const [sectionSlugs, setSectionSlugs] = useState(sectionTemplates.map((t) => t.slug))
   const [focusedSectionSlug, setFocusedSectionSlug] = useState(null)
@@ -37,11 +41,11 @@ export default function Editor() {
         <div className="p-3">
           <div className="bg-white shadow rounded-lg mt-2.5">
             <div className="px-4 py-5 sm:p-6">
-              <h3 className="text-lg font-medium leading-6 text-gray-900">
-                This site is optimized for desktop
+              <h3 className="max-w-full text-lg text-center font-medium leading-6 text-gray-900">
+                {t('editor-desktop-optimized')}
               </h3>
-              <div className="max-w-xl mt-2 text-sm text-gray-500">
-                <p>Please visit readme.so on a desktop to create your readme!</p>
+              <div className="max-w-full mt-2 text-sm text-center text-gray-500">
+                <p>{t('editor-visit-desktop')}</p>
               </div>
             </div>
           </div>
@@ -102,3 +106,9 @@ export default function Editor() {
     </>
   )
 }
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['editor']),
+  }
+})
