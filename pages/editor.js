@@ -47,7 +47,7 @@ export default function Editor() {
           </div>
         </div>
       ) : (
-        <div>
+        <div className="min-w-[1440px]">
           <Head>
             <link rel="preconnect" href="https://fonts.gstatic.com" />
             <link

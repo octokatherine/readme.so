@@ -1,7 +1,9 @@
 export default function RawPreview({ text }) {
   return (
-    <div className="raw">
-      <pre>{text}</pre>
-    </div>
+    <textarea
+      readOnly
+      className="h-full w-full resize-none focus:outline-none"
+      value={text}
+    ></textarea>
   )
 }
