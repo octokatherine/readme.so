@@ -1,3 +1,3 @@
-export default function RawPreview(props) {
-  return <h1>KATHERINE RULES</h1>
+export default function RawPreview({ text }) {
+  return <pre className="bg-white">{text}</pre>
 }

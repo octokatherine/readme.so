@@ -44,9 +44,8 @@ export const PreviewColumn = ({ selectedSectionSlugs, getTemplate }) => {
         {selectedTab === 'rendered' ? (
           <ReactMarkdown plugins={[gfm]} children={markdown} />
         ) : (
-          <RawPreview children={markdown} />
+          <RawPreview text={markdown} />
         )}
-        {/* <ReactMarkdown plugins={[gfm]} children={markdown} /> */}
       </div>
     </div>
   )
