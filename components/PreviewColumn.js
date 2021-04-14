@@ -39,7 +39,7 @@ export const PreviewColumn = ({ selectedSectionSlugs, getTemplate }) => {
                 } whitespace-nowrap pb-3 px-1 border-b-2 font-medium text-sm focus:outline-none`}
               onClick={() => handleToggle('raw')}
             >
-              Raw
+              {t('preview-column-raw')}
             </button>
           </nav>
         </div>

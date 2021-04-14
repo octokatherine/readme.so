@@ -9,6 +9,7 @@
 	"editor-column-editor": "Éditeur",
 	"editor-select": "Sélectionnez une section dans la barre latérale gauche pour modifier le contenu",
 	"preview-column-preview": "Aperçu",
+	"preview-column-raw": "Brut",
 	"section-column-section": "Sections",
 	"section-column-click-edit": "Cliquez sur une section ci-dessous pour modifier le contenu",
 	"section-column-click-add": "Cliquez sur une section ci-dessous pour l'ajouter à votre readme"
