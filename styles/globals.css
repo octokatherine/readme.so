@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.full-screen{
+.full-screen {
   max-height: calc(100vh - 160px);
 }
 
@@ -208,6 +208,10 @@
     padding: 16px;
     white-space: pre;
     word-break: normal;
+  }
+
+  .raw pre {
+    background-color: white;
   }
 
   .preview p code {
