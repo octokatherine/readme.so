@@ -23,20 +23,20 @@ export const PreviewColumn = ({ selectedSectionSlugs, getTemplate }) => {
       <div>
         <div className="border-b border-gray-200">
           <nav className="-mb-px flex space-x-8" aria-label="Tabs">
-            <a
-              href="#"
-              className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap pb-3 px-1 border-b-2 font-medium text-sm"
+            <button
+              type="button"
+              className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap pb-3 px-1 border-b-2 font-medium text-sm focus:outline-none"
               onClick={() => handleToggle('rendered')}
             >
               Preview
-            </a>
-            <a
-              href="#"
-              className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap pb-3 px-1 border-b-2 font-medium text-sm"
+            </button>
+            <button
+              type="button"
+              className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap pb-3 px-1 border-b-2 font-medium text-sm focus:outline-none"
               onClick={() => handleToggle('raw')}
             >
               Raw
-            </a>
+            </button>
           </nav>
         </div>
       </div>
