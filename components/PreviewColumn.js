@@ -1,8 +1,11 @@
+import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 
 const gfm = require('remark-gfm')
 
 export const PreviewColumn = ({ selectedSectionSlugs, getTemplate }) => {
+  const [selectedTab, setSelectedTab] = useState('rendered')
+
   const markdown = selectedSectionSlugs.reduce((acc, section) => {
     const template = getTemplate(section)
     return `${acc}${template.markdown}`
@@ -46,8 +49,12 @@ export const PreviewColumn = ({ selectedSectionSlugs, getTemplate }) => {
         </div>
       </div>
       <div className="h-full border border-gray-500 rounded-md p-6 preview bg-white full-screen overflow-y-scroll">
+        {/* {selectedTab === 'rendered' ? (
+          <ReactMarkdown plugins={[gfm]} children={markdown} />
+        ) : (
+          <RawPreview children={markdown} />
+        )} */}
         <ReactMarkdown plugins={[gfm]} children={markdown} />
-        {/* <MDPreview children={markdown} /> */}
       </div>
     </div>
   )
