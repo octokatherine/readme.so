@@ -6,6 +6,10 @@
   max-height: calc(100vh - 160px);
 }
 
+.toggle-dark-mode {
+  float: right;
+}
+
 @layer base {
   html {
     @apply bg-gray-50;
