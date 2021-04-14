@@ -26,7 +26,7 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
   }
 
   return (
-    <div className="flex-1 px-3 full-screen">
+    <div className="flex-1 px-3 full-screen max-w-[50%] min-w-[500px]">
       <h3 className="mb-3 text-lg font-medium leading-6 text-gray-900">Editor</h3>
       {focusedSectionSlug ? (
         <Editor
