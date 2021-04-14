@@ -30,7 +30,7 @@ export function SortableItem(props) {
       {...attributes}
       onClick={onClickSection}
       onKeyUp={onKeyUp}
-      className={`bg-white shadow rounded-md pl-3 pr-6 py-2 flex items-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 relative  ${
+      className={`bg-white shadow rounded-md pl-3 pr-6 py-2 flex items-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 relative select-none ${
         props.section.slug === props.focusedSectionSlug ? 'ring-2 ring-emerald-400' : ''
       }`}
     >

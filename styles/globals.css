@@ -214,6 +214,10 @@
     word-break: normal;
   }
 
+  .raw pre {
+    background-color: white;
+  }
+
   .preview p code {
     background-color: rgba(27, 31, 35, 0.05);
     border-radius: 6px;
