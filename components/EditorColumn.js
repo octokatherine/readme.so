@@ -32,7 +32,7 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
 
   return (
     <div className="w-1/2 px-3 full-screen">
-      <h3 className="mb-3 text-lg font-medium leading-6 text-gray-900">
+      <h3 className="border-transparent text-emerald-500 whitespace-nowrap px-1 border-b-2 font-medium text-sm focus:outline-none">
         Editor
         <button
           onClick={toggleTheme}
