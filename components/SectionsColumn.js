@@ -57,6 +57,8 @@ export const SectionsColumn = ({
     setFocusedSectionSlug(null)
   }
 
+  const alphabetizedSectionSlugs = sectionSlugs.sort()
+
   return (
     <div className="sections">
       <h3 className="text-lg leading-6 font-medium text-gray-900 mb-3">Sections</h3>
@@ -93,7 +95,7 @@ export const SectionsColumn = ({
           </h4>
         )}
         <ul className="mb-12 space-y-3">
-          {sectionSlugs.map((s) => (
+          {alphabetizedSectionSlugs.map((s) => (
             <li key={s}>
               <button
                 className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 w-full h-full flex items-center py-2 pl-3 pr-6 bg-white rounded-md shadow cursor-pointer block"
