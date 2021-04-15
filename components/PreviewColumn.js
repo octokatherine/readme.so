@@ -16,8 +16,6 @@ export const PreviewColumn = ({ selectedSectionSlugs, getTemplate }) => {
 
   return (
     <div className="px-3 flex-1">
-      {/* <h3 className="text-lg leading-6 font-medium text-gray-900 mb-3 ">Preview</h3>
-      <h3 className="text-lg leading-6 font-medium text-gray-900 mb-3 ">RAW</h3> */}
       <div>
         <div className="border-b border-gray-200">
           <nav className="-mb-px flex space-x-8" aria-label="Tabs">
