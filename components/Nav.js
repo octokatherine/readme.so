@@ -19,7 +19,7 @@ export const Nav = ({ selectedSectionSlugs, setShowModal, getTemplate }) => {
     <nav className="flex justify-between p-4 bg-gray-800 align-center">
       <Link href="/">
         <a className="focus:outline-none focus:ring-2 focus:ring-emerald-400 flex items-center">
-          <img className="w-auto h-8 mt-1" src="readme.svg" />
+          <img className="w-auto h-8 mt-1" src="readme.svg" alt="readme.so logo" />
           <span className="ml-2 -mb-2 text-white logo text-md">readme.so</span>
         </a>
       </Link>
