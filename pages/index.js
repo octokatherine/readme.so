@@ -80,7 +80,7 @@ export default function Home() {
                   <div className="flex items-center justify-between w-full md:w-auto">
                     <Link href="/">
                       <a className="flex items-center">
-                        <img className="w-auto h-8 mt-1 cursor-pointer" src="readme.svg" />
+                        <img className="w-auto h-8 mt-1 cursor-pointer" src="readme.svg" alt="readme.so logo" />
                         <span className="ml-2 -mb-2 text-gray-800 logo text-md">readme.so</span>
                       </a>
                     </Link>
@@ -113,6 +113,7 @@ export default function Home() {
                     className="mt-3"
                     href="https://www.producthunt.com/posts/readme-so?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-readme-so"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <img
                       src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=291731&theme=light"
@@ -150,14 +151,20 @@ export default function Home() {
               <a
                 className="hover:text-emerald-500"
                 target="_blank"
+                rel="noopener noreferrer"
                 href="https://twitter.com/katherinecodes"
               >
                 Katherine Peterson
               </a>
             </h2>
             <div className="flex justify-center mt-4">
-              <a href="https://github.com/katherinepeterson/readme.so" target="_blank">
-                <img className="w-auto h-6" src="github.svg" />
+              <a
+                href="https://github.com/katherinepeterson/readme.so"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="github logo"
+              >
+                <img className="w-auto h-6" src="github.svg" alt="github logo" />
               </a>
             </div>
           </div>
