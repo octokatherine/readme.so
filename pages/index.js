@@ -7,6 +7,7 @@ export default function Home() {
       <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Mali&display=swap" rel="stylesheet" />
+        <script async defer data-domain="readme.so" src="https://plausible.io/js/plausible.js"></script>
       </Head>
       <div className="bg-gray-50">
         <div className="relative overflow-hidden">
