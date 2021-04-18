@@ -14,6 +14,7 @@ const Home = () => {
       <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Mali&display=swap" rel="stylesheet" />
+        <script async defer data-domain="readme.so" src="https://plausible.io/js/plausible.js"></script>
       </Head>
       <div className="bg-gray-50">
         <div className="relative overflow-hidden">
@@ -86,10 +87,10 @@ const Home = () => {
                 <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
                   <div className="flex items-center justify-between w-full md:w-auto">
                     <Link href="/">
-                      <div className="flex items-center">
-                        <img className="w-auto h-8 mt-1 cursor-pointer" src="readme.svg" />
-                        <p className="ml-2 -mb-2 text-gray-800 logo text-md">readme.so</p>
-                      </div>
+                      <a className="flex items-center">
+                        <img className="w-auto h-8 mt-1 cursor-pointer" src="readme.svg" alt="readme.so logo" />
+                        <span className="ml-2 -mb-2 text-gray-800 logo text-md">readme.so</span>
+                      </a>
                     </Link>
                   </div>
                 </div>
@@ -115,7 +116,7 @@ const Home = () => {
                   <span className="inline-flex rounded-md shadow ">
                     <Link href="/editor">
                       <a className="inline-flex items-center px-4 py-2 text-base font-medium text-xl bg-emerald-500 hover:bg-emerald-400 border border-transparent rounded-lg text-white w-[250px] h-[54px] justify-center">
-                        Get Started
+                        {t('get-started')}
                       </a>
                     </Link>
                   </span>
@@ -123,6 +124,7 @@ const Home = () => {
                     className="mt-3"
                     href="https://www.producthunt.com/posts/readme-so?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-readme-so"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <img
                       src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=291731&theme=light"
@@ -160,14 +162,20 @@ const Home = () => {
               <a
                 className="hover:text-emerald-500"
                 target="_blank"
+                rel="noopener noreferrer"
                 href="https://twitter.com/katherinecodes"
               >
                 Katherine Peterson
               </a>
             </h2>
             <div className="flex justify-center mt-4">
-              <a href="https://github.com/katherinepeterson/readme.so" target="_blank">
-                <img className="w-auto h-6" src="github.svg" />
+              <a
+                href="https://github.com/katherinepeterson/readme.so"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="github logo"
+              >
+                <img className="w-auto h-6" src="github.svg" alt="github logo" />
               </a>
             </div>
           </div>

@@ -60,9 +60,13 @@ export const SectionsColumn = ({
 
   const { t } = useTranslation("editor")
 
+  const alphabetizedSectionSlugs = sectionSlugs.sort()
+
   return (
     <div className="sections w-80">
-      <h3 className="text-lg leading-6 font-medium text-gray-900 mb-3">{t('section-column-section')}</h3>
+      <h3 className="border-transparent text-emerald-500 whitespace-nowrap px-1 border-b-2 font-medium text-sm focus:outline-none">
+        {t('section-column-section')}
+      </h3>
       <div className="full-screen overflow-y-scroll px-3 pr-4">
         {selectedSectionSlugs.length > 0 && (
           <h4 className="mb-3 text-xs leading-6 text-gray-900">
@@ -96,7 +100,7 @@ export const SectionsColumn = ({
           </h4>
         )}
         <ul className="mb-12 space-y-3">
-          {sectionSlugs.map((s) => (
+          {alphabetizedSectionSlugs.map((s) => (
             <li key={s}>
               <button
                 className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 w-full h-full flex items-center py-2 pl-3 pr-6 bg-white rounded-md shadow cursor-pointer block"
