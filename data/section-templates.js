@@ -13,11 +13,11 @@ A brief description of what this project does and who it's for
     slug: 'installation',
     name: 'Installation',
     markdown: `
-## Installation 
+## Installation
 
 Install my-project with npm
 
-\`\`\`bash 
+\`\`\`bash
   npm install my-project
   cd my-project
 \`\`\`
@@ -356,6 +356,16 @@ To deploy this project run
 ## Appendix
 
 Any additional information goes here
+
+  `,
+  },
+  {
+    slug: 'profile-intro',
+    name: 'Profile Introduction',
+    markdown: `
+## Hi, I'm Katherine!
+
+I'm a full stack developer...
 
   `,
   },
