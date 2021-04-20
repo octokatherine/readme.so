@@ -24,6 +24,7 @@ export const PreviewColumn = ({ selectedSectionSlugs, getTemplate }) => {
         <div className="border-b border-gray-200">
           <nav className="-mb-px flex space-x-8" aria-label="Tabs">
             <button
+              data-testid="preview-button"
               type="button"
               className={`border-transparent ${isRendered ? 'text-emerald-500' : 'text-gray-500 hover:text-gray-700'
                 } whitespace-nowrap pb-3 px-1 border-b-2 font-medium text-sm focus:outline-none`}
@@ -32,6 +33,7 @@ export const PreviewColumn = ({ selectedSectionSlugs, getTemplate }) => {
               {t('preview-column-preview')}
             </button>
             <button
+              data-testid="raw-button"
               type="button"
               className={`border-transparent ${!isRendered ? 'text-emerald-500' : 'text-gray-500 hover:text-gray-700'
                 } whitespace-nowrap pb-3 px-1 border-b-2 font-medium text-sm focus:outline-none`}

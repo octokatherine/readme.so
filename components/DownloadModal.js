@@ -26,6 +26,7 @@ Leaving: "ease-in duration-200"
           <div
             className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"
             aria-hidden="true"
+            data-testid="overlay"
             onClick={() => setShowModal(false)}
           />
           {/* This element is to trick the browser into centering the modal contents. */}

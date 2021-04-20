@@ -58,7 +58,7 @@ export const SectionsColumn = ({
     setFocusedSectionSlug(null)
   }
 
-  const { t } = useTranslation("editor")
+  const { t } = useTranslation('editor')
 
   const alphabetizedSectionSlugs = sectionSlugs.sort()
 
@@ -69,11 +69,9 @@ export const SectionsColumn = ({
       </h3>
       <div className="full-screen overflow-y-scroll px-3 pr-4">
         {selectedSectionSlugs.length > 0 && (
-          <h4 className="mb-3 text-xs leading-6 text-gray-900">
-            {t('section-column-click-edit')}
-          </h4>
+          <h4 className="mb-3 text-xs leading-6 text-gray-900">{t('section-column-click-edit')}</h4>
         )}
-        <ul className="mb-12 space-y-3">
+        <ul data-testid="selected-list" className="mb-12 space-y-3">
           <DndContext
             sensors={sensors}
             collisionDetection={closestCenter}
@@ -99,10 +97,11 @@ export const SectionsColumn = ({
             {t('section-column-click-add')}
           </h4>
         )}
-        <ul className="mb-12 space-y-3">
+        <ul data-testid="sections-list" className="mb-12 space-y-3">
           {alphabetizedSectionSlugs.map((s) => (
             <li key={s}>
               <button
+                data-testid="section-button"
                 className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 w-full h-full flex items-center py-2 pl-3 pr-6 bg-white rounded-md shadow cursor-pointer block"
                 type="button"
                 onClick={(e) => onAddSection(e, s)}

@@ -39,29 +39,32 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
         {t('editor-column-editor')}
         <button
           onClick={toggleTheme}
+          data-testid="theme-toggle"
           aria-label="Color Mode"
           className="toggle-dark-mode focus:outline-none transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none"
         >
-          <img className="w-auto h-8 mr-2" src={toggleState.img} />
+          <img data-testid="theme" className="w-auto h-8 mr-2" src={toggleState.img} />
         </button>
       </h3>
 
       {focusedSectionSlug ? (
-        <Editor
-          wrapperClassName="rounded-sm border border-gray-500"
-          className="full-screen" // By default, it fully fits with its parent
-          theme={toggleState.theme}
-          language="markdown"
-          value={markdown}
-          onChange={onEdit}
-          loading={'Loading...'}
-          options={{
-            minimap: {
-              enabled: false,
-            },
-            lineNumbers: false,
-          }}
-        />
+        <div data-testid="editor-md">
+          <Editor
+            wrapperClassName="rounded-sm border border-gray-500"
+            className="full-screen" // By default, it fully fits with its parent
+            theme={toggleState.theme}
+            language="markdown"
+            value={markdown}
+            onChange={onEdit}
+            loading={'Loading...'}
+            options={{
+              minimap: {
+                enabled: false,
+              },
+              lineNumbers: false,
+            }}
+          />
+        </div>
       ) : (
         <p className="font-sm text-emerald-500 max-w-[28rem] text-center mx-auto mt-10">
           {t('editor-select')}

@@ -38,7 +38,7 @@ export default function Editor() {
   return (
     <>
       {isMobile ? (
-        <div className="p-3">
+        <div data-testid="mobile-screen" className="p-3">
           <div className="bg-white shadow rounded-lg mt-2.5">
             <div className="px-4 py-5 sm:p-6">
               <h3 className="max-w-full text-lg text-center font-medium leading-6 text-gray-900">
