@@ -115,7 +115,7 @@ const Home = () => {
                 <div className="flex flex-col items-center">
                   <span className="inline-flex rounded-md shadow ">
                     <Link href="/editor">
-                      <a className="inline-flex items-center px-4 py-2 text-base font-medium text-xl bg-emerald-500 hover:bg-emerald-400 border border-transparent rounded-lg text-white w-[250px] h-[54px] justify-center">
+                      <a className="inline-flex items-center px-4 py-2 font-medium text-xl bg-emerald-500 hover:bg-emerald-400 border border-transparent rounded-lg text-white w-[250px] h-[54px] justify-center">
                         {t('get-started')}
                       </a>
                     </Link>
