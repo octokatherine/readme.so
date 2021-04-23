@@ -15,6 +15,7 @@ import {
 } from '@dnd-kit/sortable'
 
 import { SortableItem } from './SortableItem'
+import { useTranslation } from 'next-i18next'
 
 export const SectionsColumn = ({
   selectedSectionSlugs,
@@ -57,15 +58,19 @@ export const SectionsColumn = ({
     setFocusedSectionSlug(null)
   }
 
+  const { t } = useTranslation("editor")
+
   const alphabetizedSectionSlugs = sectionSlugs.sort()
 
   return (
-    <div className="sections">
-      <h3 className="border-transparent text-emerald-500 whitespace-nowrap px-1 border-b-2 font-medium text-sm focus:outline-none">Sections</h3>
+    <div className="sections w-80">
+      <h3 className="border-transparent text-emerald-500 whitespace-nowrap px-1 border-b-2 font-medium text-sm focus:outline-none">
+        {t('section-column-section')}
+      </h3>
       <div className="full-screen overflow-y-scroll px-3 pr-4">
         {selectedSectionSlugs.length > 0 && (
           <h4 className="mb-3 text-xs leading-6 text-gray-900">
-            Click on a section below to edit the contents
+            {t('section-column-click-edit')}
           </h4>
         )}
         <ul className="mb-12 space-y-3">
@@ -90,8 +95,8 @@ export const SectionsColumn = ({
           </DndContext>
         </ul>
         {sectionSlugs.length > 0 && (
-          <h4 className="mb-3 text-xs leading-6 text-gray-900">
-            Click on a section below to add it to your readme
+          <h4 className="mb-3 text-xs leading-6 text-gray-900 overflow-ellipsis">
+            {t('section-column-click-add')}
           </h4>
         )}
         <ul className="mb-12 space-y-3">
