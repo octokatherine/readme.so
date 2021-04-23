@@ -1,4 +1,5 @@
 import Editor from '@monaco-editor/react'
+import { useTranslation } from 'next-i18next'
 import { useEffect, useState, useRef } from 'react'
 
 export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) => {
@@ -53,10 +54,12 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
     }
   }, [handleHotkey]);
 
+  const { t } = useTranslation("editor")
+
   return (
     <div className="w-1/2 px-3 full-screen">
       <h3 className="border-transparent text-emerald-500 whitespace-nowrap px-1 border-b-2 font-medium text-sm focus:outline-none">
-        Editor
+        {t('editor-column-editor')}
         <button
           onClick={toggleTheme}
           aria-label="Color Mode"
@@ -65,6 +68,7 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
           <img className="w-auto h-8 mr-2" src={toggleState.img} />
         </button>
       </h3>
+
       {focusedSectionSlug ? (
         <Editor
         onMount={handleEditorDidMount}
@@ -83,8 +87,8 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
         }}
         />
       ) : (
-        <p className="font-sm text-emerald-500 max-w-[16rem] mx-auto mt-10">
-          Select a section from the left sidebar to edit the contents
+        <p className="font-sm text-emerald-500 max-w-[28rem] text-center mx-auto mt-10">
+          {t('editor-select')}
         </p>
       )}
     </div>

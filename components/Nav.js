@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
 
 export const Nav = ({ selectedSectionSlugs, setShowModal, getTemplate }) => {
   const markdown = selectedSectionSlugs.reduce((acc, section) => {
@@ -15,6 +16,8 @@ export const Nav = ({ selectedSectionSlugs, setShowModal, getTemplate }) => {
     setShowModal(true)
   }
 
+  const { t } = useTranslation("editor")
+
   return (
     <nav className="flex justify-between p-4 bg-gray-800 align-center">
       <Link href="/">
@@ -28,8 +31,8 @@ export const Nav = ({ selectedSectionSlugs, setShowModal, getTemplate }) => {
         className="relative inline-flex items-center px-4 py-2 text-sm font-bold tracking-wide text-white border border-transparent rounded-md shadow-sm bg-emerald-500 hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-emerald-500"
         onClick={downloadMarkdownFile}
       >
-        <img className="w-auto h-6 mr-2" src="download.svg" />
-        <span>Download</span>
+        <img className="w-auto h-6 mr-2 cursor-pointer" src="download.svg" />
+        <span>{t('nav-download')}</span>
       </button>
     </nav>
   )
