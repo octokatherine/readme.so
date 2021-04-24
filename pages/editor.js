@@ -11,7 +11,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 export default function Editor() {
-  const { t } = useTranslation("editor")
+  const { t } = useTranslation('editor')
 
   const [selectedSectionSlugs, setSelectedSectionSlugs] = useState([])
   const [sectionSlugs, setSectionSlugs] = useState(sectionTemplates.map((t) => t.slug))
@@ -109,6 +109,6 @@ export default function Editor() {
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...await serverSideTranslations(locale, ['editor']),
-  }
+    ...(await serverSideTranslations(locale, ['editor'])),
+  },
 })

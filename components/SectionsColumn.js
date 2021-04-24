@@ -58,7 +58,7 @@ export const SectionsColumn = ({
     setFocusedSectionSlug(null)
   }
 
-  const { t } = useTranslation("editor")
+  const { t } = useTranslation('editor')
 
   const alphabetizedSectionSlugs = sectionSlugs.sort()
 
@@ -69,9 +69,7 @@ export const SectionsColumn = ({
       </h3>
       <div className="full-screen overflow-y-scroll px-3 pr-4">
         {selectedSectionSlugs.length > 0 && (
-          <h4 className="mb-3 text-xs leading-6 text-gray-900">
-            {t('section-column-click-edit')}
-          </h4>
+          <h4 className="mb-3 text-xs leading-6 text-gray-900">{t('section-column-click-edit')}</h4>
         )}
         <ul className="mb-12 space-y-3">
           <DndContext
