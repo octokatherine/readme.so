@@ -11,7 +11,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 export default function Editor() {
-  const { t } = useTranslation("editor")
+  const { t } = useTranslation('editor')
 
   const [selectedSectionSlugs, setSelectedSectionSlugs] = useState([])
   const [sectionSlugs, setSectionSlugs] = useState(sectionTemplates.map((t) => t.slug))
@@ -25,15 +25,24 @@ export default function Editor() {
   }
 
   useEffect(() => {
-    const section = 'title-and-description'
-    setSectionSlugs((prev) => prev.filter((s) => s !== section))
-    setSelectedSectionSlugs((prev) => [...prev, section])
-    setFocusedSectionSlug(section)
+    setFocusedSectionSlug(null)
   }, [])
 
   useEffect(() => {
     setIsMobile(/Mobi|Android/i.test(navigator.userAgent))
   }, [])
+
+  useEffect(() => {
+    let currentSlugList = localStorage.getItem('current-slug-list')
+    if (
+      currentSlugList.indexOf('title-and-description') == -1 &&
+      selectedSectionSlugs.indexOf('title-and-description') > -1
+    ) {
+      selectedSectionSlugs.splice(selectedSectionSlugs.indexOf('title-and-description'), 1)
+    }
+    setFocusedSectionSlug(localStorage.getItem('current-slug-list').split(',')[0])
+    localStorage.setItem('current-slug-list', selectedSectionSlugs)
+  }, [selectedSectionSlugs])
 
   return (
     <>
@@ -109,6 +118,6 @@ export default function Editor() {
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...await serverSideTranslations(locale, ['editor']),
-  }
+    ...(await serverSideTranslations(locale, ['editor'])),
+  },
 })
