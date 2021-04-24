@@ -44,7 +44,7 @@ export function LanguageDropDown({ posts }) {
                 <li className="">
                      <a
                          className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
-                         href="/pt"
+                         href="/ru"
                      >{t('russian')}</a
                      >
                 </li>
