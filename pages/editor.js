@@ -6,18 +6,18 @@ import { EditorColumn } from '../components/EditorColumn'
 import { Nav } from '../components/Nav'
 import { PreviewColumn } from '../components/PreviewColumn'
 import { SectionsColumn } from '../components/SectionsColumn'
-import { sectionTemplates } from '../data/section-templates'
+import sectionTemplates from '../data/index'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-export default function Editor() {
-  const { t } = useTranslation("editor")
+export default function Editor({ sectionTemplate }) {
+  const { t } = useTranslation('editor')
 
   const [selectedSectionSlugs, setSelectedSectionSlugs] = useState([])
-  const [sectionSlugs, setSectionSlugs] = useState(sectionTemplates.map((t) => t.slug))
+  const [sectionSlugs, setSectionSlugs] = useState(sectionTemplate.map((t) => t.slug))
   const [focusedSectionSlug, setFocusedSectionSlug] = useState(null)
   const [showModal, setShowModal] = useState(false)
-  const [templates, setTemplates] = useState(sectionTemplates)
+  const [templates, setTemplates] = useState(sectionTemplate)
   const [isMobile, setIsMobile] = useState(false)
 
   const getTemplate = (slug) => {
@@ -107,8 +107,15 @@ export default function Editor() {
   )
 }
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['editor']),
+export const getStaticProps = async ({ locale }) => {
+  const sectionTemplate = sectionTemplates[locale]
+    ? sectionTemplates[locale]
+    : sectionTemplates['en']
+  const i18n = await serverSideTranslations(locale, ['editor'])
+  return {
+    props: {
+      ...i18n,
+      sectionTemplate,
+    },
   }
-})
+}
