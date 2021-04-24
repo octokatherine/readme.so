@@ -114,8 +114,8 @@ export const getStaticProps = async ({ locale }) => {
   const i18n = await serverSideTranslations(locale, ['editor'])
   return {
     props: {
-      ...i18n,
       sectionTemplate,
+      ...i18n,
     },
   }
 }
