@@ -359,4 +359,18 @@ Any additional information goes here
 
   `,
   },
+  {
+    slug: 'dropdowns',
+    name: 'Dropdowns',
+    markdown: `
+<details>
+<summary>Add title here</summary>
+<br> Lorem ipsum sit amet </br>
+<ul>
+    <li>One</li>
+    <li>Two</li>
+</ul>
+</details>
+  `
+  },
 ]
