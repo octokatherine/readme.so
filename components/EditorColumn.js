@@ -31,7 +31,7 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
     toggleDarkMode(toggleState, setToggleState)
   }
 
-  const { t } = useTranslation("editor")
+  const { t } = useTranslation('editor')
 
   return (
     <div className="w-1/2 px-3 full-screen">

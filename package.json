@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "prettier --check .",
+    "format": "prettier --write . && git add -A .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@dnd-kit/core": "^2.1.2",
@@ -22,7 +25,9 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
+    "husky": "^6.0.0",
     "postcss": "^8.2.9",
+    "prettier": "2.2.1",
     "tailwindcss": "^2.1.1"
   }
 }
