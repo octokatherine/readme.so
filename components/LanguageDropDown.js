@@ -1,8 +1,7 @@
 import { useTranslation } from 'next-i18next'
 
 export function LanguageDropDown({ posts }) {
-    const { t } = useTranslation('common')
-
+  const { t } = useTranslation('common')
     return (
         <div className="group inline-block relative">
             <button
@@ -42,6 +41,14 @@ export function LanguageDropDown({ posts }) {
                     >
                 </li>
                 <li className="">
+                    <a
+                      className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
+                      href="/it"
+                    >
+                    {t('italian')}</a
+                    >
+                </li>
+                <li className="">
                      <a
                          className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
                          href="/ru"
@@ -60,4 +67,3 @@ export function LanguageDropDown({ posts }) {
         </div>
     )
 }
-
