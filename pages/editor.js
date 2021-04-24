@@ -25,15 +25,24 @@ export default function Editor({ sectionTemplate }) {
   }
 
   useEffect(() => {
-    const section = 'title-and-description'
-    setSectionSlugs((prev) => prev.filter((s) => s !== section))
-    setSelectedSectionSlugs((prev) => [...prev, section])
-    setFocusedSectionSlug(section)
+    setFocusedSectionSlug(null)
   }, [])
 
   useEffect(() => {
     setIsMobile(/Mobi|Android/i.test(navigator.userAgent))
   }, [])
+
+  useEffect(() => {
+    let currentSlugList = localStorage.getItem('current-slug-list')
+    if (
+      currentSlugList.indexOf('title-and-description') == -1 &&
+      selectedSectionSlugs.indexOf('title-and-description') > -1
+    ) {
+      selectedSectionSlugs.splice(selectedSectionSlugs.indexOf('title-and-description'), 1)
+    }
+    setFocusedSectionSlug(localStorage.getItem('current-slug-list').split(',')[0])
+    localStorage.setItem('current-slug-list', selectedSectionSlugs)
+  }, [selectedSectionSlugs])
 
   return (
     <>
@@ -41,7 +50,7 @@ export default function Editor({ sectionTemplate }) {
         <div className="p-3">
           <div className="bg-white shadow rounded-lg mt-2.5">
             <div className="px-4 py-5 sm:p-6">
-              <h3 className="max-w-full text-lg text-center font-medium leading-6 text-gray-900">
+              <h3 className="max-w-full text-lg font-medium leading-6 text-center text-gray-900">
                 {t('editor-desktop-optimized')}
               </h3>
               <div className="max-w-full mt-2 text-sm text-center text-gray-500">
