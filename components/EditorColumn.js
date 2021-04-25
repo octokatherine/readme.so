@@ -31,22 +31,30 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
     toggleDarkMode(toggleState, setToggleState)
   }
 
-  const { t } = useTranslation("editor")
+  const { t } = useTranslation('editor')
 
   return (
     <div className="w-1/2 px-3 full-screen">
       <h3 className="border-transparent text-emerald-500 whitespace-nowrap px-1 border-b-2 font-medium text-sm focus:outline-none">
         {t('editor-column-editor')}
-        <button
-          onClick={toggleTheme}
-          aria-label="Color Mode"
-          className="toggle-dark-mode focus:outline-none transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none"
-        >
-          <img className="w-auto h-8 mr-2" src={toggleState.img} />
-        </button>
+        {focusedSectionSlug != 'noEdit' ? (
+          <button
+            onClick={toggleTheme}
+            aria-label="Color Mode"
+            className="toggle-dark-mode focus:outline-none transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none"
+          >
+            <img className="w-auto h-8 mr-2" src={toggleState.img} />
+          </button>
+        ) : (
+          <button />
+        )}
       </h3>
 
-      {focusedSectionSlug ? (
+      {focusedSectionSlug == 'noEdit' ? (
+        <p className="font-sm text-emerald-500 max-w-[28rem] text-center mx-auto mt-10">
+          {t('editor-select')}
+        </p>
+      ) : (
         <Editor
           wrapperClassName="rounded-sm border border-gray-500"
           className="full-screen" // By default, it fully fits with its parent
@@ -62,10 +70,6 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
             lineNumbers: false,
           }}
         />
-      ) : (
-        <p className="font-sm text-emerald-500 max-w-[28rem] text-center mx-auto mt-10">
-          {t('editor-select')}
-        </p>
       )}
     </div>
   )
