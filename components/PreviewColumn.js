@@ -6,6 +6,7 @@ import { useTranslation } from 'next-i18next'
 const gfm = require('remark-gfm')
 export const PreviewColumn = ({ selectedSectionSlugs, getTemplate }) => {
   const [selectedTab, setSelectedTab] = useState('rendered')
+  selectedSectionSlugs = [...new Set(selectedSectionSlugs)]
   const markdown = selectedSectionSlugs.reduce((acc, section) => {
     const template = getTemplate(section)
     return `${acc}${template.markdown}`
