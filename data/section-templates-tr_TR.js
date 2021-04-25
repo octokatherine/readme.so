@@ -33,9 +33,9 @@ benim-projem'i npm kullanarak yükleyin
   },
   {
     slug: 'run-locally',
-    name: 'Bilgisayarınızda Çalıştır',
+    name: 'Bilgisayarınızda Çalıştırın',
     markdown: `
-## Bilgisayarınızda Çalıştır
+## Bilgisayarınızda Çalıştırın
 
 Projeyi klonlayın
 
@@ -94,7 +94,7 @@ Bu projeyi çalıştırmak için aşağıdaki ortam değişkenlerini .env dosyan
 ## Özellikler
 
 - Açık/koyu mod geçişi
-- Canlı önizleme
+- Canlı ön izleme
 - Tam ekran modu
 - Tüm platformlara destek
 
@@ -132,7 +132,7 @@ function App() {
 | :-------- | :------- | :------------------------- |
 | \`api_key\` | \`string\` | **Gerekli**. API anahtarınız. |
 
-#### Get item
+#### Öğeyi getir
 
 \`\`\`http
   GET /api/items/$\{id}
@@ -266,7 +266,7 @@ Demoya gif veya bağlantı ekleyin
   },
   {
     slug: 'tech',
-    name: 'Teknolji',
+    name: 'Teknoloji',
     markdown: `
 ## Kullanılan Teknolojiler
 
