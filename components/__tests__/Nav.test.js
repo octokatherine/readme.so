@@ -1,7 +1,12 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { Nav } from '../Nav'
 import { sectionTemplates } from '../../data/section-templates'
+
+jest.mock('next-i18next', () => ({
+  useTranslation: () => ({ t: jest.fn() }),
+}))
 
 describe('<Nav />', () => {
   it('should render', () => {
@@ -29,7 +34,7 @@ describe('<Nav />', () => {
       />
     )
 
-    fireEvent.click(screen.getByTestId('download'))
+    userEvent.click(screen.getByLabelText('Download Markdown'))
     expect(blobSpy).toHaveBeenCalled()
     expect(global.URL.createObjectURL).toHaveBeenCalledWith({ size: 80 })
     expect(setShowModalStub).toHaveBeenCalledWith(true)

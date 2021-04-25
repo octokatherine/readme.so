@@ -1,6 +1,11 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { DownloadModal } from '../DownloadModal'
+
+jest.mock('next-i18next', () => ({
+  useTranslation: () => ({ t: jest.fn() }),
+}))
 
 describe('<DownloadModal />', () => {
   it('should render', () => {
@@ -13,7 +18,7 @@ describe('<DownloadModal />', () => {
 
     render(<DownloadModal setShowModal={setShowModalStub} />)
 
-    fireEvent.click(screen.getByTestId('overlay'))
+    userEvent.click(screen.getByRole('overlay', { hidden: true }))
     expect(setShowModalStub).toHaveBeenCalledWith(false)
   })
 })

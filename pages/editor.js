@@ -11,7 +11,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 export default function Editor() {
-  const { t } = useTranslation("editor")
+  const { t } = useTranslation('editor')
 
   const [selectedSectionSlugs, setSelectedSectionSlugs] = useState([])
   const [sectionSlugs, setSectionSlugs] = useState(sectionTemplates.map((t) => t.slug))
@@ -38,7 +38,7 @@ export default function Editor() {
   return (
     <>
       {isMobile ? (
-        <div data-testid="mobile-screen" className="p-3">
+        <div className="p-3">
           <div className="bg-white shadow rounded-lg mt-2.5">
             <div className="px-4 py-5 sm:p-6">
               <h3 className="max-w-full text-lg text-center font-medium leading-6 text-gray-900">
@@ -109,6 +109,6 @@ export default function Editor() {
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...await serverSideTranslations(locale, ['editor']),
-  }
+    ...(await serverSideTranslations(locale, ['editor'])),
+  },
 })

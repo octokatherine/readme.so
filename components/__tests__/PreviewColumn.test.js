@@ -1,7 +1,19 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { PreviewColumn } from '../PreviewColumn'
 import { sectionTemplates } from '../../data/section-templates'
+
+const mockTranslations = {
+  'preview-column-preview': 'Preview',
+  'preview-column-raw': 'Raw',
+}
+
+jest.mock('next-i18next', () => ({
+  useTranslation: () => ({
+    t: jest.fn().mockImplementation((cb) => mockTranslations[cb]),
+  }),
+}))
 
 describe('<PreviewColumn />', () => {
   it('should render', () => {
@@ -11,6 +23,7 @@ describe('<PreviewColumn />', () => {
         getTemplate={(slug) => sectionTemplates.find((t) => t.slug === slug)}
       />
     )
+
     expect(container).toBeInTheDocument()
   })
 
@@ -22,10 +35,10 @@ describe('<PreviewColumn />', () => {
       />
     )
 
-    fireEvent.click(screen.getByTestId('preview-button'))
-    expect(screen.getByTestId('preview-button')).toHaveClass('text-emerald-500')
+    userEvent.click(screen.getByText(/Preview/))
+    expect(screen.getByText(/Preview/)).toHaveClass('text-emerald-500')
 
-    fireEvent.click(screen.getByTestId('raw-button'))
-    expect(screen.getByTestId('raw-button')).toHaveClass('text-emerald-500')
+    userEvent.click(screen.getByText(/Raw/))
+    expect(screen.getByText(/Raw/)).toHaveClass('text-emerald-500')
   })
 })

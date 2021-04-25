@@ -1,12 +1,21 @@
-import { render, screen, fireEvent } from '@testing-library/react'
-import Editor from '../editor'
+import { render, screen, cleanup } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
+import Editor from '../pages/editor'
+
+const mockTranslations = {
+  'editor-desktop-optimized': 'This site is optimized for desktop',
+  'editor-visit-desktop': 'Please visit readme.so on a desktop to create your readme!',
+}
+
+jest.mock('next-i18next', () => ({
+  useTranslation: () => ({
+    t: jest.fn().mockImplementation((cb) => mockTranslations[cb]),
+  }),
+}))
 
 describe('editor page', () => {
-  let deviceGetter
-
-  beforeEach(() => {
-    deviceGetter = jest.spyOn(window.navigator, 'userAgent', 'get')
-  })
+  afterEach(cleanup)
 
   it('should render', () => {
     const { container } = render(<Editor />)
@@ -17,28 +26,28 @@ describe('editor page', () => {
     global.URL.createObjectURL = jest.fn()
     render(<Editor />)
 
-    fireEvent.click(screen.getByTestId('download'))
-    expect(screen.getByText('Readme Generated!')).toBeInTheDocument()
+    userEvent.click(screen.getByLabelText('Download Markdown'))
+    expect(screen.getByText('🎉')).toBeInTheDocument()
   })
 
   it('should add section', () => {
     render(<Editor />)
 
-    fireEvent.click(screen.getAllByTestId('section-button')[0]) // first child => API
-    expect(screen.getByTestId('selected-list').children.length).toEqual(2)
-    expect(screen.getByTestId('sections-list')).not.toHaveTextContent('API')
+    userEvent.click(screen.getByText(/FAQ/))
+    // selected sections
+    expect(screen.getByText('FAQ', { selector: 'p' })).toBeInTheDocument()
+    // sections to be selected
+    expect(screen.queryByText('FAQ', { selector: 'span' })).toBeNull()
   })
 
-  it('should remove section', () => {
+  it('should show message for mobile users if theyre using mobile', async () => {
+    jest.spyOn(window.navigator, 'userAgent', 'get').mockReturnValue('Mobile')
+
     render(<Editor />)
 
-    fireEvent.click(screen.getAllByTestId('delete')[0])
-    expect(screen.getByTestId('selected-list').children.length).toEqual(0)
-  })
-
-  it('should show message for mobile users if theyre using mobile', () => {
-    deviceGetter.mockReturnValue('Mobile')
-    render(<Editor />)
-    expect(screen.getByTestId('mobile-screen')).toBeInTheDocument()
+    expect(screen.queryByText('This site is optimized for desktop')).not.toBeNull()
+    expect(
+      screen.queryByText('Please visit readme.so on a desktop to create your readme!')
+    ).not.toBeNull()
   })
 })

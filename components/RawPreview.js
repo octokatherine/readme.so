@@ -19,12 +19,11 @@ export default function RawPreview({ text }) {
       <button
         className="absolute top-0 right-7 focus:outline-none"
         type="button"
-        data-testid="copy-button"
+        aria-label={!copySuccess ? 'To Copy' : 'Copied Success'}
         onClick={copyToClipBoard}
       >
         {!copySuccess ? (
           <svg
-            data-testid="icon-not-copied"
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 hover:text-emerald-500 focus:outline-none"
             fill="none"
@@ -40,7 +39,6 @@ export default function RawPreview({ text }) {
           </svg>
         ) : (
           <svg
-            data-testid="icon-copied"
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 text-emerald-500 focus:outline-none"
             fill="none"

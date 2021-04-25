@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { SortableItem } from '../SortableItem'
 
@@ -18,15 +19,22 @@ describe('<SortableItem />', () => {
 
   it('should set focused section slug when clicking', () => {
     render(<SortableItem {...props} />)
-    fireEvent.click(screen.getByTestId('sortable-item'))
+    userEvent.click(screen.getByText(/title/))
 
     expect(props.setFocusedSectionSlug).toHaveBeenCalledWith('title-and-description')
   })
 
   it('should set focused section slug on keyup', () => {
     render(<SortableItem {...props} />)
-    fireEvent.keyUp(screen.getByTestId('sortable-item'), { key: 'Enter', code: 'Enter' })
+    userEvent.type(screen.getByText(/title/), '{enter}')
 
     expect(props.setFocusedSectionSlug).toHaveBeenCalledWith('title-and-description')
+  })
+
+  it('should call onDeleteSection when section is deleted', () => {
+    render(<SortableItem {...props} />)
+    userEvent.click(screen.getByLabelText('Delete section'))
+
+    expect(props.onDeleteSection).toHaveBeenCalledWith(expect.any(Object), 'title-and-description')
   })
 })

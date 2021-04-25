@@ -28,7 +28,6 @@ export function SortableItem(props) {
       ref={setNodeRef}
       style={style}
       {...attributes}
-      data-testid="sortable-item"
       onClick={onClickSection}
       onKeyUp={onKeyUp}
       className={`bg-white shadow rounded-md pl-3 pr-6 py-2 flex items-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 relative select-none ${
@@ -47,7 +46,7 @@ export function SortableItem(props) {
         <button
           className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 absolute right-2"
           type="button"
-          data-testid="delete"
+          aria-label="Delete section"
           onClick={onClickTrash}
         >
           <img className="w-auto h-5" src="trash.svg" alt="" />

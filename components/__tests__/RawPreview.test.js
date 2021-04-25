@@ -1,4 +1,5 @@
-import { render, screen, fireEvent, act } from '@testing-library/react'
+import { render, screen, act } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import RawPreview from '../RawPreview'
 
@@ -6,11 +7,6 @@ describe('<RawPreview />', () => {
   beforeAll(() => {
     jest.useFakeTimers()
   })
-
-  afterAll(() => {
-    jest.useRealTimers()
-  })
-
   it('should render', () => {
     const { container } = render(<RawPreview text="test" />)
     expect(container).toBeInTheDocument()
@@ -20,14 +16,14 @@ describe('<RawPreview />', () => {
     document.execCommand = jest.fn()
     render(<RawPreview text="test" />)
 
-    fireEvent.click(screen.getByTestId('copy-button'))
+    userEvent.click(screen.getByLabelText('To Copy'))
 
     expect(document.execCommand).toHaveBeenCalledWith('copy')
-    expect(screen.getByTestId('icon-copied')).toBeInTheDocument()
+    expect(screen.getByLabelText('Copied Success')).toBeInTheDocument()
 
     act(() => {
       jest.advanceTimersByTime(3000)
     })
-    expect(await screen.findByTestId('icon-not-copied', {}, { timeout: 3000 })).toBeInTheDocument()
+    expect(screen.findByLabelText('To Copy')).not.toBeNull()
   })
 })

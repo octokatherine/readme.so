@@ -31,7 +31,7 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
     toggleDarkMode(toggleState, setToggleState)
   }
 
-  const { t } = useTranslation("editor")
+  const { t } = useTranslation('editor')
 
   return (
     <div className="w-1/2 px-3 full-screen">
@@ -39,32 +39,30 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
         {t('editor-column-editor')}
         <button
           onClick={toggleTheme}
-          data-testid="theme-toggle"
           aria-label="Color Mode"
           className="toggle-dark-mode focus:outline-none transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none"
         >
-          <img data-testid="theme" className="w-auto h-8 mr-2" src={toggleState.img} />
+          <img className="w-auto h-8 mr-2" alt={toggleState.theme} src={toggleState.img} />
         </button>
       </h3>
 
       {focusedSectionSlug ? (
-        <div data-testid="editor-md">
-          <Editor
-            wrapperClassName="rounded-sm border border-gray-500"
-            className="full-screen" // By default, it fully fits with its parent
-            theme={toggleState.theme}
-            language="markdown"
-            value={markdown}
-            onChange={onEdit}
-            loading={'Loading...'}
-            options={{
-              minimap: {
-                enabled: false,
-              },
-              lineNumbers: false,
-            }}
-          />
-        </div>
+        <Editor
+          wrapperClassName="rounded-sm border border-gray-500"
+          className="full-screen" // By default, it fully fits with its parent
+          theme={toggleState.theme}
+          language="markdown"
+          value={markdown}
+          onChange={onEdit}
+          loading={'Loading...'}
+          aria-label="Markdown Editor"
+          options={{
+            minimap: {
+              enabled: false,
+            },
+            lineNumbers: false,
+          }}
+        />
       ) : (
         <p className="font-sm text-emerald-500 max-w-[28rem] text-center mx-auto mt-10">
           {t('editor-select')}

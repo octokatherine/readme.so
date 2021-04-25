@@ -1,4 +1,6 @@
 module.exports = {
+  resetModules: true,
+  restoreMocks: true,
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testPathIgnorePatterns: ['<rootDir>/*.js', '<rootDir>/.next/', '<rootDir>/node_modules/'],
   collectCoverage: true,
