@@ -96,9 +96,11 @@ export const SectionsColumn = ({
     localStorage.setItem('current-focused-slug', 'noEdit')
   }
 
+
   useEffect(() => {
     setFocusedSectionSlug(localStorage.getItem('current-focused-slug'))
   }, [focusedSectionSlug])
+
 
   const { t } = useTranslation('editor')
 
