@@ -4,6 +4,8 @@ import RawPreview from './RawPreview'
 import { useTranslation } from 'next-i18next'
 
 const gfm = require('remark-gfm')
+const emoji = require('remark-emoji')
+
 export const PreviewColumn = ({ selectedSectionSlugs, getTemplate }) => {
   const [selectedTab, setSelectedTab] = useState('rendered')
   const markdown = selectedSectionSlugs.reduce((acc, section) => {
@@ -47,7 +49,7 @@ export const PreviewColumn = ({ selectedSectionSlugs, getTemplate }) => {
           }`}
       >
         {isRendered ? (
-          <ReactMarkdown plugins={[gfm]} children={markdown} />
+          <ReactMarkdown plugins={[gfm, emoji]} children={markdown} />
         ) : (
           <RawPreview text={markdown} />
         )}
