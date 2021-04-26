@@ -2,6 +2,7 @@ import { render, screen, cleanup } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import Editor from '../pages/editor'
+import { en_EN } from '../data/section-templates-en_EN'
 
 const mockTranslations = {
   'editor-desktop-optimized': 'This site is optimized for desktop',
@@ -18,20 +19,20 @@ describe('editor page', () => {
   afterEach(cleanup)
 
   it('should render', () => {
-    const { container } = render(<Editor />)
+    const { container } = render(<Editor sectionTemplate={en_EN} />)
     expect(container).toBeInTheDocument()
   })
 
   it('should show DownloadModal component if showModal is true', () => {
     global.URL.createObjectURL = jest.fn()
-    render(<Editor />)
+    render(<Editor sectionTemplate={en_EN} />)
 
     userEvent.click(screen.getByLabelText('Download Markdown'))
     expect(screen.getByText('🎉')).toBeInTheDocument()
   })
 
   it('should add section', () => {
-    render(<Editor />)
+    render(<Editor sectionTemplate={en_EN} />)
 
     userEvent.click(screen.getByText(/FAQ/))
     // selected sections
@@ -43,7 +44,7 @@ describe('editor page', () => {
   it('should show message for mobile users if theyre using mobile', async () => {
     jest.spyOn(window.navigator, 'userAgent', 'get').mockReturnValue('Mobile')
 
-    render(<Editor />)
+    render(<Editor sectionTemplate={en_EN} />)
 
     expect(screen.queryByText('This site is optimized for desktop')).not.toBeNull()
     expect(

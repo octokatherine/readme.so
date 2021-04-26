@@ -2,7 +2,7 @@ import { render } from '@testing-library/react'
 
 import { SectionsColumn } from '../SectionsColumn'
 
-import { sectionTemplates } from '../../data/section-templates'
+import { en_EN } from '../../data/section-templates-en_EN'
 
 jest.mock('next-i18next', () => ({
   useTranslation: () => ({ t: jest.fn() }),
@@ -16,7 +16,7 @@ describe('<SectionsColumn />', () => {
     setSectionSlugs: () => ['api', 'appendix'].filter((s) => s !== 'api'),
     focusedSectionSlug: 'title-and-description',
     setFocusedSectionSlug: jest.fn(),
-    getTemplate: (slug) => sectionTemplates.find((t) => t.slug === slug),
+    getTemplate: (slug) => en_EN.find((t) => t.slug === slug),
   }
 
   it('should render', () => {

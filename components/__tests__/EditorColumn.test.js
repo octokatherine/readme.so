@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { EditorColumn } from '../EditorColumn'
 
-import { sectionTemplates } from '../../data/section-templates'
+import { en_EN } from '../../data/section-templates-en_EN'
 
 jest.mock(
   '@monaco-editor/react',
@@ -22,12 +22,12 @@ describe('<EditorColumn />', () => {
   })
 
   it('should render', () => {
-    const { container } = render(<EditorColumn templates={sectionTemplates} />)
+    const { container } = render(<EditorColumn templates={en_EN} />)
     expect(container).toBeInTheDocument()
   })
 
   it('should toggle dark/light mode', () => {
-    render(<EditorColumn templates={sectionTemplates} />)
+    render(<EditorColumn templates={en_EN} />)
     userEvent.click(screen.getByLabelText('Color Mode'))
     expect(screen.getByAltText('light')).toBeInTheDocument()
 
@@ -36,9 +36,7 @@ describe('<EditorColumn />', () => {
   })
 
   it('should show <Editor /> if focusedSectionSlug is truthy', () => {
-    render(
-      <EditorColumn templates={sectionTemplates} focusedSectionSlug={'title-and-description'} />
-    )
+    render(<EditorColumn templates={en_EN} focusedSectionSlug={'title-and-description'} />)
     expect(screen.getByLabelText('Markdown Editor').value).toEqual(
       "# Project TitleA brief description of what this project does and who it's for"
     )
@@ -48,7 +46,7 @@ describe('<EditorColumn />', () => {
     const setTemplatesHandler = jest.fn()
     render(
       <EditorColumn
-        templates={sectionTemplates}
+        templates={en_EN}
         focusedSectionSlug={'title-and-description'}
         setTemplates={setTemplatesHandler}
       />

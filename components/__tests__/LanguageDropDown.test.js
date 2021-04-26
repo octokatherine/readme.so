@@ -13,7 +13,7 @@ jest.mock('next-i18next', () => ({
 }))
 
 describe('<LanguageDropDown />', () => {
-  it('should render with 3 languages', () => {
+  it('should render with provided languages', () => {
     const { container } = render(<LanguageDropDown />)
     expect(container).toBeInTheDocument()
     expect(screen.queryByText('English')).not.toBeNull()

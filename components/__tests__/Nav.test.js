@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { Nav } from '../Nav'
-import { sectionTemplates } from '../../data/section-templates'
+import { en_EN } from '../../data/section-templates-en_EN'
 
 jest.mock('next-i18next', () => ({
   useTranslation: () => ({ t: jest.fn() }),
@@ -13,7 +13,7 @@ describe('<Nav />', () => {
     const { container } = render(
       <Nav
         selectedSectionSlugs={['title-and-description']}
-        getTemplate={(slug) => sectionTemplates.find((t) => t.slug === slug)}
+        getTemplate={(slug) => en_EN.find((t) => t.slug === slug)}
       />
     )
     expect(container).toBeInTheDocument()
@@ -30,7 +30,7 @@ describe('<Nav />', () => {
       <Nav
         setShowModal={setShowModalStub}
         selectedSectionSlugs={['title-and-description']}
-        getTemplate={(slug) => sectionTemplates.find((t) => t.slug === slug)}
+        getTemplate={(slug) => en_EN.find((t) => t.slug === slug)}
       />
     )
 

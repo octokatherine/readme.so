@@ -1,4 +1,4 @@
-export const sectionTemplates = [
+export const en_EN = [
   {
     slug: 'title-and-description',
     name: 'Title and Description',
@@ -214,11 +214,23 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
   },
   {
     slug: 'authors',
-    name: 'Authors and Acknowledgement',
+    name: 'Authors',
     markdown: `
-## Authors and Acknowledgement
+## Authors
 
-- [@katherinepeterson](https://www.github.com/katherinepeterson) for development and design.
+- [@katherinepeterson](https://www.github.com/katherinepeterson)
+
+  `,
+  },
+  {
+    slug: 'acknowledgement',
+    name: 'Acknowledgements',
+    markdown: `
+## Acknowledgements
+
+ - [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
+ - [Awesome README](https://github.com/matiassingers/awesome-readme)
+ - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
 
   `,
   },

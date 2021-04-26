@@ -1,14 +1,16 @@
 {
-	"title": "La forma más fácil de crear un",
-	"readme": "README",
-	"description": "Con nuestro sencillo editor puedes personalizar y agregar rápidamente todas las secciones que necesitas para el archivo README de tu proyecto",
-	"get-started": "Empieza ahora",
-	"100-free": "100% gratis",
-	"made-with-love": "Hecho con ",
-	"by": " por ",
-	"language": "Idioma",
-	"english": "Inglés",
-	"french": "Francés",
-	"spanish": "Español",
-	"translation-error": "La traducción es incorrecta?"
+  "title": "La forma más fácil de crear un",
+  "readme": "README",
+  "description": "Con nuestro sencillo editor puedes personalizar y agregar rápidamente todas las secciones que necesitas para el archivo README de tu proyecto",
+  "get-started": "Empieza ahora",
+  "100-free": "100% gratis",
+  "made-with-love": "Hecho con ",
+  "by": " por ",
+  "language": "Idioma",
+  "english": "Inglés",
+  "french": "Francés",
+  "spanish": "Español",
+  "italian": "Italiano",
+  "turkish": "Turco",
+  "translation-error": "La traducción es incorrecta?"
 }

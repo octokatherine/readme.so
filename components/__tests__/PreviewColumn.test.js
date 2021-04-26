@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { PreviewColumn } from '../PreviewColumn'
-import { sectionTemplates } from '../../data/section-templates'
+import { en_EN } from '../../data/section-templates-en_EN'
 
 const mockTranslations = {
   'preview-column-preview': 'Preview',
@@ -20,7 +20,7 @@ describe('<PreviewColumn />', () => {
     const { container } = render(
       <PreviewColumn
         selectedSectionSlugs={['title-and-description']}
-        getTemplate={(slug) => sectionTemplates.find((t) => t.slug === slug)}
+        getTemplate={(slug) => en_EN.find((t) => t.slug === slug)}
       />
     )
 
@@ -31,7 +31,7 @@ describe('<PreviewColumn />', () => {
     render(
       <PreviewColumn
         selectedSectionSlugs={['title-and-description']}
-        getTemplate={(slug) => sectionTemplates.find((t) => t.slug === slug)}
+        getTemplate={(slug) => en_EN.find((t) => t.slug === slug)}
       />
     )
 
