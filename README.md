@@ -24,9 +24,18 @@ See [CONTRIBUTING.md](/CONTRIBUTING.md) for ways to get started.
 - [dnd kit](https://dndkit.com/)
 - [react-markdown](https://github.com/remarkjs/react-markdown)
 
+## Installing/Updating NextJS:
+First step is being sure your running the latest [NEXTJS](https://github.com/vercel/next.js):
+
+`npm install next` or `npm update next`
+
+Most likely you should just be able to update here instead of installing as it should already be installed.
+
 ## Running the Dev Server
 
-To run the dev server, run `npm run dev` and navigate to `localhost:3000`
+To run the dev server:
+
+run `npm run dev` and navigate to `localhost:3000`
 
 ## Feedback
 
