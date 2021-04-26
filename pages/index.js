@@ -14,7 +14,12 @@ const Home = () => {
       <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Mali&display=swap" rel="stylesheet" />
-        <script async defer data-domain="readme.so" src="https://plausible.io/js/plausible.js"></script>
+        <script
+          async
+          defer
+          data-domain="readme.so"
+          src="https://plausible.io/js/plausible.js"
+        ></script>
       </Head>
       <div className="bg-gray-50">
         <div className="relative overflow-hidden">
@@ -88,7 +93,11 @@ const Home = () => {
                   <div className="flex items-center justify-between w-full md:w-auto">
                     <Link href="/">
                       <a className="flex items-center">
-                        <img className="w-auto h-8 mt-1 cursor-pointer" src="readme.svg" alt="readme.so logo" />
+                        <img
+                          className="w-auto h-8 mt-1 cursor-pointer"
+                          src="readme.svg"
+                          alt="readme.so logo"
+                        />
                         <span className="ml-2 -mb-2 text-gray-800 logo text-md">readme.so</span>
                       </a>
                     </Link>
@@ -181,15 +190,13 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-
     </>
   )
 }
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...await serverSideTranslations(locale, ['common', 'footer']),
+    ...(await serverSideTranslations(locale, ['common', 'footer'])),
   },
 })
 
