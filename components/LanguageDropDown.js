@@ -21,7 +21,7 @@ export function LanguageDropDown({ posts }) {
             className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
             href="/"
           >
-            {t('english')}
+            English
           </a>
         </li>
         <li className="">
@@ -29,7 +29,7 @@ export function LanguageDropDown({ posts }) {
             className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
             href="/fr"
           >
-            {t('french')}
+            Français
           </a>
         </li>
         <li className="">
@@ -37,7 +37,7 @@ export function LanguageDropDown({ posts }) {
             className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
             href="/es"
           >
-            {t('spanish')}
+            Español
           </a>
         </li>
         <li className="">
@@ -45,7 +45,7 @@ export function LanguageDropDown({ posts }) {
             className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
             href="/it"
           >
-            {t('italian')}
+            Italiano
           </a>
         </li>
         <li className="">
@@ -53,7 +53,7 @@ export function LanguageDropDown({ posts }) {
             className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
             href="/fil"
           >
-            {t('filipino')}
+            Filipino
           </a>
         </li>
         <li className="">
@@ -61,7 +61,7 @@ export function LanguageDropDown({ posts }) {
             className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
             href="/tur"
           >
-            {t('turkish')}
+            Türkçe
           </a>
         </li>
         <li className="">
