@@ -1,5 +1,28 @@
 import { useTranslation } from 'next-i18next'
 
+const languageSupports = [
+  {
+    label: 'English',
+    route: '/',
+  },
+  {
+    label: 'Français',
+    route: '/fr',
+  },
+  {
+    label: 'Español',
+    route: '/es',
+  },
+  {
+    label: 'Italiano',
+    route: '/it',
+  },
+  {
+    label: 'Türkçe',
+    route: '/tur',
+  },
+]
+
 export function LanguageDropDown({ posts }) {
   const { t } = useTranslation('common')
 
@@ -16,46 +39,19 @@ export function LanguageDropDown({ posts }) {
         </svg>
       </button>
       <ul className="absolute hidden text-gray-800 pt-1 group-hover:block">
-        <li className="">
-          <a
-            className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
-            href="/"
-          >
-            English
-          </a>
-        </li>
-        <li className="">
-          <a
-            className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
-            href="/fr"
-          >
-            Français
-          </a>
-        </li>
-        <li className="">
-          <a
-            className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
-            href="/es"
-          >
-            Español
-          </a>
-        </li>
-        <li className="">
-          <a
-            className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
-            href="/it"
-          >
-            Italiano
-          </a>
-        </li>
-        <li className="">
-          <a
-            className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
-            href="/tur"
-          >
-            Türkçe
-          </a>
-        </li>
+        {languageSupports.map(({ label, route }, index) => {
+          return (
+            <li key={`${label}_${index}`} className="">
+              <a
+                className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
+                href={route}
+              >
+                {label}
+              </a>
+            </li>
+          )
+        })}
+
         <li className="">
           <a
             className="w-32 bg-gray-200 hover:bg-emerald-400 text-xs break-words py-2 px-4 block whitespace-no-wrap"
