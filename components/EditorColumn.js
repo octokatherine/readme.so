@@ -1,6 +1,6 @@
 import Editor from '@monaco-editor/react'
 import { useTranslation } from 'next-i18next'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) => {
   const getMarkdown = () => {
@@ -9,6 +9,7 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
   }
   const [markdown, setMarkdown] = useState(getMarkdown())
   const [toggleState, setToggleState] = useState({ theme: 'vs-dark', img: 'toggle_sun.svg' })
+  const editorRef = useRef(null);
 
   useEffect(() => {
     const markdown = getMarkdown()
@@ -31,7 +32,29 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
     toggleDarkMode(toggleState, setToggleState)
   }
 
-  const { t } = useTranslation('editor')
+  const handleHotkey = ((event) => {
+    const { code, ctrlKey, repeat } = event;
+
+    if(code === "KeyE" && repeat == false && ctrlKey === false) {
+      if(!editorRef.current.hasWidgetFocus())
+        event.preventDefault();
+      editorRef.current.focus();
+    }
+  })
+
+  const handleEditorDidMount = ((editor) => {
+    editorRef.current = editor;
+  })
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleHotkey);
+
+    return () => {
+      window.removeEventListener("keydown", handleHotkey);
+    }
+  }, [handleHotkey]);
+
+  const { t } = useTranslation("editor")
 
   return (
     <div className="w-1/2 px-3 full-screen">
@@ -56,20 +79,21 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
         </p>
       ) : (
         <Editor
-          wrapperClassName="rounded-sm border border-gray-500"
-          className="full-screen" // By default, it fully fits with its parent
-          theme={toggleState.theme}
-          language="markdown"
-          value={markdown}
-          onChange={onEdit}
-          loading={'Loading...'}
-          aria-label="Markdown Editor"
-          options={{
-            minimap: {
-              enabled: false,
-            },
-            lineNumbers: false,
-          }}
+        onMount={handleEditorDidMount}
+        wrapperClassName="rounded-sm border border-gray-500"
+        className="full-screen" // By default, it fully fits with its parent
+        theme={toggleState.theme}
+        language="markdown"
+        value={markdown}
+        onChange={onEdit}
+        loading={'Loading...'}
+        aria-label="Markdown Editor"
+        options={{
+          minimap: {
+            enabled: false,
+          },
+          lineNumbers: false,
+        }}
         />
       )}
     </div>
