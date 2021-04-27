@@ -28,6 +28,7 @@ export const Nav = ({ selectedSectionSlugs, setShowModal, getTemplate }) => {
       </Link>
       <button
         type="button"
+        aria-label="Download Markdown"
         className="relative inline-flex items-center px-4 py-2 text-sm font-bold tracking-wide text-white border border-transparent rounded-md shadow-sm bg-emerald-500 hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-emerald-500"
         onClick={downloadMarkdownFile}
       >

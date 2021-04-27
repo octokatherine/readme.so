@@ -19,6 +19,7 @@ export default function RawPreview({ text }) {
       <button
         className="absolute top-0 right-7 focus:outline-none"
         type="button"
+        aria-label={!copySuccess ? 'To Copy' : 'Copied Success'}
         onClick={copyToClipBoard}
       >
         {!copySuccess ? (
