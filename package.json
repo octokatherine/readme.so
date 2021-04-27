@@ -6,6 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
     "lint": "prettier --check .",
     "format": "prettier --write . && git add -A .",
     "prepare": "husky install"
@@ -24,7 +26,12 @@
     "remark-gfm": "^1.0.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^13.1.5",
     "autoprefixer": "^10.2.5",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
     "husky": "^6.0.0",
     "postcss": "^8.2.9",
     "prettier": "2.2.1",

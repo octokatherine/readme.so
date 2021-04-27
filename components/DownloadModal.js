@@ -25,6 +25,7 @@ Leaving: "ease-in duration-200"
     */}
           <div
             className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"
+            role="overlay"
             aria-hidden="true"
             onClick={() => setShowModal(false)}
           />
