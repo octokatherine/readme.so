@@ -43,7 +43,7 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
             aria-label="Color Mode"
             className="toggle-dark-mode focus:outline-none transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none"
           >
-            <img className="w-auto h-8 mr-2" src={toggleState.img} />
+            <img className="w-auto h-8 mr-2" alt={toggleState.theme} src={toggleState.img} />
           </button>
         ) : (
           <button />
@@ -63,6 +63,7 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
           value={markdown}
           onChange={onEdit}
           loading={'Loading...'}
+          aria-label="Markdown Editor"
           options={{
             minimap: {
               enabled: false,
