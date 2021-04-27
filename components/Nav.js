@@ -16,7 +16,7 @@ export const Nav = ({ selectedSectionSlugs, setShowModal, getTemplate }) => {
     setShowModal(true)
   }
 
-  const { t } = useTranslation("editor")
+  const { t } = useTranslation('editor')
 
   return (
     <nav className="flex justify-between p-4 bg-gray-800 align-center">
