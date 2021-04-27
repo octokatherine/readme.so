@@ -15,10 +15,10 @@ export function LanguageDropDown({ posts }) {
           <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
         </svg>
       </button>
-      <ul className="absolute hidden text-gray-800 pt-1 group-hover:block">
+      <ul className="absolute text-gray-800 pt-1 origin-top transform-gpu transition-transform scale-y-0 group-hover:scale-y-100 focus-within:scale-y-100">
         <li className="">
           <a
-            className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
+            className="w-32 bg-gray-200 hover:bg-emerald-400 focus:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
             href="/"
           >
             English
@@ -26,7 +26,7 @@ export function LanguageDropDown({ posts }) {
         </li>
         <li className="">
           <a
-            className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
+            className="w-32 bg-gray-200 hover:bg-emerald-400 focus:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
             href="/fr"
           >
             Français
@@ -34,7 +34,7 @@ export function LanguageDropDown({ posts }) {
         </li>
         <li className="">
           <a
-            className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
+            className="w-32 bg-gray-200 hover:bg-emerald-400 focus:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
             href="/es"
           >
             Español
@@ -42,7 +42,7 @@ export function LanguageDropDown({ posts }) {
         </li>
         <li className="">
           <a
-            className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
+            className="w-32 bg-gray-200 hover:bg-emerald-400 focus:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
             href="/it"
           >
             Italiano
@@ -50,7 +50,7 @@ export function LanguageDropDown({ posts }) {
         </li>
         <li className="">
           <a
-            className="w-32 bg-gray-200 hover:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
+            className="w-32 bg-gray-200 hover:bg-emerald-400 focus:bg-emerald-400 py-2 px-4 block whitespace-no-wrap"
             href="/tur"
           >
             Türkçe
@@ -58,7 +58,7 @@ export function LanguageDropDown({ posts }) {
         </li>
         <li className="">
           <a
-            className="w-32 bg-gray-200 hover:bg-emerald-400 text-xs break-words py-2 px-4 block whitespace-no-wrap"
+            className="w-32 bg-gray-200 hover:bg-emerald-400 focus:bg-emerald-400 text-xs break-words py-2 px-4 block whitespace-no-wrap"
             href="https://github.com/katherinepeterson/readme.so/issues/new"
             target="_blank"
           >
