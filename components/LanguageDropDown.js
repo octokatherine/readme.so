@@ -19,7 +19,7 @@ const languageSupports = [
   },
   {
     label: 'Türkçe',
-    route: '/tur',
+    route: '/tr',
   },
   {
     label: 'Filipino',
