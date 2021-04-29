@@ -47,6 +47,7 @@ export function SortableItem(props) {
         <button
           className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 absolute right-2"
           type="button"
+          aria-label="Delete section"
           onClick={onClickTrash}
         >
           <img className="w-auto h-5" src="trash.svg" alt="" />
