@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next'
 
 export const DownloadModal = ({ setShowModal }) => {
-  const { t } = useTranslation("editor")
+  const { t } = useTranslation('editor')
 
   return (
     <>
@@ -25,6 +25,7 @@ Leaving: "ease-in duration-200"
     */}
           <div
             className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"
+            role="overlay"
             aria-hidden="true"
             onClick={() => setShowModal(false)}
           />
@@ -57,13 +58,11 @@ Leaving: "ease-in duration-200"
                       target="_blank"
                       className="text-emerald-500 hover:text-emerald-400"
                     >
-                      Twitter 
+                      Twitter
                     </a>{' '}
                     {t('download-feedback')}
                   </p>
-                  <p className="mt-3 text-sm text-gray-500">
-                    {t('download-coffee')}
-                  </p>
+                  <p className="mt-3 text-sm text-gray-500">{t('download-coffee')}</p>
                 </div>
               </div>
             </div>
