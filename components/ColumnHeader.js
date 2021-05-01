@@ -1,10 +1,12 @@
-
 const Heading = ({ children, className = '' }) => {
   return (
-    <h3 className={`border-transparent whitespace-nowrap px-1 border-b-2 font-medium text-sm focus:outline-none 
-    text-emerald-500 ${className}`}>
+    <h3
+      className={`border-transparent whitespace-nowrap px-1 border-b-2 font-medium text-sm focus:outline-none 
+    text-emerald-500 ${className}`}
+    >
       {children}
-    </h3 >)
+    </h3>
+  )
 }
 
 const Tab = ({ children, isActive, className = '', onClick = () => null }) => {
@@ -13,14 +15,16 @@ const Tab = ({ children, isActive, className = '', onClick = () => null }) => {
       onClick={onClick}
       type="button"
       className={`border-transparent whitespace-nowrap px-1 border-b-2 font-medium text-sm focus:outline-none 
-    ${isActive ? 'text-emerald-500' : 'text-gray-500 hover:text-gray-700'} ${className}`}>
+    ${isActive ? 'text-emerald-500' : 'text-gray-500 hover:text-gray-700'} ${className}`}
+    >
       {children}
-    </button >)
+    </button>
+  )
 }
 
 const ColumnHeader = {
   Heading,
-  Tab
+  Tab,
 }
 
 export default ColumnHeader

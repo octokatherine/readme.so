@@ -5,8 +5,15 @@
 .full-screen {
   max-height: calc(100vh - 160px);
 }
+
 .drawer-height {
   height: calc(100vh - 4.5rem);
+}
+
+@screen md {
+  .drawer-height {
+    height: unset;
+  }
 }
 
 .toggle-dark-mode {

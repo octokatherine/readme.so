@@ -6,18 +6,18 @@ import { EditorColumn } from '../components/EditorColumn'
 import { Nav } from '../components/Nav'
 import { PreviewColumn } from '../components/PreviewColumn'
 import { SectionsColumn } from '../components/SectionsColumn'
-import { sectionTemplates } from '../data/section-templates'
+import sectionTemplates from '../data/index'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-export default function Editor() {
-  const { t } = useTranslation("editor")
+export default function Editor({ sectionTemplate }) {
+  const { t } = useTranslation('editor')
 
   const [selectedSectionSlugs, setSelectedSectionSlugs] = useState([])
-  const [sectionSlugs, setSectionSlugs] = useState(sectionTemplates.map((t) => t.slug))
+  const [sectionSlugs, setSectionSlugs] = useState(sectionTemplate.map((t) => t.slug))
   const [focusedSectionSlug, setFocusedSectionSlug] = useState(null)
   const [showModal, setShowModal] = useState(false)
-  const [templates, setTemplates] = useState(sectionTemplates)
+  const [templates, setTemplates] = useState(sectionTemplate)
   const [isMobile, setIsMobile] = useState(false)
   const [showDrawer, toggleDrawer] = useState(false)
 
@@ -26,15 +26,24 @@ export default function Editor() {
   }
 
   useEffect(() => {
-    const section = 'title-and-description'
-    setSectionSlugs((prev) => prev.filter((s) => s !== section))
-    setSelectedSectionSlugs((prev) => [...prev, section])
-    setFocusedSectionSlug(section)
+    setFocusedSectionSlug(null)
   }, [])
 
   useEffect(() => {
     setIsMobile(/Mobi|Android/i.test(navigator.userAgent))
   }, [])
+
+  useEffect(() => {
+    let currentSlugList = localStorage.getItem('current-slug-list')
+    if (
+      currentSlugList.indexOf('title-and-description') == -1 &&
+      selectedSectionSlugs.indexOf('title-and-description') > -1
+    ) {
+      selectedSectionSlugs.splice(selectedSectionSlugs.indexOf('title-and-description'), 1)
+    }
+    setFocusedSectionSlug(localStorage.getItem('current-slug-list').split(',')[0])
+    localStorage.setItem('current-slug-list', selectedSectionSlugs)
+  }, [selectedSectionSlugs])
 
   const drawerClass = showDrawer ? '' : '-translate-x-full md:transform-none'
 
@@ -42,10 +51,7 @@ export default function Editor() {
     <div className="w-full h-full">
       <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Mali&display=swap"
-          rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Mali&display=swap" rel="stylesheet" />
         <script
           data-name="BMC-Widget"
           data-cfasync="false"
@@ -69,8 +75,10 @@ export default function Editor() {
       />
       {showModal && <DownloadModal setShowModal={setShowModal} />}
       <div className="flex md:px-6 md:pt-6 ">
-        <div className={`flex flex-0 drawer-height absolute md:static p-6 md:p-0 bg-white md:bg-transparent shadow md:shadow-none z-10
-        transform  transition-transform duration-500 ease-in-out ${drawerClass}`}>
+        <div
+          className={`flex flex-0 drawer-height absolute md:static p-6 md:p-0 bg-white md:bg-transparent shadow md:shadow-none z-10
+        transform  transition-transform duration-500 ease-in-out ${drawerClass}`}
+        >
           <SectionsColumn
             selectedSectionSlugs={selectedSectionSlugs}
             setSelectedSectionSlugs={setSelectedSectionSlugs}
@@ -97,13 +105,19 @@ export default function Editor() {
           />
         </div>
       </div>
-
     </div>
   )
 }
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['editor']),
+export const getStaticProps = async ({ locale }) => {
+  const sectionTemplate = sectionTemplates[locale]
+    ? sectionTemplates[locale]
+    : sectionTemplates['en']
+  const i18n = await serverSideTranslations(locale, ['editor'])
+  return {
+    props: {
+      sectionTemplate,
+      ...i18n,
+    },
   }
-})
+}
