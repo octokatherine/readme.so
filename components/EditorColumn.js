@@ -1,15 +1,14 @@
 import Editor from '@monaco-editor/react'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState, useRef } from 'react'
-import ColumnHeader from '../components/ColumnHeader'
 
-export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) => {
+export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, theme }) => {
   const getMarkdown = () => {
     const section = templates.find((s) => s.slug === focusedSectionSlug)
     return section ? section.markdown : ''
   }
   const [markdown, setMarkdown] = useState(getMarkdown())
-  const [toggleState, setToggleState] = useState({ theme: 'vs-dark', img: 'toggle_sun.svg' })
+
   const editorRef = useRef(null)
 
   useEffect(() => {
@@ -27,10 +26,6 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
         return template
       })
     })
-  }
-
-  const toggleTheme = () => {
-    toggleDarkMode(toggleState, setToggleState)
   }
 
   const handleHotkey = (event) => {
@@ -57,22 +52,7 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
   const { t } = useTranslation('editor')
 
   return (
-    <div className="w-1/2 px-3 full-screen">
-      <ColumnHeader.Heading>
-        {t('editor-column-editor')}
-        {focusedSectionSlug != 'noEdit' ? (
-          <button
-            onClick={toggleTheme}
-            aria-label="Color Mode"
-            className="toggle-dark-mode focus:outline-none transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none"
-          >
-            <img className="w-auto h-8 mr-2" alt={toggleState.theme} src={toggleState.img} />
-          </button>
-        ) : (
-          <button />
-        )}
-      </ColumnHeader.Heading>
-
+    <>
       {focusedSectionSlug == 'noEdit' ? (
         <p className="font-sm text-emerald-500 max-w-[28rem] text-center mx-auto mt-10">
           {t('editor-select')}
@@ -82,7 +62,7 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
           onMount={handleEditorDidMount}
           wrapperClassName="rounded-sm border border-gray-500"
           className="full-screen" // By default, it fully fits with its parent
-          theme={toggleState.theme}
+          theme={theme}
           language="markdown"
           value={markdown}
           onChange={onEdit}
@@ -96,12 +76,6 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
           }}
         />
       )}
-    </div>
+    </>
   )
-}
-
-const toggleDarkMode = (toggleState, setToggleState) => {
-  toggleState.theme == 'vs-dark'
-    ? setToggleState({ theme: 'light', img: 'toggle_moon.svg' })
-    : setToggleState({ theme: 'vs-dark', img: 'toggle_sun.svg' })
 }

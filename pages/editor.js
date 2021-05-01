@@ -2,23 +2,18 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react'
 
 import { DownloadModal } from '../components/DownloadModal'
-import { EditorColumn } from '../components/EditorColumn'
 import { Nav } from '../components/Nav'
-import { PreviewColumn } from '../components/PreviewColumn'
 import { SectionsColumn } from '../components/SectionsColumn'
 import sectionTemplates from '../data/index'
-import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import EditPreviewContainer from '../components/EditPreviewContainer'
 
 export default function Editor({ sectionTemplate }) {
-  const { t } = useTranslation('editor')
-
   const [selectedSectionSlugs, setSelectedSectionSlugs] = useState([])
   const [sectionSlugs, setSectionSlugs] = useState(sectionTemplate.map((t) => t.slug))
   const [focusedSectionSlug, setFocusedSectionSlug] = useState(null)
   const [showModal, setShowModal] = useState(false)
   const [templates, setTemplates] = useState(sectionTemplate)
-  const [isMobile, setIsMobile] = useState(false)
   const [showDrawer, toggleDrawer] = useState(false)
 
   const getTemplate = (slug) => {
@@ -27,10 +22,6 @@ export default function Editor({ sectionTemplate }) {
 
   useEffect(() => {
     setFocusedSectionSlug(null)
-  }, [])
-
-  useEffect(() => {
-    setIsMobile(/Mobi|Android/i.test(navigator.userAgent))
   }, [])
 
   useEffect(() => {
@@ -76,7 +67,7 @@ export default function Editor({ sectionTemplate }) {
       {showModal && <DownloadModal setShowModal={setShowModal} />}
       <div className="flex md:px-6 md:pt-6 ">
         <div
-          className={`flex flex-0 drawer-height absolute md:static p-6 md:p-0 bg-white md:bg-transparent shadow md:shadow-none z-10
+          className={`flex flex-0 drawer-height absolute md:static p-6 md:p-0 bg-white md:bg-transparent shadow md:shadow-none z-10 md:z-0
         transform  transition-transform duration-500 ease-in-out ${drawerClass}`}
         >
           <SectionsColumn
@@ -89,21 +80,16 @@ export default function Editor({ sectionTemplate }) {
             getTemplate={getTemplate}
           />
         </div>
-        <div className="flex flex-1 pt-6 px-6 md:p-0">
-          <EditorColumn
-            focusedSectionSlug={focusedSectionSlug}
-            selectedSectionSlugs={selectedSectionSlugs}
-            setSelectedSectionSlugs={setSelectedSectionSlugs}
-            templates={templates}
-            setTemplates={setTemplates}
-            renderColumnHeader={() => null}
-          />
-          <PreviewColumn
-            selectedSectionSlugs={selectedSectionSlugs}
-            getTemplate={getTemplate}
-            renderColumnHeader={() => null}
-          />
-        </div>
+
+        <EditPreviewContainer
+          templates={templates}
+          setTemplates={setTemplates}
+          getTemplate={getTemplate}
+          focusedSectionSlug={focusedSectionSlug}
+          setFocusedSectionSlug={setFocusedSectionSlug}
+          selectedSectionSlugs={selectedSectionSlugs}
+          setSelectedSectionSlugs={setSelectedSectionSlugs}
+        />
       </div>
     </div>
   )

@@ -26,15 +26,6 @@ describe('<EditorColumn />', () => {
     expect(container).toBeInTheDocument()
   })
 
-  it('should toggle dark/light mode', () => {
-    render(<EditorColumn templates={en_EN} />)
-    userEvent.click(screen.getByLabelText('Color Mode'))
-    expect(screen.getByAltText('light')).toBeInTheDocument()
-
-    userEvent.click(screen.getByLabelText('Color Mode'))
-    expect(screen.getByAltText('vs-dark')).toBeInTheDocument()
-  })
-
   it('should show <Editor /> if focusedSectionSlug is truthy', () => {
     render(<EditorColumn templates={en_EN} focusedSectionSlug={'title-and-description'} />)
     expect(screen.getByLabelText('Markdown Editor').value).toEqual(
