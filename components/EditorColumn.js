@@ -1,6 +1,7 @@
 import Editor from '@monaco-editor/react'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
+import ColumnHeader from '../components/ColumnHeader'
 
 export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) => {
   const getMarkdown = () => {
@@ -35,7 +36,7 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
 
   return (
     <div className="w-1/2 px-3 full-screen">
-      <h3 className="border-transparent text-emerald-500 whitespace-nowrap px-1 border-b-2 font-medium text-sm focus:outline-none">
+      <ColumnHeader.Heading>
         {t('editor-column-editor')}
         <button
           onClick={toggleTheme}
@@ -44,7 +45,7 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
         >
           <img className="w-auto h-8 mr-2" src={toggleState.img} />
         </button>
-      </h3>
+      </ColumnHeader.Heading>
 
       {focusedSectionSlug ? (
         <Editor

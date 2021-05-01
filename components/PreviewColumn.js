@@ -2,6 +2,7 @@ import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import RawPreview from './RawPreview'
 import { useTranslation } from 'next-i18next'
+import ColumnHeader from '../components/ColumnHeader'
 
 const gfm = require('remark-gfm')
 export const PreviewColumn = ({ selectedSectionSlugs, getTemplate }) => {
@@ -23,22 +24,18 @@ export const PreviewColumn = ({ selectedSectionSlugs, getTemplate }) => {
       <div>
         <div className="border-b border-gray-200">
           <nav className="-mb-px flex space-x-8" aria-label="Tabs">
-            <button
-              type="button"
-              className={`border-transparent ${isRendered ? 'text-emerald-500' : 'text-gray-500 hover:text-gray-700'
-                } whitespace-nowrap pb-3 px-1 border-b-2 font-medium text-sm focus:outline-none`}
+            <ColumnHeader.Tab
+              className="pb-3"
               onClick={() => handleToggle('rendered')}
             >
               {t('preview-column-preview')}
-            </button>
-            <button
-              type="button"
-              className={`border-transparent ${!isRendered ? 'text-emerald-500' : 'text-gray-500 hover:text-gray-700'
-                } whitespace-nowrap pb-3 px-1 border-b-2 font-medium text-sm focus:outline-none`}
+            </ColumnHeader.Tab>
+            <ColumnHeader.Tab
+              className="pb-3"
               onClick={() => handleToggle('raw')}
             >
               {t('preview-column-raw')}
-            </button>
+            </ColumnHeader.Tab>
           </nav>
         </div>
       </div>

@@ -5,6 +5,9 @@
 .full-screen {
   max-height: calc(100vh - 160px);
 }
+.drawer-height {
+  height: calc(100vh - 4.5rem);
+}
 
 .toggle-dark-mode {
   float: right;
