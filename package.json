@@ -12,6 +12,11 @@
     "format": "prettier --write . && git add -A .",
     "prepare": "husky install"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "prettier --write . && git add -A ."
+    }
+  },
   "dependencies": {
     "@dnd-kit/core": "^2.1.2",
     "@dnd-kit/modifiers": "^1.0.5",
