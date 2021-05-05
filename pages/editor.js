@@ -60,7 +60,7 @@ export default function Editor({ sectionTemplate }) {
           </div>
         </div>
       ) : (
-        <div className="min-w-[1440px]">
+        <div className="min-w-[100%]">
           <Head>
             <link rel="preconnect" href="https://fonts.gstatic.com" />
             <link
