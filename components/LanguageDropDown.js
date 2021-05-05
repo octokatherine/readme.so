@@ -18,6 +18,10 @@ const languageSupports = [
     route: '/it',
   },
   {
+    label: 'Deutsch',
+    route: '/de',
+  },
+  {
     label: 'Türkçe',
     route: '/tur',
   },
