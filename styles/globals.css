@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .full-screen {
-  max-height: calc(100vh - 160px);
+  height: calc(100vh - 160px);
 }
 
 .drawer-height {
@@ -14,6 +14,10 @@
   .drawer-height {
     height: unset;
   }
+}
+
+.preview-width {
+  width: 80vw;
 }
 
 .toggle-dark-mode {
