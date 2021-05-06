@@ -1,0 +1,16 @@
+{
+  "editor-desktop-optimized": "此站点已针对桌面显示进行优化",
+  "editor-visit-desktop": "请访问 readme.so 桌面版以创建 README！",
+  "nav-download": "下载",
+  "download-readme-generated": "README 已生成！",
+  "download-reach-out": "感谢使用 readme.so！有任何问题欢迎通过",
+  "download-feedback": "进行反馈。",
+  "download-coffee": "如果您觉得本产品对您有帮助，请考虑支持我一杯咖啡。",
+  "editor-column-editor": "编辑器",
+  "editor-select": "从左边选择一个模块开始编辑",
+  "preview-column-preview": "预览",
+  "preview-column-raw": "原始文本",
+  "section-column-section": "模块",
+  "section-column-click-edit": "点击下方的模块以编辑其内容",
+  "section-column-click-add": "点击下方的模块将其添加到您的 README 中"
+}
