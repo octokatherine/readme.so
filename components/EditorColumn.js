@@ -97,7 +97,9 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, them
           type="text"
           onChange={(e) => onEdit(e.target.value)}
           value={markdown}
-          className="full-screen rounded-sm border border-gray-500 w-full p-6 resize-none"
+          className={`full-screen rounded-sm border border-gray-500 w-full p-6 resize-none ${
+            theme === 'vs-dark' ? 'bg-gray-800 text-white' : ''
+          }`}
         />
       ) : (
         MonacoEditor && (
