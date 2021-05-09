@@ -5,6 +5,7 @@ import ColumnHeader from '../components/ColumnHeader'
 import { useTranslation } from 'next-i18next'
 import { TAB } from '../utils/constants'
 import Tabs from './Tabs'
+import useDeviceDetect from '../hooks/useDeviceDetect'
 
 const EditPreviewContainer = ({
   templates,
@@ -16,18 +17,16 @@ const EditPreviewContainer = ({
 }) => {
   const { t } = useTranslation('editor')
   const [toggleState, setToggleState] = useState({ theme: 'vs-dark', img: 'toggle_sun.svg' })
-  const [isMobile, setIsMobile] = useState(false)
   const [selectedTab, setSelectedTab] = useState(TAB.PREVIEW)
+  const { isMobile } = useDeviceDetect()
 
   const toggleTheme = () => {
     toggleDarkMode(toggleState, setToggleState)
   }
 
   useEffect(() => {
-    const newIsMobileValue = /Mobi|Android/i.test(navigator.userAgent)
-    setIsMobile(newIsMobileValue)
-    setSelectedTab(newIsMobileValue ? TAB.EDITOR : TAB.PREVIEW)
-  }, [])
+    setSelectedTab(isMobile ? TAB.EDITOR : TAB.PREVIEW)
+  }, [isMobile])
 
   const showEditorColumn = !isMobile || selectedTab === TAB.EDITOR
   const showPreviewColumn = !isMobile || selectedTab === TAB.PREVIEW || selectedTab === TAB.RAW
