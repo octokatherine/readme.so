@@ -12,5 +12,6 @@
   "preview-column-raw": "Rauw",
   "section-column-section": "Secties",
   "section-column-click-edit": "Klik op een sectie hieronder om de inhoud te bewerken",
-  "section-column-click-add": "Klik op een sectie hieronder om deze toe te voegen aan uw readme"
+  "section-column-click-add": "Klik op een sectie hieronder om deze toe te voegen aan uw readme",
+  "section-column-click-reset": "resetten"
 }
