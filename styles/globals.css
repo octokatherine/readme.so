@@ -29,6 +29,9 @@
     @apply bg-gray-50;
   }
 
+  div {
+    overscroll-behavior-y: contain;
+  }
   .logo {
     font-family: 'Mali', cursive;
   }
