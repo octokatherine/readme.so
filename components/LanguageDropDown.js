@@ -29,6 +29,10 @@ const languageSupports = [
     label: 'Nederlands',
     route: '/nl',
   },
+  {
+    label: 'Deutsch',
+    route: '/de',
+  }
 ]
 
 export function LanguageDropDown({ posts }) {
