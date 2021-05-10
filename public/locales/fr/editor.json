@@ -12,5 +12,6 @@
   "preview-column-raw": "Brut",
   "section-column-section": "Sections",
   "section-column-click-edit": "Cliquez sur une section ci-dessous pour modifier le contenu",
-  "section-column-click-add": "Cliquez sur une section ci-dessous pour l'ajouter à votre readme"
+  "section-column-click-add": "Cliquez sur une section ci-dessous pour l'ajouter à votre readme",
+  "section-column-click-reset": "réinitialiser"
 }
