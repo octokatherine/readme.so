@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-import { LanguageDropDown } from '../components/LanguageDropDown'
+import { LanguageDropDown } from 'components/LanguageDropDown'
 
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'

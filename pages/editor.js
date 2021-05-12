@@ -1,12 +1,12 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 
-import { DownloadModal } from '../components/DownloadModal'
-import { EditorColumn } from '../components/EditorColumn'
-import { Nav } from '../components/Nav'
-import { PreviewColumn } from '../components/PreviewColumn'
-import { SectionsColumn } from '../components/SectionsColumn'
-import sectionTemplates from '../data/index'
+import { DownloadModal } from 'components/DownloadModal'
+import { EditorColumn } from 'components/EditorColumn'
+import { Nav } from 'components/Nav'
+import { PreviewColumn } from 'components/PreviewColumn'
+import { SectionsColumn } from 'components/SectionsColumn'
+import sectionTemplates from 'data/index'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 

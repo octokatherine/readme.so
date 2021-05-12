@@ -32,7 +32,7 @@ const languageSupports = [
   {
     label: 'Deutsch',
     route: '/de',
-  }
+  },
 ]
 
 export function LanguageDropDown({ posts }) {
