@@ -12,5 +12,6 @@
   "preview-column-raw": "Crudo",
   "section-column-section": "Secciones",
   "section-column-click-edit": "Haga clic en una sección a continuación para editar el contenido.",
-  "section-column-click-add": "Haga clic en una sección a continuación para agregarla a su archivo Léame"
+  "section-column-click-add": "Haga clic en una sección a continuación para agregarla a su archivo Léame",
+  "section-column-click-reset": "Reiniciar"
 }

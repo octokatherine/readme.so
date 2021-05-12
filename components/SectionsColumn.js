@@ -96,6 +96,25 @@ export const SectionsColumn = ({
     localStorage.setItem('current-focused-slug', 'noEdit')
   }
 
+  const resetSelectedSections = () => {
+    let data = localStorage.getItem('current-slug-list')
+    if (data) {
+      const sectionResetConfirmed = window.confirm(
+        'All sections of your readme will be removed; to continue, click OK'
+      )
+      if (sectionResetConfirmed === true) {
+      let slugList = []
+      slugList = localStorage.getItem('current-slug-list').split(',')
+      slugList.forEach((entry) => {
+        setSectionSlugs((prev) => prev.filter((s) => s !== 'title-and-description'))
+      })
+      setSelectedSectionSlugs(['title-and-description'])
+      setFocusedSectionSlug('title-and-description')
+      localStorage.setItem('current-focused-slug', 'noEdit')
+      }
+    }
+  }
+
   useEffect(() => {
     setFocusedSectionSlug(localStorage.getItem('current-focused-slug'))
   }, [focusedSectionSlug])
@@ -108,6 +127,16 @@ export const SectionsColumn = ({
     <div className="sections w-80">
       <h3 className="px-1 text-sm font-medium border-b-2 border-transparent text-emerald-500 whitespace-nowrap focus:outline-none">
         {t('section-column-section')}
+        {
+          <button
+            className="focus:outline-none float-right"
+            type="button"
+            onClick={resetSelectedSections}
+          > 
+            <span className="pl-2 float-right">Reset</span>
+            <img className="w-auto h-5 inline-block" src="reset.svg" alt="Delete" />
+          </button>
+        }
       </h3>
       <div className="px-3 pr-4 overflow-y-scroll full-screen">
         {selectedSectionSlugs.length > 0 && (

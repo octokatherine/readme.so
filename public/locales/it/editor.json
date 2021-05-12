@@ -12,5 +12,6 @@
   "preview-column-raw": "Grezzo",
   "section-column-section": "Sezioni",
   "section-column-click-edit": "Clicca su una sezione sottostante per modificarne i contenuti.",
-  "section-column-click-add": "Clicca su una sezione sottostante per aggiungerla al tuo readme"
+  "section-column-click-add": "Clicca su una sezione sottostante per aggiungerla al tuo readme",
+  "section-column-click-reset": "Ripristina"
 }
