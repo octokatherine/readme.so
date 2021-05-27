@@ -26,13 +26,17 @@ const languageSupports = [
     route: '/fil',
   },
   {
+    label: 'Bahasa Indonesia',
+    route: '/id',
+  },
+  {
     label: 'Nederlands',
     route: '/nl',
   },
   {
     label: 'Deutsch',
     route: '/de',
-  }
+  },
 ]
 
 export function LanguageDropDown({ posts }) {

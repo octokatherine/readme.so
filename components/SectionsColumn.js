@@ -103,14 +103,14 @@ export const SectionsColumn = ({
         'All sections of your readme will be removed; to continue, click OK'
       )
       if (sectionResetConfirmed === true) {
-      let slugList = []
-      slugList = localStorage.getItem('current-slug-list').split(',')
-      slugList.forEach((entry) => {
-        setSectionSlugs((prev) => prev.filter((s) => s !== 'title-and-description'))
-      })
-      setSelectedSectionSlugs(['title-and-description'])
-      setFocusedSectionSlug('title-and-description')
-      localStorage.setItem('current-focused-slug', 'noEdit')
+        let slugList = []
+        slugList = localStorage.getItem('current-slug-list').split(',')
+        slugList.forEach((entry) => {
+          setSectionSlugs((prev) => prev.filter((s) => s !== 'title-and-description'))
+        })
+        setSelectedSectionSlugs(['title-and-description'])
+        setFocusedSectionSlug('title-and-description')
+        localStorage.setItem('current-focused-slug', 'noEdit')
       }
     }
   }
@@ -132,7 +132,7 @@ export const SectionsColumn = ({
             className="focus:outline-none float-right"
             type="button"
             onClick={resetSelectedSections}
-          > 
+          >
             <span className="pl-2 float-right">Reset</span>
             <img className="w-auto h-5 inline-block" src="reset.svg" alt="Delete" />
           </button>
