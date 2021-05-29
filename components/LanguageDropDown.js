@@ -32,7 +32,11 @@ const languageSupports = [
   {
     label: 'Deutsch',
     route: '/de',
-  }
+  },
+  {
+    label: 'Português',
+    route: '/pt',
+  },
 ]
 
 export function LanguageDropDown({ posts }) {
@@ -41,7 +45,9 @@ export function LanguageDropDown({ posts }) {
   return (
     <div className="relative inline-block group">
       <button className="inline-flex items-center px-4 py-2 text-gray-800 rounded">
-        <span className="mr-1">{t('language')}</span>
+        <span className="mr-1">
+          <img src="language.svg" alt="language selector" className="w-auto h-10 mr-1" />
+        </span>
         <svg
           className="w-3 h-4 fill-current"
           xmlns="http://www.w3.org/2000/svg"
