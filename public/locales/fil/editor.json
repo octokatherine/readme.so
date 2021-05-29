@@ -12,5 +12,6 @@
   "preview-column-raw": "Raw",
   "section-column-section": "Mga Seksyon",
   "section-column-click-edit": "Mag-click sa isang seksyon sa ibaba upang mai-edit ang mga nilalaman",
-  "section-column-click-add": "Mag-click sa isang seksyon sa ibaba upang idagdag ito sa iyong readme"
+  "section-column-click-add": "Mag-click sa isang seksyon sa ibaba upang idagdag ito sa iyong readme",
+  "section-column-click-reset": "nollaa"
 }
