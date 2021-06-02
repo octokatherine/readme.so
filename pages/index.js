@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import { LanguageDropDown } from '../components/LanguageDropDown'
 
@@ -8,7 +9,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const Home = () => {
   const { t } = useTranslation('common')
-
+  const router = useRouter()
   return (
     <>
       <Head>
@@ -156,11 +157,19 @@ const Home = () => {
               <div className="flex-1 w-full bg-gray-800" />
             </div>
             <div className="px-4 mx-auto max-w-7xl sm:px-6">
-              <img
-                className="relative rounded-lg shadow-lg"
-                src="/screenshot.png"
-                alt="App screenshot"
-              />
+              {router.locale == 'ar' ? (
+                <img
+                  className="relative rounded-lg shadow-lg"
+                  src="/screenshot-ar.png"
+                  alt="ar app"
+                />
+              ) : (
+                <img
+                  className="relative rounded-lg shadow-lg"
+                  src="/screenshot.png"
+                  alt="App screenshot"
+                />
+              )}
             </div>
           </div>
         </div>
