@@ -1,18 +1,17 @@
 import '../styles/globals.css'
 
 import { DefaultSeo } from 'next-seo'
-import App from 'next/app'
+import { appWithTranslation } from 'next-i18next'
 
 import SEO from '../next-seo.config.js'
 
-export default class MyApp extends App {
-  render() {
-    const { Component, pageProps } = this.props
-    return (
-      <>
-        <DefaultSeo {...SEO} />
-        <Component {...pageProps} />
-      </>
-    )
-  }
+const MyApp = ({ Component, pageProps }) => {
+  return (
+    <>
+      <DefaultSeo {...SEO} />
+      <Component {...pageProps} />
+    </>
+  )
 }
+
+export default appWithTranslation(MyApp)

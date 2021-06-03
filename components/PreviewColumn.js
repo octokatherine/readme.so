@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import RawPreview from './RawPreview'
+import { useTranslation } from 'next-i18next'
+
 const gfm = require('remark-gfm')
 export const PreviewColumn = ({ selectedSectionSlugs, getTemplate }) => {
   const [selectedTab, setSelectedTab] = useState('rendered')
+  selectedSectionSlugs = [...new Set(selectedSectionSlugs)]
   const markdown = selectedSectionSlugs.reduce((acc, section) => {
     const template = getTemplate(section)
     return `${acc}${template.markdown}`
@@ -13,6 +16,8 @@ export const PreviewColumn = ({ selectedSectionSlugs, getTemplate }) => {
   }
 
   const isRendered = selectedTab === 'rendered'
+
+  const { t } = useTranslation('editor')
 
   return (
     <div className="px-3 flex-1">
@@ -26,7 +31,7 @@ export const PreviewColumn = ({ selectedSectionSlugs, getTemplate }) => {
               } whitespace-nowrap pb-3 px-1 border-b-2 font-medium text-sm focus:outline-none`}
               onClick={() => handleToggle('rendered')}
             >
-              Preview
+              {t('preview-column-preview')}
             </button>
             <button
               type="button"
@@ -35,7 +40,7 @@ export const PreviewColumn = ({ selectedSectionSlugs, getTemplate }) => {
               } whitespace-nowrap pb-3 px-1 border-b-2 font-medium text-sm focus:outline-none`}
               onClick={() => handleToggle('raw')}
             >
-              Raw
+              {t('preview-column-raw')}
             </button>
           </nav>
         </div>
