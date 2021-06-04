@@ -104,7 +104,7 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="relative w-28 items-center flex-1 md:absolute md:inset-y-0 md:right-0">
+                <div className="relative items-center flex-1 w-28 md:absolute md:inset-y-0 md:right-0">
                   <LanguageDropDown />
                 </div>
               </nav>
@@ -179,7 +179,7 @@ const Home = () => {
             </h2>
             <div className="flex justify-center mt-4">
               <a
-                href="https://github.com/katherinepeterson/readme.so"
+                href="https://github.com/octokatherine/readme.so"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="github logo"
