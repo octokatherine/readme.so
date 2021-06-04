@@ -224,7 +224,7 @@ function App() {
   },
   {
     slug: 'acknowledgement',
-    name: 'Acknowledgements',
+    name: '致谢',
     markdown: `
 ## 致谢
 
