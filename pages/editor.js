@@ -67,7 +67,7 @@ export default function Editor({ sectionTemplate }) {
               href="https://fonts.googleapis.com/css2?family=Mali&display=swap"
               rel="stylesheet"
             />
-            <script
+            {/* <script
               data-name="BMC-Widget"
               data-cfasync="false"
               src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
@@ -78,7 +78,7 @@ export default function Editor({ sectionTemplate }) {
               data-position="Right"
               data-x_margin="18"
               data-y_margin="18"
-            ></script>
+            ></script> */}
           </Head>
           <Nav
             selectedSectionSlugs={selectedSectionSlugs}

@@ -34,10 +34,11 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
 
   const handleHotkey = (event) => {
     const { code, ctrlKey, repeat } = event
-
     if (code === 'KeyE' && repeat == false && ctrlKey === false) {
-      if (!editorRef.current.hasWidgetFocus()) event.preventDefault()
-      editorRef.current.focus()
+      if (editorRef.current && !editorRef.current.hasWidgetFocus()) {
+        event.preventDefault()
+        editorRef.current.focus()
+      }
     }
   }
 
