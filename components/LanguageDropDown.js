@@ -37,6 +37,10 @@ const languageSupports = [
     label: 'Português',
     route: '/pt',
   },
+  {
+    label: 'বাংলা',
+    route: '/bn',
+  },
 ]
 
 export function LanguageDropDown({ posts }) {
