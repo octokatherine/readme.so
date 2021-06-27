@@ -1,45 +1,7 @@
 import { useTranslation } from 'next-i18next'
+import { language_supports } from '../data'
 
-const languageSupports = [
-  {
-    label: 'English',
-    route: '/',
-  },
-  {
-    label: 'Français',
-    route: '/fr',
-  },
-  {
-    label: 'Español',
-    route: '/es',
-  },
-  {
-    label: 'Italiano',
-    route: '/it',
-  },
-  {
-    label: 'Türkçe',
-    route: '/tr',
-  },
-  {
-    label: 'Filipino',
-    route: '/fil',
-  },
-  {
-    label: 'Nederlands',
-    route: '/nl',
-  },
-  {
-    label: 'Deutsch',
-    route: '/de',
-  },
-  {
-    label: 'Português',
-    route: '/pt',
-  },
-]
-
-export function LanguageDropDown({ posts }) {
+export function LanguageDropDown() {
   const { t } = useTranslation('common')
 
   return (
@@ -57,8 +19,8 @@ export function LanguageDropDown({ posts }) {
         </svg>
       </button>
       <ul className="absolute pt-1 text-gray-800 transition-transform origin-top scale-y-0 transform-gpu group-hover:scale-y-100 focus-within:scale-y-100">
-        {languageSupports.map(({ label, route }, index) => (
-          <li key={`${label}_${index}`} className="">
+        {language_supports.map(({ label, route }, index) => (
+          <li key={`${label}_${index}`}>
             <a
               className="block w-32 px-4 py-2 whitespace-no-wrap bg-gray-200 hover:bg-emerald-400"
               href={route}
@@ -67,7 +29,7 @@ export function LanguageDropDown({ posts }) {
             </a>
           </li>
         ))}
-        <li className="">
+        <li>
           <a
             className="block w-32 px-4 py-2 text-xs break-words whitespace-no-wrap bg-gray-200 hover:bg-emerald-400"
             href="https://github.com/octokatherine/readme.so/issues/new"
