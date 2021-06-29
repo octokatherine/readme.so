@@ -218,7 +218,7 @@ Testleri çalıştırmak için aşağıdaki komutu çalıştırın
     markdown: `
 ## Yazarlar ve Teşekkür
 
-- [@katherinepeterson](https://www.github.com/katherinepeterson) tasarım ve geliştirme için.
+- [@katherinepeterson](https://www.github.com/octokatherine) tasarım ve geliştirme için.
 
   `,
   },

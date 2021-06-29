@@ -96,22 +96,18 @@ export const SectionsColumn = ({
     localStorage.setItem('current-focused-slug', 'noEdit')
   }
 
-  const resetSelectedSections = () => {
-    let data = localStorage.getItem('current-slug-list')
-    if (data) {
-      const sectionResetConfirmed = window.confirm(
-        'All sections of your readme will be removed; to continue, click OK'
-      )
-      if (sectionResetConfirmed === true) {
-        let slugList = []
-        slugList = localStorage.getItem('current-slug-list').split(',')
-        slugList.forEach((entry) => {
-          setSectionSlugs((prev) => prev.filter((s) => s !== 'title-and-description'))
-        })
-        setSelectedSectionSlugs(['title-and-description'])
-        setFocusedSectionSlug('title-and-description')
-        localStorage.setItem('current-focused-slug', 'noEdit')
-      }
+    const resetSelectedSections = () => {
+    const data = localStorage.getItem('current-slug-list')
+
+    const sectionResetConfirmed = window.confirm(
+      'All sections of your readme will be removed; to continue, click OK'
+    )
+    if (sectionResetConfirmed === true) {
+      const slugList = data ? data.split(',') : []
+      setSectionSlugs((prev) => [...prev, ...slugList].filter((s) => s !== 'title-and-description'))
+      setSelectedSectionSlugs(['title-and-description'])
+      setFocusedSectionSlug('title-and-description')
+      localStorage.setItem('current-focused-slug', 'noEdit')
     }
   }
 

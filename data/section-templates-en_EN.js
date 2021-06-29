@@ -218,7 +218,7 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
     markdown: `
 ## Authors
 
-- [@katherinepeterson](https://www.github.com/katherinepeterson)
+- [@katherinepeterson](https://www.github.com/octokatherine)
 
   `,
   },
