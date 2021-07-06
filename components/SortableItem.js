@@ -50,7 +50,7 @@ export function SortableItem(props) {
           aria-label="Delete section"
           onClick={onClickTrash}
         >
-          <img className="w-auto h-5" src="trash.svg" alt="" />
+          <img className="w-auto h-5" src="trash.svg" alt="trash-icon" />
         </button>
       )}
     </li>
