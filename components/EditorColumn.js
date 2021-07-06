@@ -43,6 +43,13 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
 
   const handleEditorDidMount = (editor) => {
     editorRef.current = editor
+    setEditorColorThemeFromLocalStorage()
+  }
+
+  const setEditorColorThemeFromLocalStorage = () => {
+    if (localStorage.getItem('editor-color-theme') == 'light') {
+      setToggleState({ theme: 'light', img: 'toggle_moon.svg' })
+    }
   }
 
   useEffect(() => {
@@ -100,7 +107,11 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates }) =>
 }
 
 const toggleDarkMode = (toggleState, setToggleState) => {
-  toggleState.theme == 'vs-dark'
-    ? setToggleState({ theme: 'light', img: 'toggle_moon.svg' })
-    : setToggleState({ theme: 'vs-dark', img: 'toggle_sun.svg' })
+  if (toggleState.theme == 'vs-dark') {
+    setToggleState({ theme: 'light', img: 'toggle_moon.svg' })
+    localStorage.setItem('editor-color-theme', 'light')
+  } else {
+    setToggleState({ theme: 'vs-dark', img: 'toggle_sun.svg' })
+    localStorage.setItem('editor-color-theme', 'vs-dark')
+  }
 }
