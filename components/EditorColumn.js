@@ -2,7 +2,13 @@ import { useTranslation } from 'next-i18next'
 import { useEffect, useState, useRef } from 'react'
 import useDeviceDetect from '../hooks/useDeviceDetect'
 
-export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, theme }) => {
+export const EditorColumn = ({
+  focusedSectionSlug,
+  templates,
+  setTemplates,
+  theme,
+  setToggleState,
+}) => {
   const getMarkdown = () => {
     const section = templates.find((s) => s.slug === focusedSectionSlug)
     return section ? section.markdown : ''
@@ -63,6 +69,13 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, them
 
   const handleEditorDidMount = (editor) => {
     monacoEditorRef.current = editor
+    setEditorColorThemeFromLocalStorage()
+  }
+
+  const setEditorColorThemeFromLocalStorage = () => {
+    if (localStorage.getItem('editor-color-theme') == 'light') {
+      setToggleState({ theme: 'light', img: 'toggle_moon.svg' })
+    }
   }
 
   useEffect(() => {

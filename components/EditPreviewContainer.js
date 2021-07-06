@@ -67,6 +67,7 @@ const EditPreviewContainer = ({
             templates={templates}
             setTemplates={setTemplates}
             theme={toggleState.theme}
+            setToggleState={setToggleState}
           />
         </div>
       ) : null}
@@ -105,9 +106,13 @@ const EditPreviewContainer = ({
 }
 
 const toggleDarkMode = (toggleState, setToggleState) => {
-  toggleState.theme == 'vs-dark'
-    ? setToggleState({ theme: 'light', img: 'toggle_moon.svg' })
-    : setToggleState({ theme: 'vs-dark', img: 'toggle_sun.svg' })
+  if (toggleState.theme == 'vs-dark') {
+    setToggleState({ theme: 'light', img: 'toggle_moon.svg' })
+    localStorage.setItem('editor-color-theme', 'light')
+  } else {
+    setToggleState({ theme: 'vs-dark', img: 'toggle_sun.svg' })
+    localStorage.setItem('editor-color-theme', 'vs-dark')
+  }
 }
 
 export default EditPreviewContainer
