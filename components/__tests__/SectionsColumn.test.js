@@ -1,4 +1,5 @@
-import { render } from '@testing-library/react'
+import { render, screen, waitForElementToBeRemoved } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { SectionsColumn } from '../SectionsColumn'
 
@@ -22,5 +23,14 @@ describe('<SectionsColumn />', () => {
   it('should render', () => {
     const { container } = render(<SectionsColumn {...props} />)
     expect(container).toBeInTheDocument()
+  })
+
+  it('should remove a selected section', () => {
+    render(<SectionsColumn {...props} />)
+    const trashIcon = screen.getByAltText('trash-icon')
+
+    expect(trashIcon).toBeInTheDocument()
+    userEvent.click(trashIcon)
+    waitForElementToBeRemoved(trashIcon)
   })
 })
