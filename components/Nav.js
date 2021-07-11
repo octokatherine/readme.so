@@ -36,7 +36,7 @@ export const Nav = ({
     <nav className="flex justify-between p-4 bg-gray-800 align-center w-full">
       <Link href="/">
         <a className="focus:outline-none focus:ring-2 focus:ring-emerald-400 flex items-center">
-          <img className="w-auto h-8" src="readme.svg" alt="readme.so logo" />
+          <img className="w-auto h-12" src="readme.svg" alt="readme.so logo" />
         </a>
       </Link>
       <div className="flex flex-row-reverse md:flex-row">
