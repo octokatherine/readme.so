@@ -32,9 +32,6 @@
   div {
     overscroll-behavior-y: contain;
   }
-  .logo {
-    font-family: 'Mali', cursive;
-  }
 
   .preview p {
     margin-bottom: 16px;

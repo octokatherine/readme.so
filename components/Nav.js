@@ -37,7 +37,6 @@ export const Nav = ({
       <Link href="/">
         <a className="focus:outline-none focus:ring-2 focus:ring-emerald-400 flex items-center">
           <img className="w-auto h-8" src="readme.svg" alt="readme.so logo" />
-          <span className="ml-2 text-white logo text-md">readme.so</span>
         </a>
       </Link>
       <div className="flex flex-row-reverse md:flex-row">

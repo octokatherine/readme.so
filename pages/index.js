@@ -12,8 +12,6 @@ const Home = () => {
   return (
     <>
       <Head>
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Mali&display=swap" rel="stylesheet" />
         <script
           async
           defer
@@ -98,7 +96,6 @@ const Home = () => {
                           src="readme.svg"
                           alt="readme.so logo"
                         />
-                        <span className="ml-2 -mb-2 text-gray-800 logo text-md">readme.so</span>
                       </a>
                     </Link>
                   </div>
