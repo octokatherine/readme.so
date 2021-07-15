@@ -41,6 +41,10 @@ export const languageSupports = [
     label: 'Indonesia',
     route: '/id',
   },
+  {
+    label: 'Swahili',
+    route: '/sw',
+  },
 ]
 
 export function LanguageDropDown({ posts }) {
