@@ -40,6 +40,9 @@ export const languageSupports = [
   {
     label: '繁體中文',
     route: '/zhtw',
+  {
+    label: 'Indonesia',
+    route: '/id',
   },
 ]
 
