@@ -2,17 +2,13 @@ import {
   closestCenter,
   DndContext,
   KeyboardSensor,
-  PointerSensor,
+  MouseSensor,
+  TouchSensor,
   useSensor,
   useSensors,
 } from '@dnd-kit/core'
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers'
-import {
-  arrayMove,
-  SortableContext,
-  sortableKeyboardCoordinates,
-  verticalListSortingStrategy,
-} from '@dnd-kit/sortable'
+import { arrayMove, SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable'
 
 import { SortableItem } from './SortableItem'
 import { useTranslation } from 'next-i18next'
@@ -28,7 +24,8 @@ export const SectionsColumn = ({
   getTemplate,
 }) => {
   const sensors = useSensors(
-    useSensor(PointerSensor),
+    useSensor(MouseSensor),
+    useSensor(TouchSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     })

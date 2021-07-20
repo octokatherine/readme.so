@@ -3,7 +3,21 @@
 @tailwind utilities;
 
 .full-screen {
-  max-height: calc(100vh - 160px);
+  height: calc(100vh - 160px);
+}
+
+.drawer-height {
+  height: calc(100vh - 4.5rem);
+}
+
+@screen md {
+  .drawer-height {
+    height: unset;
+  }
+}
+
+.preview-width {
+  width: 80vw;
 }
 
 .toggle-dark-mode {
@@ -15,8 +29,8 @@
     @apply bg-gray-50;
   }
 
-  .logo {
-    font-family: 'Mali', cursive;
+  div {
+    overscroll-behavior-y: contain;
   }
 
   .preview p {

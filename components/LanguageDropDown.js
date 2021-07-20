@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next'
 
-const languageSupports = [
+export const languageSupports = [
   {
     label: 'English',
     route: '/',
@@ -36,6 +36,10 @@ const languageSupports = [
   {
     label: 'Português',
     route: '/pt',
+  },
+  {
+    label: 'Indonesia',
+    route: '/id',
   },
 ]
 
