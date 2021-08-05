@@ -1,12 +1,12 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-
 import { DownloadModal } from '../components/DownloadModal'
+import EditPreviewContainer from '../components/EditPreviewContainer'
 import { Nav } from '../components/Nav'
 import { SectionsColumn } from '../components/SectionsColumn'
 import sectionTemplates from '../data/index'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import EditPreviewContainer from '../components/EditPreviewContainer'
+import useLocalStorage from '../hooks/useLocalStorage'
 
 export default function Editor({ sectionTemplate }) {
   const [selectedSectionSlugs, setSelectedSectionSlugs] = useState([])
@@ -15,6 +15,13 @@ export default function Editor({ sectionTemplate }) {
   const [showModal, setShowModal] = useState(false)
   const [templates, setTemplates] = useState(sectionTemplate)
   const [showDrawer, toggleDrawer] = useState(false)
+  const { backup } = useLocalStorage()
+
+  useEffect(() => {
+    if (backup) {
+      setTemplates(backup)
+    }
+  }, [backup])
 
   const getTemplate = (slug) => {
     return templates.find((t) => t.slug === slug)
@@ -77,6 +84,8 @@ export default function Editor({ sectionTemplate }) {
             setSectionSlugs={setSectionSlugs}
             setFocusedSectionSlug={setFocusedSectionSlug}
             focusedSectionSlug={focusedSectionSlug}
+            originalTemplate={sectionTemplate}
+            setTemplates={setTemplates}
             getTemplate={getTemplate}
           />
         </div>

@@ -9,10 +9,10 @@ import {
 } from '@dnd-kit/core'
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers'
 import { arrayMove, SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable'
-
-import { SortableItem } from './SortableItem'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
+import useLocalStorage from '../hooks/useLocalStorage'
+import { SortableItem } from './SortableItem'
 
 export const SectionsColumn = ({
   selectedSectionSlugs,
@@ -21,6 +21,8 @@ export const SectionsColumn = ({
   setSectionSlugs,
   setFocusedSectionSlug,
   focusedSectionSlug,
+  originalTemplate,
+  setTemplates,
   getTemplate,
 }) => {
   const sensors = useSensors(
@@ -35,6 +37,7 @@ export const SectionsColumn = ({
   const [addAction, setAddAction] = useState(false)
   const [currentSlugList, setCurrentSlugList] = useState([])
   const [slugsFromPreviousSession, setSlugsFromPreviousSession] = useState([])
+  const { deleteBackup } = useLocalStorage()
 
   useEffect(() => {
     var slugsFromPreviousSession =
@@ -94,21 +97,20 @@ export const SectionsColumn = ({
   }
 
   const resetSelectedSections = () => {
-    let data = localStorage.getItem('current-slug-list')
-    if (data) {
-      const sectionResetConfirmed = window.confirm(
-        'All sections of your readme will be removed; to continue, click OK'
-      )
-      if (sectionResetConfirmed === true) {
-        let slugList = []
-        slugList = localStorage.getItem('current-slug-list').split(',')
-        slugList.forEach((entry) => {
-          setSectionSlugs((prev) => prev.filter((s) => s !== 'title-and-description'))
-        })
-        setSelectedSectionSlugs(['title-and-description'])
-        setFocusedSectionSlug('title-and-description')
-        localStorage.setItem('current-focused-slug', 'noEdit')
-      }
+    const data = localStorage.getItem('current-slug-list')
+
+    const sectionResetConfirmed = window.confirm(
+      'All sections of your readme will be removed; to continue, click OK'
+    )
+    if (sectionResetConfirmed === true) {
+      const slugList = data ? data.split(',') : []
+
+      setSectionSlugs((prev) => [...prev, ...slugList].filter((s) => s !== 'title-and-description'))
+      setSelectedSectionSlugs(['title-and-description'])
+      setFocusedSectionSlug('title-and-description')
+      localStorage.setItem('current-focused-slug', 'noEdit')
+      setTemplates(originalTemplate)
+      deleteBackup()
     }
   }
 
