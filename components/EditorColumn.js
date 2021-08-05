@@ -1,6 +1,7 @@
 import { useTranslation } from 'next-i18next'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import useDeviceDetect from '../hooks/useDeviceDetect'
+import useLocalStorage from '../hooks/useLocalStorage'
 
 export const EditorColumn = ({
   focusedSectionSlug,
@@ -13,10 +14,12 @@ export const EditorColumn = ({
     const section = templates.find((s) => s.slug === focusedSectionSlug)
     return section ? section.markdown : ''
   }
+
   const [markdown, setMarkdown] = useState(getMarkdown())
   const [isFocused, setFocus] = useState(false)
   const { isMobile } = useDeviceDetect()
   const [MonacoEditor, setMonacoEditor] = useState(null)
+  const { saveBackup } = useLocalStorage()
 
   const monacoEditorRef = useRef(null)
   const textEditorRef = useRef(null)
@@ -24,18 +27,18 @@ export const EditorColumn = ({
   useEffect(() => {
     const markdown = getMarkdown()
     setMarkdown(markdown)
-  }, [focusedSectionSlug])
+  }, [focusedSectionSlug, templates])
 
   const onEdit = (val) => {
     setMarkdown(val)
-    setTemplates((prev) => {
-      return prev.map((template) => {
-        if (template.slug === focusedSectionSlug) {
-          return { ...template, markdown: val }
-        }
-        return template
-      })
+    const newTemplates = templates.map((template) => {
+      if (template.slug === focusedSectionSlug) {
+        return { ...template, markdown: val }
+      }
+      return template
     })
+    setTemplates(newTemplates)
+    saveBackup(newTemplates)
   }
 
   const editorHasFocus = () => {
