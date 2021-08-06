@@ -1,0 +1,71 @@
+{
+  "name": "readme.so",
+  "display": "standalone",
+  "description": "Use readme.so's markdown editor and ready made templates to easily create a simple README for your repositories",
+  "start_url": "/",
+  "theme_color": "#10B981",
+  "background_color": "#FFF",
+  "shortcuts": [
+    {
+      "name": "Editor",
+      "url": "/editor",
+      "icons": [
+        {
+          "src": "/icons/icon-142x142.png",
+          "sizes": "142x142"
+        },
+        {
+          "src": "/icons/icon-176x176.png",
+          "sizes": "176x176"
+        },
+        {
+          "src": "/icons/icon-600x600.png",
+          "sizes": "600x600"
+        }
+      ]
+    }
+  ],
+  "icons": [
+    {
+      "src": "/icons/icon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-142x142.png",
+      "sizes": "142x142",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-176x176.png",
+      "sizes": "176x176",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-600x600.png",
+      "sizes": "600x600",
+      "type": "image/png"
+    },
+    {
+      "src": "/maskable_icon.png",
+      "sizes": "176x176",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
