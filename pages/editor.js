@@ -84,6 +84,7 @@ export default function Editor({ sectionTemplate }) {
             setSectionSlugs={setSectionSlugs}
             setFocusedSectionSlug={setFocusedSectionSlug}
             focusedSectionSlug={focusedSectionSlug}
+            templates={templates}
             originalTemplate={sectionTemplate}
             setTemplates={setTemplates}
             getTemplate={getTemplate}
