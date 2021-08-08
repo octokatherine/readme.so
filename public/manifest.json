@@ -3,6 +3,7 @@
   "display": "standalone",
   "description": "Use readme.so's markdown editor and ready made templates to easily create a simple README for your repositories",
   "start_url": "/",
+  "scope": "/",
   "theme_color": "#10B981",
   "background_color": "#FFF",
   "shortcuts": [

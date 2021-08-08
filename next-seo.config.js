@@ -18,8 +18,8 @@ export default {
     },
     {
       rel: 'apple-touch-icon',
-      href: '/readme.png',
-      sizes: '100x100',
+      href: '/icons/icon-96x96.png',
+      sizes: '96x96',
     },
     {
       rel: 'manifest',
