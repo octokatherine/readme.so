@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next'
 
-const languageSupports = [
+export const languageSupports = [
   {
     label: 'English',
     route: '/',
@@ -37,6 +37,10 @@ const languageSupports = [
     label: 'Português',
     route: '/pt',
   },
+  {
+    label: 'Indonesia',
+    route: '/id',
+  },
 ]
 
 export function LanguageDropDown({ posts }) {
@@ -56,7 +60,7 @@ export function LanguageDropDown({ posts }) {
           <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
         </svg>
       </button>
-      <ul className="absolute text-gray-800 pt-1 origin-top transform-gpu transition-transform scale-y-0 group-hover:scale-y-100 focus-within:scale-y-100">
+      <ul className="absolute pt-1 text-gray-800 transition-transform origin-top scale-y-0 transform-gpu group-hover:scale-y-100 focus-within:scale-y-100">
         {languageSupports.map(({ label, route }, index) => (
           <li key={`${label}_${index}`} className="">
             <a
@@ -70,7 +74,7 @@ export function LanguageDropDown({ posts }) {
         <li className="">
           <a
             className="block w-32 px-4 py-2 text-xs break-words whitespace-no-wrap bg-gray-200 hover:bg-emerald-400"
-            href="https://github.com/katherinepeterson/readme.so/issues/new"
+            href="https://github.com/octokatherine/readme.so/issues/new"
             target="_blank"
             rel="noopener noreferrer"
           >

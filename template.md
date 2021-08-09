@@ -129,7 +129,7 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 
 ## Authors and Acknowledgement
 
-- [@katherinepeterson](https://www.github.com/katherinepeterson) for development and design.
+- [@katherinepeterson](https://www.github.com/octokatherine) for development and design.
 
 ## Support
 
