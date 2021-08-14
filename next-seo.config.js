@@ -6,6 +6,25 @@ export default {
       property: 'keywords',
       content: 'readme, easiest, create, markdown, git, github, gitlab',
     },
+    {
+      name: 'theme_color',
+      content: '#10B981',
+    },
+  ],
+  additionalLinkTags: [
+    {
+      rel: 'icon',
+      href: '/favicon.ico',
+    },
+    {
+      rel: 'apple-touch-icon',
+      href: '/icons/icon-96x96.png',
+      sizes: '96x96',
+    },
+    {
+      rel: 'manifest',
+      href: '/manifest.json',
+    },
   ],
   openGraph: {
     type: 'website',
