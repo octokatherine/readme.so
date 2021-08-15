@@ -121,24 +121,16 @@ const Home = () => {
                       </a>
                     </Link>
                   </span>
-                  <a
-                    className="mt-3"
-                    href="https://www.producthunt.com/posts/readme-so?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-readme-so"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=291731&theme=light"
-                      alt="readme.so - Easily create the perfect readme for your project | Product Hunt"
-                      style={{ width: '250px', height: '54px' }}
-                      width="250"
-                      height="54"
-                    />
-                  </a>
                 </div>
               </div>
-              <div className="text-center">
-                <p className="mx-auto mt-3 text-sm text-gray-900">{t('100-free')}</p>
+              <div className="flex justify-center items-center mt-3">
+                <iframe
+                  src="https://github.com/sponsors/octokatherine/button"
+                  title="Sponsor octokatherine"
+                  height="35"
+                  width="116"
+                  className="border-0"
+                ></iframe>
               </div>
             </div>
           </div>
