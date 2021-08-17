@@ -93,7 +93,6 @@ export const SectionsColumn = ({
     localStorage.setItem('current-focused-slug', 'noEdit')
   }
 
-
   const resetSelectedSections = () => {
     let data = localStorage.getItem('current-slug-list')
     if (data) {
