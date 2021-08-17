@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next'
 export const languageSupports = [
   {
     label: 'English',
-    route: '/',
+    route: '/en',
   },
   {
     label: 'Français',
@@ -40,6 +40,22 @@ export const languageSupports = [
   {
     label: 'Português',
     route: '/pt',
+  },
+  {
+    label: '日本語',
+    route: '/ja',
+  },
+  {
+    label: 'Indonesia',
+    route: '/id',
+  },
+  {
+    label: 'Swahili',
+    route: '/sw',
+  },
+  {
+    label: 'বাংলা',
+    route: '/bn',
   },
 ]
 

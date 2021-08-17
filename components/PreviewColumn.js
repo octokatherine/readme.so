@@ -1,4 +1,5 @@
 import ReactMarkdown from 'react-markdown'
+
 import { TAB } from '../utils/constants'
 import RawPreview from './RawPreview'
 
@@ -19,7 +20,17 @@ export const PreviewColumn = ({ selectedSectionSlugs, getTemplate, selectedTab }
       }`}
     >
       {showPreview ? (
-        <ReactMarkdown plugins={[gfm]} children={markdown} />
+        <ReactMarkdown
+          plugins={[gfm]}
+          children={markdown}
+          renderers={{
+            link: (props) => (
+              <a href={props.href} target="_blank">
+                {props.children}
+              </a>
+            ),
+          }}
+        />
       ) : (
         <RawPreview text={markdown} />
       )}

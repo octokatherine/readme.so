@@ -1,11 +1,10 @@
 {
-  "title": "Cara termudah untuk membuat sebuah",
+  "title": "Cara termudah untuk membuat",
   "readme": "README",
-  "description": "Dengan editor kami yang sederhana, Anda dapat dengan cepat menambah dan menyesuaikan semua bagian yang Anda butuhkan ke dalam file README proyek Anda",
-  "get-started": "Mulai",
-  "100-free": "Gratis 100%",
+  "description": "Editor sederhana kami memungkinkan Anda dengan cepat untuk menambahkan dan menyesuaikan semua bagian yang Anda butuhkan untuk README proyek Anda",
+  "get-started": "Persiapan",
   "made-with-love": "Dibuat dengan ",
   "by": " oleh",
   "language": "Bahasa",
-  "translation-error": "Terjemahan Tidak Tepat?"
+  "translation-error": "Terjemahan salah?"
 }
