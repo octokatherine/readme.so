@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next'
 export const languageSupports = [
   {
     label: 'English',
-    route: '/',
+    route: '/en',
   },
   {
     label: 'Français',
