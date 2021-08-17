@@ -40,13 +40,18 @@ export const languageSupports = [
   {
     label: '日本語',
     route: '/ja',
-  }
+  },
+  {
     label: 'Indonesia',
     route: '/id',
   },
   {
     label: 'Swahili',
     route: '/sw',
+  },
+  {
+    label: 'বাংলা',
+    route: '/bn',
   },
 ]
 
