@@ -1,6 +1,7 @@
 const { i18n } = require('./next-i18next.config')
+const withPWA = require('next-pwa')
 
-module.exports = {
+module.exports = withPWA({
   i18n,
   webpackDevMiddleware: (config) => {
     config.watchOptions = {
@@ -9,4 +10,8 @@ module.exports = {
     }
     return config
   },
-}
+  pwa: {
+    dest: 'public',
+    disable: process.env.NODE_ENV === 'development',
+  },
+})

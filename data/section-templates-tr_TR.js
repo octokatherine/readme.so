@@ -218,7 +218,7 @@ Testleri çalıştırmak için aşağıdaki komutu çalıştırın
     markdown: `
 ## Yazarlar ve Teşekkür
 
-- [@katherinepeterson](https://www.github.com/katherinepeterson) tasarım ve geliştirme için.
+- [@katherinepeterson](https://www.github.com/octokatherine) tasarım ve geliştirme için.
 
   `,
   },
@@ -358,5 +358,17 @@ Bu projeyi dağıtmak için çalıştırın
 Herhangi bir ek bilgi buraya gelir
 
   `,
+  },
+  {
+    slug: 'colorreference',
+    name: 'Renk Referansı',
+    markdown: `## Renk Referansı
+
+| Renk             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| örnek renk | ![#0a192f](https://via.placeholder.com/10/0a192f?text=+) #0a192f |
+| örnek renk | ![#f8f8f8](https://via.placeholder.com/10/f8f8f8?text=+) #f8f8f8 |
+| örnek renk | ![#00b48a](https://via.placeholder.com/10/00b48a?text=+) #00b48a |
+| örnek renk | ![#00d1a0](https://via.placeholder.com/10/00b48a?text=+) #00d1a0 | `,
   },
 ]

@@ -40,15 +40,4 @@ describe('editor page', () => {
     // sections to be selected
     expect(screen.queryByText('FAQ', { selector: 'span' })).toBeNull()
   })
-
-  it('should show message for mobile users if theyre using mobile', async () => {
-    jest.spyOn(window.navigator, 'userAgent', 'get').mockReturnValue('Mobile')
-
-    render(<Editor sectionTemplate={en_EN} />)
-
-    expect(screen.queryByText('This site is optimized for desktop')).not.toBeNull()
-    expect(
-      screen.queryByText('Please visit readme.so on a desktop to create your readme!')
-    ).not.toBeNull()
-  })
 })
