@@ -38,6 +38,9 @@ export const languageSupports = [
     route: '/pt',
   },
   {
+    label: '日本語',
+    route: '/ja',
+  }
     label: 'Indonesia',
     route: '/id',
   },
