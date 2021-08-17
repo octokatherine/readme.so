@@ -13,11 +13,11 @@ A brief description of what this project does and who it's for
     slug: 'installation',
     name: 'Installation',
     markdown: `
-## Installation 
+## Installation
 
 Install my-project with npm
 
-\`\`\`bash 
+\`\`\`bash
   npm install my-project
   cd my-project
 \`\`\`
@@ -218,7 +218,7 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
     markdown: `
 ## Authors
 
-- [@katherinepeterson](https://www.github.com/katherinepeterson)
+- [@katherinepeterson](https://www.github.com/octokatherine)
 
   `,
   },
@@ -370,5 +370,77 @@ To deploy this project run
 Any additional information goes here
 
   `,
+  },
+  {
+    slug: 'github-profile-intro',
+    name: 'Github Profile - Introduction',
+    markdown: `
+# Hi, I'm Katherine! 👋
+
+  `,
+  },
+  {
+    slug: 'github-profile-about-me',
+    name: 'Github Profile - About Me',
+    markdown: `
+## 🚀 About Me
+I'm a full stack developer...
+
+  `,
+  },
+  {
+    slug: 'github-profile-skills',
+    name: 'Github Profile - Skills',
+    markdown: `
+## 🛠 Skills
+Javascript, HTML, CSS...
+
+  `,
+  },
+  {
+    slug: 'github-profile-links',
+    name: 'Github Profile - Links',
+    markdown: `
+## 🔗 Links
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://katherinempeterson.com/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/)
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/)
+
+  `,
+  },
+  {
+    slug: 'github-profile-other',
+    name: 'Github Profile - Other',
+    markdown: `
+## Other Common Github Profile Sections
+👩‍💻 I'm currently working on...
+
+🧠 I'm currently learning...
+
+👯‍♀️ I'm looking to collaborate on...
+
+🤔 I'm looking for help with...
+
+💬 Ask me about...
+
+📫 How to reach me...
+
+😄 Pronouns...
+
+⚡️ Fun fact...
+
+  `,
+    slug: 'colorreference',
+    name: 'Color Reference',
+    markdown: `## Color Reference
+
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Example Color | ![#0a192f](https://via.placeholder.com/10/0a192f?text=+) #0a192f |
+| Example Color | ![#f8f8f8](https://via.placeholder.com/10/f8f8f8?text=+) #f8f8f8 |
+| Example Color | ![#00b48a](https://via.placeholder.com/10/00b48a?text=+) #00b48a |
+| Example Color | ![#00d1a0](https://via.placeholder.com/10/00b48a?text=+) #00d1a0 |
+
+`,
   },
 ]

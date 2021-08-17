@@ -1,0 +1,16 @@
+{
+  "editor-desktop-optimized": "このサイトはデスクトップ用に最適化されています",
+  "editor-visit-desktop": "デスクトップで readmeを作成するためにreadme.soにアクセスしてください！",
+  "nav-download": "ダウンロード",
+  "download-readme-generated": "Readmeを作成しました！",
+  "download-reach-out": "readme.soをご利用いただきありがとうございます！お気軽に連絡してください",
+  "download-feedback": "感想をお聞かせください。",
+  "download-coffee": "このプロダクトが役に立ったなら、コーヒー1杯で私をサポートすることを検討してください！",
+  "editor-column-editor": "エディタ",
+  "editor-select": "左サイドバーからセクションを選択してコンテンツを編集する",
+  "preview-column-preview": "プレビュー",
+  "preview-column-raw": "Raw",
+  "section-column-section": "セクション",
+  "section-column-click-edit": "コンテンツを編集するために以下のセクションをクリックしてください",
+  "section-column-click-add": "Readmeに追記するために以下のセクションをクリックしてください"
+}

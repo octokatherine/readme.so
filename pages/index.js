@@ -13,8 +13,6 @@ const Home = () => {
   return (
     <>
       <Head>
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Mali&display=swap" rel="stylesheet" />
         <script
           async
           defer
@@ -87,25 +85,19 @@ const Home = () => {
           <div className="relative pt-6 pb-16 sm:pb-24">
             <div className="px-4 mx-auto max-w-7xl sm:px-6">
               <nav
-                className="relative flex items-center justify-between sm:h-10 md:justify-center"
+                className="relative flex items-center justify-between md:justify-start"
                 aria-label="Global"
               >
-                <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
-                  <div className="flex items-center justify-between w-full md:w-auto">
-                    <Link href="/">
-                      <a className="flex items-center">
-                        <img
-                          className="w-auto h-8 mt-1 cursor-pointer"
-                          src="readme.svg"
-                          alt="readme.so logo"
-                        />
-                        <span className="ml-2 -mb-2 text-gray-800 logo text-md">readme.so</span>
-                      </a>
-                    </Link>
-                  </div>
-                </div>
+                <Link href="/">
+                  <img
+                    className="w-auto h-12 cursor-pointer"
+                    src="readme.svg"
+                    alt="readme.so logo"
+                    // style={{ height: '3rem' }}
+                  />
+                </Link>
 
-                <div className="relative w-28 items-center flex-1 md:absolute md:inset-y-0 md:right-0">
+                <div className="relative items-center w-28 md:absolute md:inset-y-0 md:right-0">
                   <LanguageDropDown />
                 </div>
               </nav>
@@ -130,24 +122,16 @@ const Home = () => {
                       </a>
                     </Link>
                   </span>
-                  <a
-                    className="mt-3"
-                    href="https://www.producthunt.com/posts/readme-so?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-readme-so"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=291731&theme=light"
-                      alt="readme.so - Easily create the perfect readme for your project | Product Hunt"
-                      style={{ width: '250px', height: '54px' }}
-                      width="250"
-                      height="54"
-                    />
-                  </a>
                 </div>
               </div>
-              <div className="text-center">
-                <p className="mx-auto mt-3 text-sm text-gray-900">{t('100-free')}</p>
+              <div className="flex justify-center items-center mt-3">
+                <iframe
+                  src="https://github.com/sponsors/octokatherine/button"
+                  title="Sponsor octokatherine"
+                  height="35"
+                  width="116"
+                  className="border-0"
+                ></iframe>
               </div>
             </div>
           </div>
@@ -188,7 +172,7 @@ const Home = () => {
             </h2>
             <div className="flex justify-center mt-4">
               <a
-                href="https://github.com/katherinepeterson/readme.so"
+                href="https://github.com/octokatherine/readme.so"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="github logo"
