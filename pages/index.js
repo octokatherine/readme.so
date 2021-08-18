@@ -96,7 +96,7 @@ const Home = () => {
                   />
                 </Link>
 
-                <div className="relative items-center w-28 md:absolute md:inset-y-0 md:right-0">
+                <div className="relative items-center w-28 z-10 md:absolute md:inset-y-0 md:right-0">
                   <LanguageDropDown />
                 </div>
               </nav>
