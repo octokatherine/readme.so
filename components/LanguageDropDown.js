@@ -26,6 +26,10 @@ export const languageSupports = [
     route: '/fil',
   },
   {
+    label: 'Bahasa Indonesia',
+    route: '/id',
+  },
+  {
     label: 'Nederlands',
     route: '/nl',
   },
