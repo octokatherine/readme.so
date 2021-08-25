@@ -1,6 +1,6 @@
 export default {
-  defaultTitle: 'readme.so - Easiest Way to Create A README',
-  description: `Use readme.so's markdown editor and ready made templates to easily create a simple README for your repositories`,
+  defaultTitle: 'readme.so',
+  description: `Use readme.so's markdown editor and templates to easily create a ReadMe for your projects`,
   additionalMetaTags: [
     {
       property: 'keywords',
@@ -30,8 +30,8 @@ export default {
     type: 'website',
     locale: 'en_US',
     url: 'https://readme.so/',
-    title: 'readme.so - Easiest Way to Create A README',
-    description: `Use readme.so's markdown editor and ready made templates to easily create a simple README for your repositories`,
+    title: 'readme.so',
+    description: `Use readme.so's markdown editor and templates to easily create a ReadMe for your projects`,
     images: [
       {
         url: 'https://readme.so/readme.png',
