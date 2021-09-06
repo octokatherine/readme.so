@@ -95,6 +95,10 @@ export const SectionsColumn = ({
     setSectionSlugs((prev) => [...prev, sectionSlug])
     setFocusedSectionSlug(null)
     localStorage.setItem('current-focused-slug', 'noEdit')
+  }
+
+  const onResetSection = (e, sectionSlug) => {
+    e.stopPropagation()
     const originalSection = originalTemplate.find((s) => s.slug === sectionSlug)
     const newTemplates = templates.map((s) => {
       if (s.slug === originalSection.slug) {
@@ -172,6 +176,7 @@ export const SectionsColumn = ({
                     focusedSectionSlug={focusedSectionSlug}
                     setFocusedSectionSlug={setFocusedSectionSlug}
                     onDeleteSection={onDeleteSection}
+                    onResetSection={onResetSection}
                   />
                 )))
               }
