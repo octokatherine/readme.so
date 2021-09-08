@@ -21,6 +21,7 @@ export const SectionsColumn = ({
   setSectionSlugs,
   setFocusedSectionSlug,
   focusedSectionSlug,
+  templates,
   originalTemplate,
   setTemplates,
   getTemplate,
@@ -37,7 +38,7 @@ export const SectionsColumn = ({
   const [addAction, setAddAction] = useState(false)
   const [currentSlugList, setCurrentSlugList] = useState([])
   const [slugsFromPreviousSession, setSlugsFromPreviousSession] = useState([])
-  const { deleteBackup } = useLocalStorage()
+  const { saveBackup, deleteBackup } = useLocalStorage()
 
   useEffect(() => {
     var slugsFromPreviousSession =
@@ -94,6 +95,20 @@ export const SectionsColumn = ({
     setSectionSlugs((prev) => [...prev, sectionSlug])
     setFocusedSectionSlug(null)
     localStorage.setItem('current-focused-slug', 'noEdit')
+  }
+
+  const onResetSection = (e, sectionSlug) => {
+    e.stopPropagation()
+    const originalSection = originalTemplate.find((s) => s.slug === sectionSlug)
+    const newTemplates = templates.map((s) => {
+      if (s.slug === originalSection.slug) {
+        return originalSection
+      }
+
+      return s
+    })
+    setTemplates(newTemplates)
+    saveBackup(newTemplates)
   }
 
   const resetSelectedSections = () => {
@@ -161,6 +176,7 @@ export const SectionsColumn = ({
                     focusedSectionSlug={focusedSectionSlug}
                     setFocusedSectionSlug={setFocusedSectionSlug}
                     onDeleteSection={onDeleteSection}
+                    onResetSection={onResetSection}
                   />
                 )))
               }

@@ -18,6 +18,15 @@ export function SortableItem(props) {
     props.onDeleteSection(e, props.section.slug)
   }
 
+  const onClickReset = (e) => {
+    const sectionResetConfirmed = window.confirm(
+      'The section will be reset to default template; to continue, click OK'
+    )
+    if (sectionResetConfirmed === true) {
+      props.onResetSection(e, props.section.slug)
+    }
+  }
+
   const onKeyUp = (e) => {
     if (e.key.toLowerCase() === 'enter') {
       onClickSection()
@@ -31,27 +40,37 @@ export function SortableItem(props) {
       {...attributes}
       onClick={onClickSection}
       onKeyUp={onKeyUp}
-      className={`bg-white shadow rounded-md pl-3 pr-6 py-2 flex items-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 relative select-none ${
+      className={`bg-white shadow rounded-md pl-1 pr-14 py-2 flex items-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 relative select-none ${
         props.section.slug === props.focusedSectionSlug ? 'ring-2 ring-emerald-400' : ''
       }`}
     >
       <button
         type="button"
-        className="mr-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
+        className="mr-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
         {...listeners}
       >
         <img className="w-5 h-5" src="drag.svg" />
       </button>
       <p>{props.section.name}</p>
       {props.section.slug === props.focusedSectionSlug && (
-        <button
-          className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 absolute right-2"
-          type="button"
-          aria-label="Delete section"
-          onClick={onClickTrash}
-        >
-          <img className="w-auto h-5" src="trash.svg" alt="trash-icon" />
-        </button>
+        <>
+          <button
+            className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 absolute right-8"
+            type="button"
+            aria-label="Reset section"
+            onClick={onClickReset}
+          >
+            <img className="w-auto h-5" src="reset.svg" alt="reset-icon" />
+          </button>
+          <button
+            className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 absolute right-2"
+            type="button"
+            aria-label="Delete section"
+            onClick={onClickTrash}
+          >
+            <img className="w-auto h-5" src="trash.svg" alt="trash-icon" />
+          </button>
+        </>
       )}
     </li>
   )
