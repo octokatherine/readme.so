@@ -10,6 +10,18 @@ A brief description of what this project does and who it's for
 `,
   },
   {
+    slug: 'table-of-contents',
+    name: 'Table of Contents',
+    markdown: `
+## Table of Contents
+
+- [Run Locally](#run-locally)
+- [Install](#installation)
+- [Usage/Examples](#usage-examples)
+
+  `,
+  },
+  {
     slug: 'installation',
     name: 'Installation',
     markdown: `
@@ -430,6 +442,8 @@ Javascript, HTML, CSS...
 ⚡️ Fun fact...
 
   `,
+  },
+  {
     slug: 'colorreference',
     name: 'Color Reference',
     markdown: `## Color Reference
