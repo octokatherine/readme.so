@@ -57,6 +57,10 @@ export const languageSupports = [
     label: 'বাংলা',
     route: '/bn',
   },
+  {
+    label: 'తెలుగు',
+    route: '/tl',
+  },
 ]
 
 export function LanguageDropDown({ posts }) {
