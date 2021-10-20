@@ -147,7 +147,7 @@ export const SectionsColumn = ({
             type="button"
             onClick={resetSelectedSections}
           >
-            <span className="pl-2 float-right">Reset</span>
+            <span className="pl-2 float-right">{t('section-column-click-reset')}</span>
             <img className="w-auto h-5 inline-block" src="reset.svg" alt="Delete" />
           </button>
         }
