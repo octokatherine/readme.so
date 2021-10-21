@@ -64,6 +64,8 @@ export const languageSupports = [
   {
     label: 'తెలుగు',
     route: '/tl',
+  },
+  {
     label: 'हिंदी',
     route: '/hi',
   },
