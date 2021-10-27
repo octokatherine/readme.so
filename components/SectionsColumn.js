@@ -109,8 +109,7 @@ export const SectionsColumn = ({
         slug: sectionSlug,
         name: sectionTitle,
         markdown: `
-## ${sectionTitle}
-        `,
+## ${sectionTitle}`,
       }
     } else {
       originalSection = originalTemplate.find((s) => s.slug === sectionSlug)
