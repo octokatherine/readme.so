@@ -99,13 +99,17 @@ export const EditorColumn = ({
 
   const { t } = useTranslation('editor')
 
+  if (focusedSectionSlug == 'noEdit') {
+    return (
+      <p className="font-sm text-emerald-500 max-w-[28rem] text-center mx-auto mt-10">
+        {t('editor-select')}
+      </p>
+    )
+  }
+
   return (
     <>
-      {focusedSectionSlug == 'noEdit' ? (
-        <p className="font-sm text-emerald-500 max-w-[28rem] text-center mx-auto mt-10">
-          {t('editor-select')}
-        </p>
-      ) : isMobile ? (
+      {isMobile ? (
         <textarea
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
