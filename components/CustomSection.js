@@ -1,6 +1,7 @@
 import { useTranslation } from 'next-i18next'
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
+import useLocalStorage from '../hooks/useLocalStorage'
 
 const CustomSection = ({
   setTemplates,
@@ -11,6 +12,7 @@ const CustomSection = ({
 }) => {
   const [showModal, setShowModal] = useState(false)
   const [title, setTitle] = useState('')
+  const { saveBackup } = useLocalStorage()
 
   const { t } = useTranslation('editor')
 
@@ -25,10 +27,15 @@ const CustomSection = ({
       markdown: `
 ## ${title}
       `,
+      custom: true,
     }
 
     localStorage.setItem('current-focused-slug', section.slug)
-    setTemplates((prev) => [...prev, section])
+    setTemplates((prev) => {
+      const newTemplates = [...prev, section]
+      saveBackup(newTemplates)
+      return newTemplates
+    })
     setpageRefreshed(false)
     setAddAction(true)
     setSelectedSectionSlugs((prev) => [...prev, section.slug])

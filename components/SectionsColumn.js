@@ -169,17 +169,21 @@ export const SectionsColumn = ({
                 (pageRefreshed || addAction
                   ? (selectedSectionSlugs = [...new Set(selectedSectionSlugs)])
                   : ' ',
-                selectedSectionSlugs.map((s) => (
-                  <SortableItem
-                    key={s}
-                    id={s}
-                    section={getTemplate(s)}
-                    focusedSectionSlug={focusedSectionSlug}
-                    setFocusedSectionSlug={setFocusedSectionSlug}
-                    onDeleteSection={onDeleteSection}
-                    onResetSection={onResetSection}
-                  />
-                )))
+                selectedSectionSlugs.map((s) => {
+                  if (getTemplate(s)) {
+                    return (
+                      <SortableItem
+                        key={s}
+                        id={s}
+                        section={getTemplate(s)}
+                        focusedSectionSlug={focusedSectionSlug}
+                        setFocusedSectionSlug={setFocusedSectionSlug}
+                        onDeleteSection={onDeleteSection}
+                        onResetSection={onResetSection}
+                      />
+                    )
+                  }
+                }))
               }
             </SortableContext>
           </DndContext>
