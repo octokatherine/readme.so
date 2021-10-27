@@ -8,7 +8,7 @@ const CustomSection = () => {
 
   const { t } = useTranslation('editor')
 
-  const cancelButtonRef = useRef(null)
+  const inputRef = useRef(null)
 
   const addCustomSection = () => {
     setShowModal(true)
@@ -20,7 +20,7 @@ const CustomSection = () => {
         <Dialog
           as="div"
           className="fixed z-10 inset-0 overflow-y-auto"
-          initialFocus={cancelButtonRef}
+          initialFocus={inputRef}
           onClose={() => setShowModal(false)}
         >
           <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -57,6 +57,7 @@ const CustomSection = () => {
                     </Dialog.Title>
                     <div className="my-4">
                       <input
+                        ref={inputRef}
                         type="text"
                         name="title"
                         id="title"
@@ -80,7 +81,6 @@ const CustomSection = () => {
                     type="button"
                     className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 sm:mt-0 sm:col-start-1 sm:text-sm"
                     onClick={() => setShowModal(false)}
-                    ref={cancelButtonRef}
                   >
                     Cancel
                   </button>
