@@ -29,7 +29,7 @@ Install my-project with npm
     markdown: `
 ![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
 
-    `,
+`,
   },
   {
     slug: 'run-locally',
@@ -61,7 +61,7 @@ Start the server
   npm run start
 \`\`\`
 
-  `,
+`,
   },
   {
     slug: 'screenshots',
@@ -71,7 +71,7 @@ Start the server
 
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-  `,
+`,
   },
   {
     slug: 'env-variables',
@@ -85,7 +85,7 @@ To run this project, you will need to add the following environment variables to
 
 \`ANOTHER_API_KEY\`
 
-  `,
+`,
   },
   {
     slug: 'features',
@@ -98,7 +98,7 @@ To run this project, you will need to add the following environment variables to
 - Fullscreen mode
 - Cross platform
 
-  `,
+`,
   },
   {
     slug: 'usage-examples',
@@ -114,7 +114,7 @@ function App() {
 }
 \`\`\`
 
-  `,
+`,
   },
   {
     slug: 'api',
@@ -146,7 +146,7 @@ function App() {
 
 Takes two numbers and returns the sum.
 
-  `,
+`,
   },
   {
     slug: 'contributing',
@@ -160,7 +160,7 @@ See \`contributing.md\` for ways to get started.
 
 Please adhere to this project's \`code of conduct\`.
 
-  `,
+`,
   },
   {
     slug: 'tests',
@@ -174,7 +174,7 @@ To run tests, run the following command
   npm run test
 \`\`\`
 
-  `,
+`,
   },
   {
     slug: 'license',
@@ -184,7 +184,7 @@ To run tests, run the following command
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
-  `,
+`,
   },
   {
     slug: 'badges',
@@ -198,7 +198,7 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 [![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
 
-  `,
+`,
   },
   {
     slug: 'roadmap',
@@ -210,7 +210,7 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 
 - Add more integrations
 
-  `,
+`,
   },
   {
     slug: 'authors',
@@ -220,7 +220,7 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 
 - [@katherinepeterson](https://www.github.com/octokatherine)
 
-  `,
+`,
   },
   {
     slug: 'acknowledgement',
@@ -232,7 +232,7 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
  - [Awesome README](https://github.com/matiassingers/awesome-readme)
  - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
 
-  `,
+`,
   },
   {
     slug: 'support',
@@ -242,7 +242,7 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 
 For support, email fake@fake.com or join our Slack channel.
 
-  `,
+`,
   },
   {
     slug: 'feedback',
@@ -252,7 +252,7 @@ For support, email fake@fake.com or join our Slack channel.
 
 If you have any feedback, please reach out to us at fake@fake.com
 
-  `,
+`,
   },
   {
     slug: 'related',
@@ -264,7 +264,7 @@ Here are some related projects
 
 [Awesome README](https://github.com/matiassingers/awesome-readme)
 
-  `,
+`,
   },
   {
     slug: 'demo',
@@ -274,7 +274,7 @@ Here are some related projects
 
 Insert gif or link to demo
 
-  `,
+`,
   },
   {
     slug: 'tech',
@@ -286,7 +286,7 @@ Insert gif or link to demo
 
 **Server:** Node, Express
 
-  `,
+`,
   },
   {
     slug: 'optimizations',
@@ -296,7 +296,7 @@ Insert gif or link to demo
 
 What optimizations did you make in your code? E.g. refactors, performance improvements, accessibility
 
-  `,
+`,
   },
   {
     slug: 'lessons',
@@ -306,7 +306,7 @@ What optimizations did you make in your code? E.g. refactors, performance improv
 
 What did you learn while building this project? What challenges did you face and how did you overcome them?
 
-  `,
+`,
   },
   {
     slug: 'faq',
@@ -322,7 +322,7 @@ Answer 1
 
 Answer 2
 
-  `,
+`,
   },
   {
     slug: 'used-by',
@@ -335,7 +335,7 @@ This project is used by the following companies:
 - Company 1
 - Company 2
 
-  `,
+`,
   },
   {
     slug: 'documentation',
@@ -345,7 +345,7 @@ This project is used by the following companies:
 
 [Documentation](https://linktodocumentation)
 
-  `,
+`,
   },
   {
     slug: 'deployment',
@@ -359,7 +359,7 @@ To deploy this project run
   npm run deploy
 \`\`\`
 
-  `,
+`,
   },
   {
     slug: 'appendix',
@@ -369,7 +369,7 @@ To deploy this project run
 
 Any additional information goes here
 
-  `,
+`,
   },
   {
     slug: 'github-profile-intro',
@@ -377,7 +377,7 @@ Any additional information goes here
     markdown: `
 # Hi, I'm Katherine! 👋
 
-  `,
+`,
   },
   {
     slug: 'github-profile-about-me',
@@ -386,7 +386,7 @@ Any additional information goes here
 ## 🚀 About Me
 I'm a full stack developer...
 
-  `,
+`,
   },
   {
     slug: 'github-profile-skills',
@@ -395,7 +395,7 @@ I'm a full stack developer...
 ## 🛠 Skills
 Javascript, HTML, CSS...
 
-  `,
+`,
   },
   {
     slug: 'github-profile-links',
@@ -406,7 +406,7 @@ Javascript, HTML, CSS...
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/)
 [![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/)
 
-  `,
+`,
   },
   {
     slug: 'github-profile-other',
@@ -429,7 +429,9 @@ Javascript, HTML, CSS...
 
 ⚡️ Fun fact...
 
-  `,
+`,
+  },
+  {
     slug: 'colorreference',
     name: 'Color Reference',
     markdown: `## Color Reference
