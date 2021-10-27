@@ -13,6 +13,7 @@ import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 import useLocalStorage from '../hooks/useLocalStorage'
 import { SortableItem } from './SortableItem'
+import CustomSection from './CustomSection'
 
 export const SectionsColumn = ({
   selectedSectionSlugs,
@@ -129,8 +130,6 @@ export const SectionsColumn = ({
     }
   }
 
-  const addCustomSection = () => {}
-
   useEffect(() => {
     setFocusedSectionSlug(localStorage.getItem('current-focused-slug'))
   }, [focusedSectionSlug])
@@ -191,27 +190,7 @@ export const SectionsColumn = ({
             {t('section-column-click-add')}
           </h4>
         )}
-        <div className="mb-3">
-          <button
-            className="flex items-center justify-center block w-full h-full py-2 pl-3 pr-6 bg-white font-bold rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
-            type="button"
-            onClick={addCustomSection}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <span className="ml-1">{t('custom-section')}</span>
-          </button>
-        </div>
+        <CustomSection />
         <ul className="mb-12 space-y-3">
           {
             (pageRefreshed && slugsFromPreviousSession.indexOf('title-and-description') == -1
