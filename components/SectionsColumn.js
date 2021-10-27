@@ -15,6 +15,15 @@ import useLocalStorage from '../hooks/useLocalStorage'
 import { SortableItem } from './SortableItem'
 import CustomSection from './CustomSection'
 
+const kebabCaseToTitleCase = (str) => {
+  return str
+    .split('-')
+    .map((word) => {
+      return word.slice(0, 1).toUpperCase() + word.slice(1)
+    })
+    .join(' ')
+}
+
 export const SectionsColumn = ({
   selectedSectionSlugs,
   setSelectedSectionSlugs,
@@ -104,7 +113,7 @@ export const SectionsColumn = ({
     let originalSection
 
     if (sectionSlug.slice(0, 6) === 'custom') {
-      const sectionTitle = sectionSlug.slice(6, sectionSlug.length).toLowerCase().replace(/-/g, ' ')
+      const sectionTitle = kebabCaseToTitleCase(sectionSlug.slice(6, sectionSlug.length))
       originalSection = {
         slug: sectionSlug,
         name: sectionTitle,
@@ -114,8 +123,6 @@ export const SectionsColumn = ({
     } else {
       originalSection = originalTemplate.find((s) => s.slug === sectionSlug)
     }
-
-    console.log('originalSection', originalSection)
 
     const newTemplates = templates.map((s) => {
       if (s.slug === originalSection.slug) {
