@@ -13,6 +13,16 @@ import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 import useLocalStorage from '../hooks/useLocalStorage'
 import { SortableItem } from './SortableItem'
+import CustomSection from './CustomSection'
+
+const kebabCaseToTitleCase = (str) => {
+  return str
+    .split('-')
+    .map((word) => {
+      return word.slice(0, 1).toUpperCase() + word.slice(1)
+    })
+    .join(' ')
+}
 
 export const SectionsColumn = ({
   selectedSectionSlugs,
@@ -99,7 +109,21 @@ export const SectionsColumn = ({
 
   const onResetSection = (e, sectionSlug) => {
     e.stopPropagation()
-    const originalSection = originalTemplate.find((s) => s.slug === sectionSlug)
+
+    let originalSection
+
+    if (sectionSlug.slice(0, 6) === 'custom') {
+      const sectionTitle = kebabCaseToTitleCase(sectionSlug.slice(6, sectionSlug.length))
+      originalSection = {
+        slug: sectionSlug,
+        name: sectionTitle,
+        markdown: `
+## ${sectionTitle}`,
+      }
+    } else {
+      originalSection = originalTemplate.find((s) => s.slug === sectionSlug)
+    }
+
     const newTemplates = templates.map((s) => {
       if (s.slug === originalSection.slug) {
         return originalSection
@@ -168,26 +192,39 @@ export const SectionsColumn = ({
                 (pageRefreshed || addAction
                   ? (selectedSectionSlugs = [...new Set(selectedSectionSlugs)])
                   : ' ',
-                selectedSectionSlugs.map((s) => (
-                  <SortableItem
-                    key={s}
-                    id={s}
-                    section={getTemplate(s)}
-                    focusedSectionSlug={focusedSectionSlug}
-                    setFocusedSectionSlug={setFocusedSectionSlug}
-                    onDeleteSection={onDeleteSection}
-                    onResetSection={onResetSection}
-                  />
-                )))
+                selectedSectionSlugs.map((s) => {
+                  const template = getTemplate(s)
+                  if (template) {
+                    return (
+                      <SortableItem
+                        key={s}
+                        id={s}
+                        section={template}
+                        focusedSectionSlug={focusedSectionSlug}
+                        setFocusedSectionSlug={setFocusedSectionSlug}
+                        onDeleteSection={onDeleteSection}
+                        onResetSection={onResetSection}
+                      />
+                    )
+                  }
+                }))
               }
             </SortableContext>
           </DndContext>
         </ul>
+
         {sectionSlugs.length > 0 && (
           <h4 className="mb-3 text-xs leading-6 text-gray-900 overflow-ellipsis">
             {t('section-column-click-add')}
           </h4>
         )}
+        <CustomSection
+          setSelectedSectionSlugs={setSelectedSectionSlugs}
+          setFocusedSectionSlug={setFocusedSectionSlug}
+          setpageRefreshed={setpageRefreshed}
+          setAddAction={setAddAction}
+          setTemplates={setTemplates}
+        />
         <ul className="mb-12 space-y-3">
           {
             (pageRefreshed && slugsFromPreviousSession.indexOf('title-and-description') == -1
@@ -197,17 +234,22 @@ export const SectionsColumn = ({
             pageRefreshed || addAction
               ? (alphabetizedSectionSlugs = [...new Set(alphabetizedSectionSlugs)])
               : ' ',
-            alphabetizedSectionSlugs.map((s) => (
-              <li key={s}>
-                <button
-                  className="flex items-center block w-full h-full py-2 pl-3 pr-6 bg-white rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
-                  type="button"
-                  onClick={(e) => onAddSection(e, s)}
-                >
-                  <span>{getTemplate(s).name}</span>
-                </button>
-              </li>
-            )))
+            alphabetizedSectionSlugs.map((s) => {
+              const template = getTemplate(s)
+              if (template) {
+                return (
+                  <li key={s}>
+                    <button
+                      className="flex items-center block w-full h-full py-2 pl-3 pr-6 bg-white rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
+                      type="button"
+                      onClick={(e) => onAddSection(e, s)}
+                    >
+                      <span>{template.name}</span>
+                    </button>
+                  </li>
+                )
+              }
+            }))
           }
         </ul>
       </div>

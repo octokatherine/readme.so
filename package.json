@@ -16,6 +16,7 @@
     "@dnd-kit/core": "^2.1.2",
     "@dnd-kit/modifiers": "^1.0.5",
     "@dnd-kit/sortable": "^2.0.1",
+    "@headlessui/react": "^1.4.1",
     "@monaco-editor/react": "^4.1.1",
     "next": "^11.0.1",
     "next-i18next": "^8.1.3",
