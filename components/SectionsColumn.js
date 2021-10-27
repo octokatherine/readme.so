@@ -190,7 +190,13 @@ export const SectionsColumn = ({
             {t('section-column-click-add')}
           </h4>
         )}
-        <CustomSection />
+        <CustomSection
+          setSelectedSectionSlugs={setSelectedSectionSlugs}
+          setFocusedSectionSlug={setFocusedSectionSlug}
+          setpageRefreshed={setpageRefreshed}
+          setAddAction={setAddAction}
+          setTemplates={setTemplates}
+        />
         <ul className="mb-12 space-y-3">
           {
             (pageRefreshed && slugsFromPreviousSession.indexOf('title-and-description') == -1

@@ -59,17 +59,6 @@ export const EditorColumn = ({
     }
   }
 
-  const handleHotkey = (event) => {
-    const { code, ctrlKey, repeat } = event
-
-    if (code === 'KeyE' && repeat == false && ctrlKey === false) {
-      if (!editorHasFocus()) {
-        event.preventDefault()
-      }
-      setEditorInFocus()
-    }
-  }
-
   const handleEditorDidMount = (editor) => {
     monacoEditorRef.current = editor
     setEditorColorThemeFromLocalStorage()
@@ -80,14 +69,6 @@ export const EditorColumn = ({
       setToggleState({ theme: 'light', img: 'toggle_moon.svg' })
     }
   }
-
-  useEffect(() => {
-    window.addEventListener('keydown', handleHotkey)
-
-    return () => {
-      window.removeEventListener('keydown', handleHotkey)
-    }
-  }, [handleHotkey])
 
   useEffect(() => {
     if (!isMobile && !MonacoEditor) {

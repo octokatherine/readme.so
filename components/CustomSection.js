@@ -2,7 +2,13 @@ import { useTranslation } from 'next-i18next'
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 
-const CustomSection = () => {
+const CustomSection = ({
+  setTemplates,
+  setSelectedSectionSlugs,
+  setFocusedSectionSlug,
+  setpageRefreshed,
+  setAddAction,
+}) => {
   const [showModal, setShowModal] = useState(false)
   const [title, setTitle] = useState('')
 
@@ -11,7 +17,22 @@ const CustomSection = () => {
   const inputRef = useRef(null)
 
   const addCustomSection = () => {
-    setShowModal(true)
+    setShowModal(false)
+
+    const section = {
+      slug: title.toLowerCase().replace(/\s/g, '-'),
+      name: title,
+      markdown: `
+      # ${title}
+      `,
+    }
+
+    localStorage.setItem('current-focused-slug', section.slug)
+    setTemplates((prev) => [...prev, section])
+    setpageRefreshed(false)
+    setAddAction(true)
+    setSelectedSectionSlugs((prev) => [...prev, section.slug])
+    setFocusedSectionSlug(localStorage.getItem('current-focused-slug'))
   }
 
   return (
@@ -73,7 +94,7 @@ const CustomSection = () => {
                     type="button"
                     className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-emerald-500 text-base font-medium text-white hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 sm:col-start-2 sm:text-sm disabled:opacity-50"
                     disabled={!title}
-                    onClick={() => setShowModal(false)}
+                    onClick={addCustomSection}
                   >
                     Add Section
                   </button>
@@ -95,7 +116,7 @@ const CustomSection = () => {
         <button
           className="flex items-center justify-center block w-full h-full py-2 pl-3 pr-6 bg-white font-bold rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
           type="button"
-          onClick={addCustomSection}
+          onClick={() => setShowModal(true)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
