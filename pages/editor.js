@@ -5,15 +5,15 @@ import { DownloadModal } from '../components/DownloadModal'
 import EditPreviewContainer from '../components/EditPreviewContainer'
 import { Nav } from '../components/Nav'
 import { SectionsColumn } from '../components/SectionsColumn'
-import sectionTemplates from '../data/index'
+import allSectionTemplates from '../data/index'
 import useLocalStorage from '../hooks/useLocalStorage'
 
-export default function Editor({ sectionTemplate }) {
+export default function Editor({ sectionTemplates }) {
   const [selectedSectionSlugs, setSelectedSectionSlugs] = useState([])
-  const [sectionSlugs, setSectionSlugs] = useState(sectionTemplate.map((t) => t.slug))
+  const [sectionSlugs, setSectionSlugs] = useState(sectionTemplates.map((t) => t.slug))
   const [focusedSectionSlug, setFocusedSectionSlug] = useState(null)
   const [showModal, setShowModal] = useState(false)
-  const [templates, setTemplates] = useState(sectionTemplate)
+  const [templates, setTemplates] = useState(sectionTemplates)
   const [showDrawer, toggleDrawer] = useState(false)
   const { backup } = useLocalStorage()
 
@@ -85,7 +85,7 @@ export default function Editor({ sectionTemplate }) {
             setFocusedSectionSlug={setFocusedSectionSlug}
             focusedSectionSlug={focusedSectionSlug}
             templates={templates}
-            originalTemplate={sectionTemplate}
+            originalTemplate={sectionTemplates}
             setTemplates={setTemplates}
             getTemplate={getTemplate}
           />
@@ -106,13 +106,13 @@ export default function Editor({ sectionTemplate }) {
 }
 
 export const getStaticProps = async ({ locale }) => {
-  const sectionTemplate = sectionTemplates[locale]
-    ? sectionTemplates[locale]
-    : sectionTemplates['en']
+  const sectionTemplates = allSectionTemplates[locale]
+    ? allSectionTemplates[locale]
+    : allSectionTemplates['en']
   const i18n = await serverSideTranslations(locale, ['editor'])
   return {
     props: {
-      sectionTemplate,
+      sectionTemplates,
       ...i18n,
     },
   }
