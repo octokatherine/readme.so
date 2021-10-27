@@ -100,7 +100,24 @@ export const SectionsColumn = ({
 
   const onResetSection = (e, sectionSlug) => {
     e.stopPropagation()
-    const originalSection = originalTemplate.find((s) => s.slug === sectionSlug)
+
+    let originalSection
+
+    if (sectionSlug.slice(0, 6) === 'custom') {
+      const sectionTitle = sectionSlug.slice(6, sectionSlug.length).toLowerCase().replace(/-/g, ' ')
+      originalSection = {
+        slug: sectionSlug,
+        name: sectionTitle,
+        markdown: `
+## ${sectionTitle}
+        `,
+      }
+    } else {
+      originalSection = originalTemplate.find((s) => s.slug === sectionSlug)
+    }
+
+    console.log('originalSection', originalSection)
+
     const newTemplates = templates.map((s) => {
       if (s.slug === originalSection.slug) {
         return originalSection

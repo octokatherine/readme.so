@@ -22,12 +22,11 @@ const CustomSection = ({
     setShowModal(false)
 
     const section = {
-      slug: title.toLowerCase().replace(/\s/g, '-'),
+      slug: 'custom-' + title.toLowerCase().replace(/\s/g, '-'),
       name: title,
       markdown: `
 ## ${title}
       `,
-      custom: true,
     }
 
     localStorage.setItem('current-focused-slug', section.slug)
