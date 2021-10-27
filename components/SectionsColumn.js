@@ -170,12 +170,13 @@ export const SectionsColumn = ({
                   ? (selectedSectionSlugs = [...new Set(selectedSectionSlugs)])
                   : ' ',
                 selectedSectionSlugs.map((s) => {
-                  if (getTemplate(s)) {
+                  const template = getTemplate(s)
+                  if (template) {
                     return (
                       <SortableItem
                         key={s}
                         id={s}
-                        section={getTemplate(s)}
+                        section={template}
                         focusedSectionSlug={focusedSectionSlug}
                         setFocusedSectionSlug={setFocusedSectionSlug}
                         onDeleteSection={onDeleteSection}
@@ -210,17 +211,22 @@ export const SectionsColumn = ({
             pageRefreshed || addAction
               ? (alphabetizedSectionSlugs = [...new Set(alphabetizedSectionSlugs)])
               : ' ',
-            alphabetizedSectionSlugs.map((s) => (
-              <li key={s}>
-                <button
-                  className="flex items-center block w-full h-full py-2 pl-3 pr-6 bg-white rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
-                  type="button"
-                  onClick={(e) => onAddSection(e, s)}
-                >
-                  <span>{getTemplate(s).name}</span>
-                </button>
-              </li>
-            )))
+            alphabetizedSectionSlugs.map((s) => {
+              const template = getTemplate(s)
+              if (template) {
+                return (
+                  <li key={s}>
+                    <button
+                      className="flex items-center block w-full h-full py-2 pl-3 pr-6 bg-white rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
+                      type="button"
+                      onClick={(e) => onAddSection(e, s)}
+                    >
+                      <span>{template.name}</span>
+                    </button>
+                  </li>
+                )
+              }
+            }))
           }
         </ul>
       </div>
