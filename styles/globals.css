@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --base-font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji';
+  --base-colour: #24292e;
+}
+
 .full-screen {
   height: calc(100vh - 160px);
 }
@@ -39,9 +45,8 @@
 
   .preview h1 {
     box-sizing: border-box;
-    color: #24292e;
-    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif,
-      'Apple Color Emoji', 'Segoe UI Emoji';
+    color: var(--base-colour);
+    font-family: var(--base-font-family);
     font-size: 2em;
     font-weight: 600;
     line-height: 1.25;
@@ -52,9 +57,8 @@
   }
   .preview h2 {
     box-sizing: border-box;
-    color: #24292e;
-    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif,
-      'Apple Color Emoji', 'Segoe UI Emoji';
+    color: var(--base-colour);
+    font-family: var(--base-font-family);
     font-size: 1.5em;
     font-weight: 600;
     line-height: 1.25;
@@ -67,9 +71,8 @@
 
   .preview h3 {
     box-sizing: border-box;
-    color: #24292e;
-    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif,
-      'Apple Color Emoji', 'Segoe UI Emoji';
+    color: var(--base-colour);
+    font-family: var(--base-font-family);
     font-size: 1.2em;
     font-weight: 600;
     line-height: 1.25;
@@ -82,9 +85,8 @@
 
   .preview h4 {
     box-sizing: border-box;
-    color: #24292e;
-    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif,
-      'Apple Color Emoji', 'Segoe UI Emoji';
+    color: var(--base-colour);
+    font-family: var(--base-font-family);
     font-size: 1em;
     font-weight: 600;
     line-height: 1.25;
@@ -96,9 +98,8 @@
   .preview td {
     border-collapse: collapse;
     box-sizing: border-box;
-    color: #24292e;
-    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif,
-      'Apple Color Emoji', 'Segoe UI Emoji';
+    color: var(--base-colour);
+    font-family: var(--base-font-family);
     line-height: 24px;
     padding: 6px 13px;
     text-align: -webkit-left;
@@ -109,9 +110,8 @@
   .preview th {
     border-collapse: collapse;
     box-sizing: border-box;
-    color: #24292e;
-    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif,
-      'Apple Color Emoji', 'Segoe UI Emoji';
+    color: var(--base-colour);
+    font-family: var(--base-font-family);
     font-weight: 600;
     line-height: 24px;
     padding: 6px 13px;
@@ -124,9 +124,8 @@
     background-color: #fff;
     border-collapse: collapse;
     box-sizing: border-box;
-    color: #24292e;
-    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif,
-      'Apple Color Emoji', 'Segoe UI Emoji';
+    color: var(--base-colour);
+    font-family: var(--base-font-family);
     line-height: 24px;
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -149,10 +148,9 @@
     -webkit-border-vertical-spacing: 0;
     border-collapse: collapse;
     box-sizing: border-box;
-    color: #24292e;
+    color: var(--base-colour);
     display: block;
-    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif,
-      'Apple Color Emoji', 'Segoe UI Emoji';
+    font-family: var(--base-font-family);
     line-height: 24px;
     margin-bottom: 16px;
     margin-top: 0;
@@ -167,8 +165,7 @@
     border-style: none;
     color: #0366d6;
     cursor: pointer;
-    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif,
-      'Apple Color Emoji', 'Segoe UI Emoji';
+    font-family: var(--base-font-family);
     line-height: 24px;
     max-width: 100%;
     word-wrap: break-word;
@@ -177,9 +174,8 @@
 
   .preview ul {
     box-sizing: border-box;
-    color: #24292e;
-    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif,
-      'Apple Color Emoji', 'Segoe UI Emoji';
+    color: var(--base-colour);
+    font-family: var(--base-font-family);
     line-height: 24px;
     margin-bottom: 16px;
     margin-top: 0;
@@ -189,9 +185,8 @@
 
   .preview ul li {
     box-sizing: border-box;
-    color: #24292e;
-    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif,
-      'Apple Color Emoji', 'Segoe UI Emoji';
+    color: var(--base-colour);
+    font-family: var(--base-font-family);
     line-height: 24px;
     margin-top: 0.25em;
     text-align: left;
@@ -201,9 +196,8 @@
 
   .preview ol li {
     box-sizing: border-box;
-    color: #24292e;
-    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif,
-      'Apple Color Emoji', 'Segoe UI Emoji';
+    color: var(--base-colour);
+    font-family: var(--base-font-family);
     line-height: 24px;
     margin-top: 0.25em;
     text-align: left;
@@ -215,7 +209,7 @@
     background-color: #f6f8fa;
     border-radius: 6px;
     box-sizing: border-box;
-    color: #24292e;
+    color: var(--base-colour);
     font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
     font-size: 85%;
     line-height: 1.45;
@@ -232,7 +226,7 @@
     background-color: rgba(27, 31, 35, 0.05);
     border-radius: 6px;
     box-sizing: border-box;
-    color: #24292e;
+    color: var(--base-colour);
     font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
     font-size: 85%;
     line-height: 20.4px;
@@ -245,8 +239,7 @@
     box-sizing: border-box;
     color: #0366d6;
     cursor: pointer;
-    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif,
-      'Apple Color Emoji', 'Segoe UI Emoji';
+    font-family: var(--base-font-family);
     line-height: 24px;
     text-decoration: none;
     word-wrap: break-word;
@@ -256,4 +249,46 @@
     outline: 0;
     text-decoration: underline;
   }
+}
+
+/** Dark mode styles **/
+html.dark,
+.dark body {
+  background-color: rgba(38, 38, 38, var(--tw-bg-opacity));
+}
+
+html.dark .shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(255 255 255 / 79%), 0 1px 2px 0 rgba(255 255 255 / 79%);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #fff), var(--tw-ring-shadow, 0 0 #fff),
+    var(--tw-shadow);
+}
+
+html.dark .md\:shadow-none {
+  --tw-shadow: 0 0 #0000;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #fff), var(--tw-ring-shadow, 0 0 #fff),
+    var(--tw-shadow);
+}
+
+html.dark ::-webkit-scrollbar {
+  background-color: #454545;
+  width: 10px;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 20px;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 20px;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+html.dark .preview {
+  filter: invert(0.9);
+  margin-top: -3px;
 }

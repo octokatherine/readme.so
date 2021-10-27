@@ -7,6 +7,7 @@ import { Nav } from '../components/Nav'
 import { SectionsColumn } from '../components/SectionsColumn'
 import allSectionTemplates from '../data/index'
 import useLocalStorage from '../hooks/useLocalStorage'
+import useDarkMode from '../hooks/useDarkMode'
 
 export default function Editor({ sectionTemplates }) {
   const [selectedSectionSlugs, setSelectedSectionSlugs] = useState([])
@@ -16,6 +17,7 @@ export default function Editor({ sectionTemplates }) {
   const [templates, setTemplates] = useState(sectionTemplates)
   const [showDrawer, toggleDrawer] = useState(false)
   const { backup } = useLocalStorage()
+  const [darkMode, setDarkMode] = useDarkMode()
 
   useEffect(() => {
     if (backup) {
@@ -70,11 +72,14 @@ export default function Editor({ sectionTemplates }) {
         getTemplate={getTemplate}
         onMenuClick={() => toggleDrawer(!showDrawer)}
         isDrawerOpen={showDrawer}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+        focusedSectionSlug={focusedSectionSlug}
       />
       {showModal && <DownloadModal setShowModal={setShowModal} />}
       <div className="flex md:px-6 md:pt-6 ">
         <div
-          className={`flex flex-0 drawer-height absolute md:static p-6 md:p-0 bg-white md:bg-transparent shadow md:shadow-none z-10 md:z-0
+          className={`flex flex-0 drawer-height absolute md:static p-6 md:p-0 bg-white dark:bg-gray-800 md:bg-transparent shadow md:shadow-none z-10 md:z-0
         transform  transition-transform duration-500 ease-in-out ${drawerClass}`}
         >
           <SectionsColumn
@@ -99,6 +104,7 @@ export default function Editor({ sectionTemplates }) {
           setFocusedSectionSlug={setFocusedSectionSlug}
           selectedSectionSlugs={selectedSectionSlugs}
           setSelectedSectionSlugs={setSelectedSectionSlugs}
+          darkMode={darkMode}
         />
       </div>
     </div>

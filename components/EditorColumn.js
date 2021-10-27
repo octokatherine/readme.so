@@ -3,13 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import useDeviceDetect from '../hooks/useDeviceDetect'
 import useLocalStorage from '../hooks/useLocalStorage'
 
-export const EditorColumn = ({
-  focusedSectionSlug,
-  templates,
-  setTemplates,
-  theme,
-  setToggleState,
-}) => {
+export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, theme }) => {
   const getMarkdown = () => {
     const section = templates.find((s) => s.slug === focusedSectionSlug)
     return section ? section.markdown : ''
@@ -41,33 +35,8 @@ export const EditorColumn = ({
     saveBackup(newTemplates)
   }
 
-  const editorHasFocus = () => {
-    let hasFocus = false
-    if (isMobile) {
-      hasFocus = isFocused
-    } else {
-      hasFocus = monacoEditorRef.current.hasWidgetFocus()
-    }
-    return hasFocus
-  }
-
-  const setEditorInFocus = () => {
-    if (isMobile) {
-      textEditorRef.current.focus()
-    } else {
-      monacoEditorRef.current.focus()
-    }
-  }
-
   const handleEditorDidMount = (editor) => {
     monacoEditorRef.current = editor
-    setEditorColorThemeFromLocalStorage()
-  }
-
-  const setEditorColorThemeFromLocalStorage = () => {
-    if (localStorage.getItem('editor-color-theme') == 'light') {
-      setToggleState({ theme: 'light', img: 'toggle_moon.svg' })
-    }
   }
 
   useEffect(() => {
