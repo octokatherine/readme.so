@@ -23,7 +23,7 @@ const CustomSection = ({
       slug: title.toLowerCase().replace(/\s/g, '-'),
       name: title,
       markdown: `
-      # ${title}
+## ${title}
       `,
     }
 
