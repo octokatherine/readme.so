@@ -119,7 +119,7 @@ const CustomSection = ({
 
       <div className="mb-3">
         <button
-          className="flex items-center justify-center block w-full h-full py-2 pl-3 pr-6 bg-white font-bold rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
+          className="flex items-center justify-center block w-full h-full py-2 pl-3 pr-6 bg-white dark:bg-gray-200 font-bold rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
           type="button"
           onClick={() => setShowModal(true)}
         >

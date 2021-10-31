@@ -37,3 +37,5 @@ yarn-error.log*
 public/workbox-*.js
 public/sw.js
 public/*.map
+
+yarn.lock

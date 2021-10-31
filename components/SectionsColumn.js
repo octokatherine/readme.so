@@ -11,6 +11,7 @@ import { restrictToVerticalAxis } from '@dnd-kit/modifiers'
 import { arrayMove, SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import useLocalStorage from '../hooks/useLocalStorage'
 import { SortableItem } from './SortableItem'
 import CustomSection from './CustomSection'
@@ -35,6 +36,7 @@ export const SectionsColumn = ({
   originalTemplate,
   setTemplates,
   getTemplate,
+  darkMode,
 }) => {
   const sensors = useSensors(
     useSensor(MouseSensor),
@@ -172,7 +174,13 @@ export const SectionsColumn = ({
             onClick={resetSelectedSections}
           >
             <span className="pl-2 float-right">{t('section-column-click-reset')}</span>
-            <img className="w-auto h-5 inline-block" src="reset.svg" alt="Delete" />
+            <Image
+              className="w-auto h-5 inline-block"
+              src={darkMode ? '/reset-light.svg' : '/reset.svg'}
+              alt="Delete"
+              width={16}
+              height={16}
+            />
           </button>
         }
       </h3>
@@ -242,7 +250,7 @@ export const SectionsColumn = ({
                 return (
                   <li key={s}>
                     <button
-                      className="flex items-center block w-full h-full py-2 pl-3 pr-6 bg-white dark:bg-gray-50 rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
+                      className="flex items-center block w-full h-full py-2 pl-3 pr-6 bg-white dark:bg-gray-200 rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
                       type="button"
                       onClick={(e) => onAddSection(e, s)}
                     >

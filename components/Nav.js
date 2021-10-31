@@ -68,7 +68,7 @@ export const Nav = ({
           >
             <Image
               className="w-auto h-8 mr-2"
-              alt={darkMode ? 'vs-dark' : 'light'}
+              alt={darkMode ? 'dark' : 'light'}
               src={darkMode ? '/toggle_sun.svg' : '/toggle_moon.svg'}
               width={40}
               height={40}

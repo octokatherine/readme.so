@@ -93,6 +93,7 @@ export default function Editor({ sectionTemplates }) {
             originalTemplate={sectionTemplates}
             setTemplates={setTemplates}
             getTemplate={getTemplate}
+            darkMode={darkMode}
           />
         </div>
 
