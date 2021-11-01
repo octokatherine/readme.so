@@ -40,6 +40,6 @@ describe('<EditorPreviewColumn />', () => {
     expect(screen.getByAltText('light')).toBeInTheDocument()
 
     userEvent.click(screen.getByLabelText('Color Mode'))
-    expect(screen.getByAltText('vs-dark')).toBeInTheDocument()
+    expect(screen.getByAltText('dark')).toBeInTheDocument()
   })
 })

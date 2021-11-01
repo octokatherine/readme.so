@@ -14,15 +14,12 @@ const EditPreviewContainer = ({
   focusedSectionSlug,
   selectedSectionSlugs,
   setSelectedSectionSlugs,
+  darkMode,
 }) => {
   const { t } = useTranslation('editor')
-  const [toggleState, setToggleState] = useState({ theme: 'vs-dark', img: 'toggle_sun.svg' })
+  const [toggleState, setToggleState] = useState({ theme: 'dark', img: 'toggle_sun.svg' })
   const [selectedTab, setSelectedTab] = useState(TAB.PREVIEW)
   const { isMobile } = useDeviceDetect()
-
-  const toggleTheme = () => {
-    toggleDarkMode(toggleState, setToggleState)
-  }
 
   useEffect(() => {
     setSelectedTab(isMobile ? TAB.EDITOR : TAB.PREVIEW)
@@ -38,27 +35,14 @@ const EditPreviewContainer = ({
           setSelectedTab={setSelectedTab}
           focusedSectionSlug={focusedSectionSlug}
           toggleState={toggleState}
-          toggleTheme={toggleTheme}
+          toggleTheme={() => setDarkMode(!darkMode)}
         />
       ) : null}
 
       {showEditorColumn ? (
         <div className="w-full md:w-1/2 px-3 full-screen">
           {!isMobile ? (
-            <ColumnHeader.Heading>
-              {t('editor-column-editor')}
-              {focusedSectionSlug != 'noEdit' ? (
-                <button
-                  onClick={toggleTheme}
-                  aria-label="Color Mode"
-                  className="toggle-dark-mode focus:outline-none transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none"
-                >
-                  <img className="w-auto h-8 mr-2" alt={toggleState.theme} src={toggleState.img} />
-                </button>
-              ) : (
-                <button />
-              )}
-            </ColumnHeader.Heading>
+            <ColumnHeader.Heading>{t('editor-column-editor')}</ColumnHeader.Heading>
           ) : null}
           <EditorColumn
             focusedSectionSlug={focusedSectionSlug}
@@ -66,8 +50,7 @@ const EditPreviewContainer = ({
             setSelectedSectionSlugs={setSelectedSectionSlugs}
             templates={templates}
             setTemplates={setTemplates}
-            theme={toggleState.theme}
-            setToggleState={setToggleState}
+            theme="vs-dark"
           />
         </div>
       ) : null}
@@ -106,12 +89,12 @@ const EditPreviewContainer = ({
 }
 
 const toggleDarkMode = (toggleState, setToggleState) => {
-  if (toggleState.theme == 'vs-dark') {
+  if (toggleState.theme == 'dark') {
     setToggleState({ theme: 'light', img: 'toggle_moon.svg' })
-    localStorage.setItem('editor-color-theme', 'light')
+    localStorage.setItem('color-theme', 'light')
   } else {
-    setToggleState({ theme: 'vs-dark', img: 'toggle_sun.svg' })
-    localStorage.setItem('editor-color-theme', 'vs-dark')
+    setToggleState({ theme: 'dark', img: 'toggle_sun.svg' })
+    localStorage.setItem('color-theme', 'dark')
   }
 }
 

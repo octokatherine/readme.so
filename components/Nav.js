@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
 import Menu from './icons/Menu'
 import Close from './icons/Close'
@@ -10,6 +11,9 @@ export const Nav = ({
   getTemplate,
   onMenuClick,
   isDrawerOpen,
+  darkMode,
+  setDarkMode,
+  focusedSectionSlug,
 }) => {
   const markdown = selectedSectionSlugs.reduce((acc, section) => {
     const template = getTemplate(section)
@@ -56,6 +60,22 @@ export const Nav = ({
           )}
         </button>
         {/* visible for md and above */}
+        {focusedSectionSlug !== 'noEdit' && (
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            aria-label="Color Mode"
+            className="toggle-dark-mode focus:outline-none transition transform motion-reduce:transition-none motion-reduce:transform-none  pr-4"
+          >
+            <Image
+              className="w-auto h-8 mr-2"
+              alt={darkMode ? 'dark' : 'light'}
+              src={darkMode ? '/toggle_sun.svg' : '/toggle_moon.svg'}
+              width={40}
+              height={40}
+            />
+          </button>
+        )}
+
         <button
           type="button"
           aria-label="Download Markdown"
