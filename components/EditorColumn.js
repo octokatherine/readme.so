@@ -24,6 +24,50 @@ export const EditorColumn = ({
   const monacoEditorRef = useRef(null)
   const textEditorRef = useRef(null)
 
+  const handleImagePaste = (e) => {
+    const theEditor = monacoEditorRef.current
+
+    if (theEditor.hasTextFocus()) {
+      let selection = theEditor.getSelection()
+
+      // get clipboard data
+      const pasteData = e.clipboardData || window.clipboardData
+      // get/parse HTML content
+      const html = pasteData.getData('text/html') || ''
+      const parsed = new DOMParser().parseFromString(html, 'text/html')
+      // get image from DOM
+      const img = parsed.querySelector('img')
+      if (!img) {
+        console.warn('no image here')
+        return
+      }
+      const url = img.src
+
+      theEditor.executeEdits('', [
+        {
+          range: new monaco.Range(
+            selection.endLineNumber,
+            selection.endColumn,
+            selection.endLineNumber,
+            selection.endColumn
+          ),
+          text: `![Image](${url})`,
+        },
+      ])
+
+      const { endLineNumber, endColumn } = theEditor.getSelection()
+      theEditor.setPosition({ lineNumber: endLineNumber, column: endColumn })
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('paste', handleImagePaste)
+
+    return () => {
+      window.removeEventListener('paste', handleImagePaste)
+    }
+  }, [])
+
   useEffect(() => {
     const markdown = getMarkdown()
     setMarkdown(markdown)
