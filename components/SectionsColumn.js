@@ -51,6 +51,7 @@ export const SectionsColumn = ({
   const [currentSlugList, setCurrentSlugList] = useState([])
   const [slugsFromPreviousSession, setSlugsFromPreviousSession] = useState([])
   const { saveBackup, deleteBackup } = useLocalStorage()
+  const [showingDefaultSections, setShowingDefaultSections] = useState(true)
 
   useEffect(() => {
     var slugsFromPreviousSession =
@@ -159,6 +160,12 @@ export const SectionsColumn = ({
     setFocusedSectionSlug(localStorage.getItem('current-focused-slug'))
   }, [focusedSectionSlug])
 
+  const onToggleShowingDefaultSections = () => {
+    setShowingDefaultSections((showingDefaultSections) => !showingDefaultSections)
+  }
+
+  const spinSectionsChevron = showingDefaultSections ? 'rotate-180' : ''
+
   const { t } = useTranslation('editor')
 
   let alphabetizedSectionSlugs = sectionSlugs.sort()
@@ -222,7 +229,6 @@ export const SectionsColumn = ({
             </SortableContext>
           </DndContext>
         </ul>
-
         {sectionSlugs.length > 0 && (
           <h4 className="mb-3 text-xs leading-6 text-gray-900 dark:text-gray-300 overflow-ellipsis">
             {t('section-column-click-add')}
@@ -235,33 +241,55 @@ export const SectionsColumn = ({
           setAddAction={setAddAction}
           setTemplates={setTemplates}
         />
-        <ul className="mb-12 space-y-3">
-          {
-            (pageRefreshed && slugsFromPreviousSession.indexOf('title-and-description') == -1
-              ? sectionSlugs.push('title-and-description')
-              : ' ',
-            (alphabetizedSectionSlugs = sectionSlugs.sort()),
-            pageRefreshed || addAction
-              ? (alphabetizedSectionSlugs = [...new Set(alphabetizedSectionSlugs)])
-              : ' ',
-            alphabetizedSectionSlugs.map((s) => {
-              const template = getTemplate(s)
-              if (template) {
-                return (
-                  <li key={s}>
-                    <button
-                      className="flex items-center block w-full h-full py-2 pl-3 pr-6 bg-white dark:bg-gray-200 rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
-                      type="button"
-                      onClick={(e) => onAddSection(e, s)}
-                    >
-                      <span>{template.name}</span>
-                    </button>
-                  </li>
-                )
-              }
-            }))
-          }
-        </ul>
+        <button
+          className="flex items-center block w-full mb-4 py-2 pl-3 pr-6 bg-white dark:bg-gray-200 rounded-md shadow cursor-pointer 
+            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 relative"
+          type="button"
+          onClick={onToggleShowingDefaultSections}
+        >
+          <span>Show Default Sections</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className={`h-5 w-5 absolute right-4 transform transition-transform duration-500 ${spinSectionsChevron}`}
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"
+            />
+          </svg>
+        </button>
+        {showingDefaultSections && (
+          <ul className="mb-4 space-y-3 mt-2">
+            {
+              (pageRefreshed && slugsFromPreviousSession.indexOf('title-and-description') == -1
+                ? sectionSlugs.push('title-and-description')
+                : ' ',
+              (alphabetizedSectionSlugs = sectionSlugs.sort()),
+              pageRefreshed || addAction
+                ? (alphabetizedSectionSlugs = [...new Set(alphabetizedSectionSlugs)])
+                : ' ',
+              alphabetizedSectionSlugs.map((s) => {
+                const template = getTemplate(s)
+                if (template) {
+                  return (
+                    <li key={s}>
+                      <button
+                        className="flex items-center block h-full w-full py-2 pl-3 pr-6 bg-white dark:bg-gray-200 rounded-md shadow 
+                          cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
+                        type="button"
+                        onClick={(e) => onAddSection(e, s)}
+                      >
+                        <span>{template.name}</span>
+                      </button>
+                    </li>
+                  )
+                }
+              }))
+            }
+          </ul>
+        )}
       </div>
     </div>
   )
