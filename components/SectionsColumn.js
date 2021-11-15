@@ -164,7 +164,7 @@ export const SectionsColumn = ({
     setShowingDefaultSections((showingDefaultSections) => !showingDefaultSections)
   }
 
-  const spinSectionsChevron = showingDefaultSections ? 'rotate-180' : ''
+  const spinSectionsChevron = showingDefaultSections ? '' : 'rotate-180'
 
   const { t } = useTranslation('editor')
 
@@ -242,12 +242,12 @@ export const SectionsColumn = ({
           setTemplates={setTemplates}
         />
         <button
-          className="flex items-center block w-full mb-4 py-2 pl-3 pr-6 bg-white dark:bg-gray-200 rounded-md shadow cursor-pointer 
-            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 relative"
+          className="flex items-center justify-center focus:ring-2 focus:ring-offset-2  block w-full mb-4 py-2 pl-3 pr-6 bg-white dark:bg-gray-200 rounded-md shadow cursor-pointer 
+            focus:outline-none focus:ring-emerald-400 relative font-bold"
           type="button"
           onClick={onToggleShowingDefaultSections}
         >
-          <span>Show Default Sections</span>
+          <span>{showingDefaultSections ? 'Hide' : 'Show'} Default Sections</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className={`h-5 w-5 absolute right-4 transform transition-transform duration-500 ${spinSectionsChevron}`}
