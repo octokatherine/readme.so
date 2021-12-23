@@ -12,5 +12,6 @@
   "preview-column-raw": "Código fonte",
   "section-column-section": "Seções",
   "section-column-click-edit": "Clique em uma seção abaixo para editar os conteúdos",
-  "section-column-click-add": "Clique em uma seção abaixo para adicioná-la ao seu readme"
+  "section-column-click-add": "Clique em uma seção abaixo para adicioná-la ao seu readme",
+  "custom-section": "Seção customizada"
 }
