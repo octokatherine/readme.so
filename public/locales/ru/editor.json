@@ -1,0 +1,18 @@
+{
+  "editor-desktop-optimized": "Этот сайт оптимизирован для работы на компьютере",
+  "editor-visit-desktop": "Пожалуйста, посетите readme.so на компьютере, чтобы создать ваш readme!",
+  "nav-download": "Скачать",
+  "download-readme-generated": "Readme создан!",
+  "download-reach-out": "Спасибо, что используете readme.so! Можете связаться со мной на",
+  "download-feedback": "с любым отзывом.",
+  "download-coffee": "Если вам понравилось это приложение, пожалуйста, поддержите меня!",
+  "editor-column-editor": "Редактор",
+  "editor-select": "Select a section from the left sidebar to edit the contents",
+  "preview-column-preview": "Предварительный просмотр",
+  "preview-column-raw": "Просмотр исходного кода",
+  "section-column-section": "Разделы",
+  "section-column-click-edit": "Нажмите на раздел ниже, чтобы изменить его содержимое",
+  "section-column-click-add": "Нажмите на раздел ниже, чтобы добавить его к своему readme",
+  "section-column-click-reset": "Сбросить",
+  "custom-section": "Пользовательский раздел"
+}
