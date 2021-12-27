@@ -69,6 +69,10 @@ export const languageSupports = [
     label: 'हिंदी',
     route: '/hi',
   },
+  {
+    label: 'मराठी',
+    route: '/mr',
+  },
 ]
 
 export function LanguageDropDown({ posts }) {
