@@ -73,6 +73,10 @@ export const languageSupports = [
     label: '中文简体',
     route: '/cn',
   },
+  {
+    label: 'Русский',
+    route: '/ru',
+  },
 ]
 
 export function LanguageDropDown({ posts }) {
