@@ -18,6 +18,7 @@ module.exports = {
       'ar',
       'hi',
       'tl',
+      'ru',
     ],
   },
 }
