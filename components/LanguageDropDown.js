@@ -74,6 +74,10 @@ export const languageSupports = [
     route: '/mr',
   },
   {
+    label: '中文简体',
+    route: '/cn',
+  },
+  {
     label: 'Русский',
     route: '/ru',
   },
