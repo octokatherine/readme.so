@@ -20,6 +20,7 @@ module.exports = {
       'tl',
       'cn',
       'ru',
+      'tw',
     ],
   },
 }
