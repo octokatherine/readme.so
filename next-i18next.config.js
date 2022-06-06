@@ -10,6 +10,7 @@ module.exports = {
       'tr',
       'nl',
       'de',
+      'pl',
       'pt',
       'ja',
       'id',

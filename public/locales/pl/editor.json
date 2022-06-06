@@ -1,0 +1,18 @@
+{
+  "editor-desktop-optimized": "Ta strona jest zoptymalizowana pod komputery",
+  "editor-visit-desktop": "Odwiedź readme.so na komputerze by stworzyć swoje readme!",
+  "nav-download": "Pobierz",
+  "download-readme-generated": "Readme wygenerowane!",
+  "download-reach-out": "Dziękuję za korzystanie z readme.so! Śmiało odezwij się do mnie na",
+  "download-feedback": "by podzielić się swoją opinią.",
+  "download-coffee": "Jeśli ta aplikacja Ci pomogła, rozważ by mnie wesprzeć!",
+  "editor-column-editor": "Edytor",
+  "editor-select": "Wybierz sekcję z panelu po lewej stronie by edytować zawartość pliku",
+  "preview-column-preview": "Podgląd",
+  "preview-column-raw": "Kod",
+  "section-column-section": "Sekcje",
+  "section-column-click-edit": "Kliknij na sekcję poniżej by edytować jej zawartość",
+  "section-column-click-add": "Kliknij na sekcję poniżej by dodać ją do Twojego readme",
+  "section-column-click-reset": "Zresetuj",
+  "custom-section": "Niestandardowa sekcja"
+}

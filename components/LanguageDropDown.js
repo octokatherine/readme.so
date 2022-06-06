@@ -42,6 +42,10 @@ export const languageSupports = [
     route: '/de',
   },
   {
+    label: 'Polski',
+    route: '/pl',
+  },
+  {
     label: 'Português',
     route: '/pt',
   },
