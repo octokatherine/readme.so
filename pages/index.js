@@ -1,10 +1,8 @@
 import Head from 'next/head'
-import Link from 'next/link'
-
 import { LanguageDropDown } from '../components/LanguageDropDown'
-
-import { useTranslation } from 'next-i18next'
+import Link from 'next/link'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
 
 const Home = () => {
   const { t } = useTranslation('common')
@@ -158,7 +156,7 @@ const Home = () => {
                 rel="noopener noreferrer"
                 href="https://twitter.com/katherinecodes"
               >
-                Katherine Peterson
+                Katherine Oelsner
               </a>
             </h2>
             <div className="flex justify-center mt-4">
