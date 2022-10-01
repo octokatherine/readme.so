@@ -122,13 +122,22 @@ const Home = () => {
                 </div>
               </div>
               <div className="flex justify-center items-center mt-3">
-                <iframe
-                  src="https://github.com/sponsors/octokatherine/button"
-                  title="Sponsor octokatherine"
-                  height="35"
-                  width="116"
-                  className="border-0"
-                ></iframe>
+                <a
+                  className="group inline-flex items-center px-4 py-2 text-sm  bg-gray-50 border rounded-lg text-gray-500 w-[116px] h-[35px] justify-center transition-colors hover:bg-gray-100"
+                  aria-label="Sponsor octokatherine"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://github.com/sponsors/octokatherine"
+                >
+                  <div className="">
+                    <img
+                      className="w-4 h-4 mr-3 transform transition-transform group-hover:scale-110"
+                      src="heart.svg"
+                      alt="sponsorship heart"
+                    />
+                  </div>
+                  {t('Sponsor')}
+                </a>
               </div>
             </div>
           </div>
