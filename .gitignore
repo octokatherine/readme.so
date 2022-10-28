@@ -39,3 +39,5 @@ public/sw.js
 public/*.map
 
 yarn.lock
+
+.idea
