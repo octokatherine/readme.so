@@ -1,7 +1,8 @@
-import { useTranslation } from 'next-i18next'
 import { useEffect, useRef, useState } from 'react'
+
 import useDeviceDetect from '../hooks/useDeviceDetect'
 import useLocalStorage from '../hooks/useLocalStorage'
+import { useTranslation } from 'next-i18next'
 
 export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, theme }) => {
   const getMarkdown = () => {
@@ -88,6 +89,7 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, them
                 enabled: false,
               },
               lineNumbers: false,
+              wordWrap: true,
             }}
           />
         )
