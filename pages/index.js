@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import { LanguageDropDown } from '../components/LanguageDropDown'
 import Link from 'next/link'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -147,7 +148,7 @@ const Home = () => {
               <div className="flex-1 w-full bg-gray-800" />
             </div>
             <div className="px-4 mx-auto max-w-7xl sm:px-6">
-              <img
+              <Image
                 className="relative rounded-lg shadow-lg"
                 src="/screenshot.png"
                 alt="App screenshot"
