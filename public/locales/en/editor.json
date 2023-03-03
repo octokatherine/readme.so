@@ -11,6 +11,7 @@
   "preview-column-preview": "Preview",
   "preview-column-raw": "Raw",
   "section-column-section": "Sections",
+  "section-column-collapse": "Sections",
   "section-column-click-edit": "Click on a section below to edit the contents",
   "section-column-click-add": "Click on a section below to add it to your readme",
   "section-column-click-reset": "Reset",

@@ -163,9 +163,34 @@ export const SectionsColumn = ({
 
   let alphabetizedSectionSlugs = sectionSlugs.sort()
 
+  const collapseSidebar = () => {
+    let sections = document.querySelector('.sections')
+    let sectionsContent = document.querySelector('.sections-content')
+    let sectionsHeader = document.querySelector('.sections-header')
+    let collapseButton = document.querySelector('.collapse-button')
+
+    if (collapseButton.style.transform !== 'rotate(180deg)') {
+      sectionsContent.classList.remove('transition-all')
+      sectionsHeader.classList.remove('transition-all')
+      sections.classList.replace('w-80', 'w-8')
+      sectionsContent.classList.add('opacity-0')
+      sectionsHeader.classList.add('opacity-0')
+      collapseButton.style.transform = 'rotate(180deg)'
+    } else {
+      sections.classList.replace('w-8', 'w-80')
+      sectionsContent.classList.add('transition-all')
+      sectionsHeader.classList.add('transition-all')
+      setTimeout(() => {
+        sectionsContent.classList.remove('opacity-0')
+        sectionsHeader.classList.remove('opacity-0')
+      }, 130)
+      collapseButton.style.transform = 'rotate(0deg)'
+    }
+  }
+
   return (
-    <div className="sections w-80">
-      <h3 className="px-1 text-sm font-medium border-b-2 border-transparent text-emerald-500 whitespace-nowrap focus:outline-none">
+    <div className="sections transition-all w-80 relative">
+      <h3 className="px-1 text-sm sections-header  font-medium border-b-2 border-transparent text-emerald-500 whitespace-nowrap focus:outline-none">
         {t('section-column-section')}
         {
           <button
@@ -184,7 +209,7 @@ export const SectionsColumn = ({
           </button>
         }
       </h3>
-      <div className="px-3 pr-4 overflow-y-scroll full-screen">
+      <div className="px-3 pr-4 overflow-y-scroll  full-screen  sections-content">
         {selectedSectionSlugs.length > 0 && (
           <h4 className="mb-3 text-xs leading-6 text-gray-900 dark:text-gray-300">
             {t('section-column-click-edit')}
@@ -250,7 +275,7 @@ export const SectionsColumn = ({
                 return (
                   <li key={s}>
                     <button
-                      className="flex items-center block w-full h-full py-2 pl-3 pr-6 bg-white dark:bg-gray-200 rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
+                      className="flex items-center  w-full h-full py-2 pl-3 pr-6 bg-white dark:bg-gray-200 rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
                       type="button"
                       onClick={(e) => onAddSection(e, s)}
                     >
@@ -262,6 +287,14 @@ export const SectionsColumn = ({
             }))
           }
         </ul>
+      </div>
+      <div className=" items-end px-2 lg:flex hidden  h-16 bg-gray-50 fixed bottom-8 w-80">
+        <button
+          onClick={collapseSidebar}
+          className="cursor-pointer transition-transform focus:outline-none flex items-center collapse-button"
+        >
+          <Image src={darkMode ? '/collapse-light.svg' : '/collapse.svg'} width={24} height={24} />
+        </button>
       </div>
     </div>
   )
