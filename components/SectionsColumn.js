@@ -78,11 +78,16 @@ export const SectionsColumn = ({
     }
   }, [])
 
+  const updateSlugsOnAdd = (previousState, section) => {
+    return previousState.filter((slug) => slug !== section)
+  }
+
   const onAddSection = (e, section) => {
     localStorage.setItem('current-focused-slug', section)
     setpageRefreshed(false)
     setAddAction(true)
-    setSectionSlugs((prev) => prev.filter((s) => s !== section))
+    setSectionSlugs((prev) => updateSlugsOnAdd(prev, section))
+    setFilteredSlugs((prev) => updateSlugsOnAdd(prev, section))
     setSelectedSectionSlugs((prev) => [...prev, section])
     setFocusedSectionSlug(localStorage.getItem('current-focused-slug'))
   }
