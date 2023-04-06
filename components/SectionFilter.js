@@ -17,7 +17,7 @@ const SectionFilter = ({ sectionSlugs, getTemplate, filterSections }) => {
       return
     }
 
-    const suggestedSlugs = getAutoCompleteResults(section)
+    const suggestedSlugs = getAutoCompleteResults(section.trim())
 
     filterSections(suggestedSlugs)
   }, [section])
