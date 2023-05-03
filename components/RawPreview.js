@@ -57,7 +57,7 @@ export default function RawPreview({ text }) {
       <textarea
         ref={textAreaRef}
         readOnly
-        className="h-full w-full resize-none focus:outline-none"
+        className="h-full w-full resize-none bg-white dark:bg-gray-800 focus:outline-none"
         value={text}
       ></textarea>
     </div>
