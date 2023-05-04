@@ -172,10 +172,6 @@ export const SectionsColumn = ({
 
   let alphabetizedSectionSlugs = sectionSlugs.sort()
 
-  const filterSections = (suggestedSlugs) => {
-    setFilteredSlugs(suggestedSlugs)
-  }
-
   const getAutoCompleteResults = (searchQuery) => {
     const suggestedSlugs = sectionSlugs.filter((slug) => {
       return getTemplate(slug).name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -188,13 +184,13 @@ export const SectionsColumn = ({
 
   useEffect(() => {
     if (!searchFilter) {
-      filterSections([])
+      setFilteredSlugs([])
       return
     }
 
     const suggestedSlugs = getAutoCompleteResults(searchFilter.trim())
 
-    filterSections(suggestedSlugs)
+    setFilteredSlugs(suggestedSlugs)
   }, [searchFilter])
 
   return (
