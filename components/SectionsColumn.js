@@ -239,17 +239,17 @@ export const SectionsColumn = ({
             {t('section-column-click-add')}
           </h4>
         )}
+        <SectionFilter
+          sectionSlugs={sectionSlugs}
+          getTemplate={getTemplate}
+          filterSections={filterSections}
+        />
         <CustomSection
           setSelectedSectionSlugs={setSelectedSectionSlugs}
           setFocusedSectionSlug={setFocusedSectionSlug}
           setpageRefreshed={setpageRefreshed}
           setAddAction={setAddAction}
           setTemplates={setTemplates}
-        />
-        <SectionFilter
-          sectionSlugs={sectionSlugs}
-          getTemplate={getTemplate}
-          filterSections={filterSections}
         />
         <ul className="mb-12 space-y-3">
           {
