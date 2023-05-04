@@ -3,17 +3,14 @@ import userEvent from '@testing-library/user-event'
 
 import SectionFilter from '../SectionFilter'
 
-import { en_EN } from '../../data/section-templates-en_EN'
-
 jest.mock('next-i18next', () => ({
   useTranslation: () => ({ t: jest.fn() }),
 }))
 
 describe('<SectionFilter />', () => {
   const props = {
-    sectionSlugs: ['api', 'appendix'],
-    getTemplate: (slug) => en_EN.find((t) => t.slug === slug),
-    filterSections: jest.fn(),
+    searchFilter: '',
+    setSearchFilter: jest.fn(),
   }
 
   it('should render', () => {
@@ -21,7 +18,7 @@ describe('<SectionFilter />', () => {
     expect(container).toBeInTheDocument()
   })
 
-  it('should call the callBack function with suggested slugs', () => {
+  it('should call the callBack function with updated filter query', () => {
     render(<SectionFilter {...props} />)
 
     const input = screen.getByTestId('slugs-filter')
@@ -30,13 +27,10 @@ describe('<SectionFilter />', () => {
     expect(input).toHaveAttribute('placeholder', 'Search for a section')
 
     userEvent.type(input, 'app')
-    expect(screen.getByTestId('slugs-filter')).toHaveValue('app')
 
-    expect(props.filterSections).toHaveBeenCalledTimes(5)
-    expect(props.filterSections).toHaveBeenNthCalledWith(1, [])
-    expect(props.filterSections).toHaveBeenNthCalledWith(2, [])
-    expect(props.filterSections).toHaveBeenNthCalledWith(3, ['api', 'appendix'])
-    expect(props.filterSections).toHaveBeenNthCalledWith(4, ['api', 'appendix'])
-    expect(props.filterSections).toHaveBeenNthCalledWith(5, ['appendix'])
+    expect(props.setSearchFilter).toHaveBeenCalledTimes(3)
+    expect(props.setSearchFilter).toHaveBeenNthCalledWith(1, 'a')
+    expect(props.setSearchFilter).toHaveBeenNthCalledWith(2, 'p')
+    expect(props.setSearchFilter).toHaveBeenNthCalledWith(3, 'p')
   })
 })

@@ -51,6 +51,7 @@ export const SectionsColumn = ({
   const [addAction, setAddAction] = useState(false)
   const [currentSlugList, setCurrentSlugList] = useState([])
   const [slugsFromPreviousSession, setSlugsFromPreviousSession] = useState([])
+  const [searchFilter, setSearchFilter] = useState('')
   const [filteredSlugs, setFilteredSlugs] = useState([])
   const { saveBackup, deleteBackup } = useLocalStorage()
 
@@ -90,6 +91,7 @@ export const SectionsColumn = ({
     setFilteredSlugs((prev) => updateSlugsOnAdd(prev, section))
     setSelectedSectionSlugs((prev) => [...prev, section])
     setFocusedSectionSlug(localStorage.getItem('current-focused-slug'))
+    resetSearchFilter('')
   }
 
   useEffect(() => {
@@ -174,6 +176,27 @@ export const SectionsColumn = ({
     setFilteredSlugs(suggestedSlugs)
   }
 
+  const getAutoCompleteResults = (searchQuery) => {
+    const suggestedSlugs = sectionSlugs.filter((slug) => {
+      return getTemplate(slug).name.toLowerCase().includes(searchQuery.toLowerCase())
+    })
+
+    return suggestedSlugs.length ? suggestedSlugs : [undefined]
+  }
+
+  const resetSearchFilter = () => setSearchFilter('')
+
+  useEffect(() => {
+    if (!searchFilter) {
+      filterSections([])
+      return
+    }
+
+    const suggestedSlugs = getAutoCompleteResults(searchFilter.trim())
+
+    filterSections(suggestedSlugs)
+  }, [searchFilter])
+
   return (
     <div className="sections w-80">
       <h3 className="px-1 text-sm font-medium border-b-2 border-transparent text-emerald-500 whitespace-nowrap focus:outline-none">
@@ -239,11 +262,7 @@ export const SectionsColumn = ({
             {t('section-column-click-add')}
           </h4>
         )}
-        <SectionFilter
-          sectionSlugs={sectionSlugs}
-          getTemplate={getTemplate}
-          filterSections={filterSections}
-        />
+        <SectionFilter searchFilter={searchFilter} setSearchFilter={setSearchFilter} />
         <CustomSection
           setSelectedSectionSlugs={setSelectedSectionSlugs}
           setFocusedSectionSlug={setFocusedSectionSlug}
