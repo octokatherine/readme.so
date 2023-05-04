@@ -152,6 +152,8 @@ const Home = () => {
                 className="relative rounded-lg shadow-lg"
                 src="/screenshot.png"
                 alt="App screenshot"
+                height={700}
+                width={1200}
               />
             </div>
           </div>

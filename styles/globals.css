@@ -289,6 +289,79 @@ html.dark ::-webkit-scrollbar-thumb:hover {
 }
 
 html.dark .preview {
-  filter: invert(0.9);
+  background-color: rgba(38, 38, 38, var(--tw-bg-opacity));
+  @apply text-white;
   margin-top: -3px;
+}
+
+html.dark .preview h1 {
+  @apply text-white;
+  border-bottom: 1px solid #eaecef;
+}
+
+html.dark .preview h2 {
+  @apply text-white;
+  border-bottom: 1px solid #eaecef;
+}
+
+html.dark .preview h3 {
+  @apply text-white;
+  border-bottom: 1px solid #eaecef;
+}
+
+html.dark .preview h4 {
+  @apply text-white;
+}
+
+html.dark .preview td {
+  @apply text-white;
+  border-color: #a9b0b6;
+}
+
+html.dark .preview th {
+  @apply text-white;
+  border-color: #a9b0b6;
+}
+
+html.dark .preview tr {
+  @apply text-white;
+  background-color: rgba(38, 38, 38, var(--tw-bg-opacity));
+}
+html.dark .preview tr :nth-child(2n) {
+  background-color: rgba(38, 38, 38, var(--tw-bg-opacity));
+}
+
+html.dark .preview table {
+  @apply text-white;
+}
+
+html.dark .preview image {
+  background-color: #fff;
+  color: #3a91e1;
+}
+
+html.dark .preview ul {
+  @apply text-white;
+}
+
+html.dark .preview ul li {
+  @apply text-white;
+}
+
+html.dark .preview ol li {
+  @apply text-white;
+}
+
+html.dark .preview pre {
+  background-color: #6e768166;
+  @apply text-white;
+}
+
+html.dark code:not(.preview pre code) {
+  background-color: #6e768166;
+  @apply text-white;
+}
+
+html.dark .preview a {
+  color: #3a91e1;
 }
