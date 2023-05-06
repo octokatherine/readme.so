@@ -272,7 +272,7 @@ export const SectionsColumn = ({
           }
         </ul>
       </div>
-      <div className="items-end px-2 lg:flex hidden  h-16  bg-gray-50 dark:bg-gray-800 fixed bottom-8 w-80">
+      <div className="items-end px-8 lg:flex hidden  h-12  bg-gray-50 dark:bg-gray-800 fixed left-1 bottom-8 w-80">
         <button
           onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
           style={{ transform: `rotate(${isSidebarCollapsed ? '90' : '-90'}deg)` }}
