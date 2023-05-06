@@ -76,7 +76,7 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, them
         MonacoEditor && (
           <MonacoEditor
             onMount={handleEditorDidMount}
-            wrapperClassName="rounded-sm border border-gray-500"
+            wrapperClassName="rounded-md overflow-hidden border border-gray-500 mt-3"
             className="full-screen" // By default, it fully fits with its parent
             theme={theme}
             language="markdown"

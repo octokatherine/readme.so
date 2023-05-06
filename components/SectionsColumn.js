@@ -169,7 +169,7 @@ export const SectionsColumn = ({
       <h3
         className={`px-1 ${
           isSidebarCollapsed ? 'opacity-0' : 'opacity-100 transition-opacity delay-100'
-        } text-sm font-medium border-b-2 border-transparent text-emerald-500 whitespace-nowrap focus:outline-none`}
+        } text-sm font-medium border-b-2 ml-2 border-transparent text-emerald-500 whitespace-nowrap focus:outline-none`}
       >
         {t('section-column-section')}
         {
