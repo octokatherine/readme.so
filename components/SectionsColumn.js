@@ -259,7 +259,7 @@ export const SectionsColumn = ({
                 return (
                   <li key={s}>
                     <button
-                      className="flex items-center w-full h-full py-2 pl-3 pr-6 bg-white dark:bg-gray-200 rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
+                      className="flex items-center w-full text-black dark:text-white h-full py-2 pl-3 pr-6 bg-white dark:bg-gray-700 rounded-md shadow dark:shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
                       type="button"
                       onClick={(e) => onAddSection(e, s)}
                     >

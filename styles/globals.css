@@ -259,12 +259,6 @@ html.dark,
   background-color: rgba(38, 38, 38, var(--tw-bg-opacity));
 }
 
-html.dark .shadow {
-  --tw-shadow: 0 1px 3px 0 rgb(255 255 255 / 79%), 0 1px 2px 0 rgba(255 255 255 / 79%);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #fff), var(--tw-ring-shadow, 0 0 #fff),
-    var(--tw-shadow);
-}
-
 html.dark .md\:shadow-none {
   --tw-shadow: 0 0 #0000;
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #fff), var(--tw-ring-shadow, 0 0 #fff),
@@ -303,17 +297,17 @@ html.dark .preview {
 
 html.dark .preview h1 {
   @apply text-white;
-  border-bottom: 1px solid #eaecef;
+  border-bottom: 1px solid #404040;
 }
 
 html.dark .preview h2 {
   @apply text-white;
-  border-bottom: 1px solid #eaecef;
+  border-bottom: 1px solid #404040;
 }
 
 html.dark .preview h3 {
   @apply text-white;
-  border-bottom: 1px solid #eaecef;
+  border-bottom: 1px solid #404040;
 }
 
 html.dark .preview h4 {
