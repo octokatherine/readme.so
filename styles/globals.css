@@ -269,23 +269,28 @@ html.dark .md\:shadow-none {
     var(--tw-shadow);
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 html.dark ::-webkit-scrollbar {
   background-color: #454545;
   width: 10px;
+  border-radius: 20px;
 }
 
 html.dark ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #333;
   border-radius: 20px;
 }
 
 html.dark ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #555;
   border-radius: 20px;
 }
 
 html.dark ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #444;
 }
 
 html.dark .preview {
