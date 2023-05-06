@@ -1,9 +1,11 @@
 import ReactMarkdown from 'react-markdown'
-
+import hljs from 'highlight.js'
+import 'highlight.js/styles/github-dark.css'
 import { TAB } from '../utils/constants'
 import RawPreview from './RawPreview'
 
 const gfm = require('remark-gfm')
+
 export const PreviewColumn = ({ selectedSectionSlugs, getTemplate, selectedTab }) => {
   selectedSectionSlugs = [...new Set(selectedSectionSlugs)]
   const markdown = selectedSectionSlugs.reduce((acc, section) => {
@@ -14,6 +16,19 @@ export const PreviewColumn = ({ selectedSectionSlugs, getTemplate, selectedTab }
       return acc
     }
   }, ``)
+
+  const CodeBlock = ({ language, value }) => {
+    const highlightedCode = hljs.highlight(value, { language }).value
+
+    return (
+      <pre>
+        <code
+          className={`hljs ${language}`}
+          dangerouslySetInnerHTML={{ __html: highlightedCode }}
+        />
+      </pre>
+    )
+  }
 
   const showPreview = selectedTab === TAB.PREVIEW
   return (
@@ -33,6 +48,7 @@ export const PreviewColumn = ({ selectedSectionSlugs, getTemplate, selectedTab }
                 {props.children}
               </a>
             ),
+            code: CodeBlock,
           }}
         />
       ) : (
