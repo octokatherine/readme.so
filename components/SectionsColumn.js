@@ -91,7 +91,7 @@ export const SectionsColumn = ({
     setFilteredSlugs((prev) => updateSlugsOnAdd(prev, section))
     setSelectedSectionSlugs((prev) => [...prev, section])
     setFocusedSectionSlug(localStorage.getItem('current-focused-slug'))
-    resetSearchFilter('')
+    resetSearchFilter()
   }
 
   useEffect(() => {
