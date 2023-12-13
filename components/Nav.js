@@ -156,7 +156,8 @@ export const Nav = ({
 
         <button
           type="button"
-          aria-label="Import"
+          aria-label="Import JSON"
+          title={t('nav-import')}
           className="flex flex-row relative items-center mr-4 md:mr-0 px-4 py-2 text-sm font-bold tracking-wide text-white border border-transparent rounded-md shadow-sm bg-emerald-500 hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-emerald-500"
           onClick={() => fileInput.current.click()}
         >
@@ -166,7 +167,8 @@ export const Nav = ({
 
         <button
           type="button"
-          aria-label="Export"
+          aria-label="Export JSON"
+          title={t('nav-export')}
           className="flex flex-row relative items-center mr-4 md:mr-0 px-4 py-2 text-sm font-bold tracking-wide text-white border border-transparent rounded-md shadow-sm bg-emerald-500 hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-emerald-500"
           onClick={() => downloadFile(FileExports.JSON)}
         >
@@ -177,6 +179,7 @@ export const Nav = ({
         <button
           type="button"
           aria-label="Download Markdown"
+          title={t('nav-download')}
           className="flex flex-row relative items-center mr-4 md:mr-0 px-4 py-2 text-sm font-bold tracking-wide text-white border border-transparent rounded-md shadow-sm bg-emerald-500 hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-emerald-500"
           onClick={() => downloadFile(FileExports.MD)}
         >
