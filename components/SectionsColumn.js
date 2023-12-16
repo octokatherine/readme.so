@@ -15,6 +15,7 @@ import Image from 'next/image'
 import useLocalStorage from '../hooks/useLocalStorage'
 import { SortableItem } from './SortableItem'
 import CustomSection from './CustomSection'
+import SectionFilter from './SectionFilter'
 
 const kebabCaseToTitleCase = (str) => {
   return str
@@ -50,6 +51,8 @@ export const SectionsColumn = ({
   const [addAction, setAddAction] = useState(false)
   const [currentSlugList, setCurrentSlugList] = useState([])
   const [slugsFromPreviousSession, setSlugsFromPreviousSession] = useState([])
+  const [searchFilter, setSearchFilter] = useState('')
+  const [filteredSlugs, setFilteredSlugs] = useState([])
   const { saveBackup, deleteBackup } = useLocalStorage()
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
 
@@ -77,13 +80,19 @@ export const SectionsColumn = ({
     }
   }, [])
 
+  const updateSlugsOnAdd = (previousState, section) => {
+    return previousState.filter((slug) => slug !== section)
+  }
+
   const onAddSection = (e, section) => {
     localStorage.setItem('current-focused-slug', section)
     setpageRefreshed(false)
     setAddAction(true)
-    setSectionSlugs((prev) => prev.filter((s) => s !== section))
+    setSectionSlugs((prev) => updateSlugsOnAdd(prev, section))
+    setFilteredSlugs((prev) => updateSlugsOnAdd(prev, section))
     setSelectedSectionSlugs((prev) => [...prev, section])
     setFocusedSectionSlug(localStorage.getItem('current-focused-slug'))
+    resetSearchFilter()
   }
 
   useEffect(() => {
@@ -164,6 +173,27 @@ export const SectionsColumn = ({
 
   let alphabetizedSectionSlugs = sectionSlugs.sort()
 
+  const getAutoCompleteResults = (searchQuery) => {
+    const suggestedSlugs = sectionSlugs.filter((slug) => {
+      return getTemplate(slug).name.toLowerCase().includes(searchQuery.toLowerCase())
+    })
+
+    return suggestedSlugs.length ? suggestedSlugs : [undefined]
+  }
+
+  const resetSearchFilter = () => setSearchFilter('')
+
+  useEffect(() => {
+    if (!searchFilter) {
+      setFilteredSlugs([])
+      return
+    }
+
+    const suggestedSlugs = getAutoCompleteResults(searchFilter.trim())
+
+    setFilteredSlugs(suggestedSlugs)
+  }, [searchFilter])
+
   return (
     <div className={`sections ${isSidebarCollapsed ? 'w-10' : 'w-80'} transition-all duration-75`}>
       <h3
@@ -237,6 +267,7 @@ export const SectionsColumn = ({
             {t('section-column-click-add')}
           </h4>
         )}
+        <SectionFilter searchFilter={searchFilter} setSearchFilter={setSearchFilter} />
         <CustomSection
           setSelectedSectionSlugs={setSelectedSectionSlugs}
           setFocusedSectionSlug={setFocusedSectionSlug}
@@ -249,24 +280,37 @@ export const SectionsColumn = ({
             (pageRefreshed && slugsFromPreviousSession.indexOf('title-and-description') == -1
               ? sectionSlugs.push('title-and-description')
               : ' ',
-            (alphabetizedSectionSlugs = sectionSlugs.sort()),
+            (alphabetizedSectionSlugs = !filteredSlugs.length
+              ? sectionSlugs.sort()
+              : filteredSlugs.sort()),
             pageRefreshed || addAction
               ? (alphabetizedSectionSlugs = [...new Set(alphabetizedSectionSlugs)])
               : ' ',
             alphabetizedSectionSlugs.map((s) => {
-              const template = getTemplate(s)
-              if (template) {
+              if (s === undefined) {
                 return (
-                  <li key={s}>
-                    <button
-                      className="flex items-center w-full text-black dark:text-white h-full py-2 pl-3 pr-6 bg-white dark:bg-gray-700 rounded-md shadow dark:shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
-                      type="button"
-                      onClick={(e) => onAddSection(e, s)}
-                    >
-                      <span>{template.name}</span>
-                    </button>
-                  </li>
+                  <h4
+                    className="mb-3 text-xs leading-6 text-gray-900 dark:text-gray-300"
+                    key="unavailable-section"
+                  >
+                    The section you're looking for is unavailable
+                  </h4>
                 )
+              } else {
+                const template = getTemplate(s)
+                if (template) {
+                  return (
+                    <li key={s}>
+                      <button
+                        className="flex items-center block w-full h-full py-2 pl-3 pr-6 bg-white dark:bg-gray-200 rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
+                        type="button"
+                        onClick={(e) => onAddSection(e, s)}
+                      >
+                        <span>{template.name}</span>
+                      </button>
+                    </li>
+                  )
+                }
               }
             }))
           }
