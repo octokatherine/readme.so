@@ -54,6 +54,7 @@ export const SectionsColumn = ({
   const [searchFilter, setSearchFilter] = useState('')
   const [filteredSlugs, setFilteredSlugs] = useState([])
   const { saveBackup, deleteBackup } = useLocalStorage()
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
 
   useEffect(() => {
     var slugsFromPreviousSession =
@@ -194,8 +195,12 @@ export const SectionsColumn = ({
   }, [searchFilter])
 
   return (
-    <div className="sections w-80">
-      <h3 className="px-1 text-sm font-medium border-b-2 border-transparent text-emerald-500 whitespace-nowrap focus:outline-none">
+    <div className={`sections ${isSidebarCollapsed ? 'w-10' : 'w-80'} transition-all duration-75`}>
+      <h3
+        className={`px-1 ${
+          isSidebarCollapsed ? 'opacity-0' : 'opacity-100 transition-opacity delay-100'
+        } text-sm font-medium border-b-2 ml-2 border-transparent text-emerald-500 whitespace-nowrap focus:outline-none`}
+      >
         {t('section-column-section')}
         {
           <button
@@ -214,7 +219,11 @@ export const SectionsColumn = ({
           </button>
         }
       </h3>
-      <div className="px-3 pr-4 overflow-y-scroll full-screen">
+      <div
+        className={`px-3 pr-4 overflow-y-scroll full-screen  whitespace-nowrap ${
+          isSidebarCollapsed ? 'opacity-0' : 'opacity-100 transition-opacity delay-100'
+        }`}
+      >
         {selectedSectionSlugs.length > 0 && (
           <h4 className="mb-3 text-xs leading-6 text-gray-900 dark:text-gray-300">
             {t('section-column-click-edit')}
@@ -306,6 +315,15 @@ export const SectionsColumn = ({
             }))
           }
         </ul>
+      </div>
+      <div className="items-end px-8 lg:flex hidden  h-12  bg-gray-50 dark:bg-gray-800 fixed left-1 bottom-8 w-80">
+        <button
+          onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+          style={{ transform: `rotate(${isSidebarCollapsed ? '90' : '-90'}deg)` }}
+          className={`cursor-pointer  transition-transform focus:outline-none flex items-center`}
+        >
+          <Image src={darkMode ? '/collapse-light.svg' : '/collapse.svg'} width={24} height={24} />
+        </button>
       </div>
     </div>
   )

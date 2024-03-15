@@ -80,7 +80,7 @@ Leaving: "ease-in duration-200"
                 title="Sponsor octokatherine"
                 height="35"
                 width="116"
-                className="border-0"
+                className="border-0 rounded-md"
               ></iframe>
             </div>
           </div>

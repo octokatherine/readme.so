@@ -1,9 +1,10 @@
 import ReactMarkdown from 'react-markdown'
-
 import { TAB } from '../utils/constants'
 import RawPreview from './RawPreview'
+import CodeBlock from './CodeBlock'
 
 const gfm = require('remark-gfm')
+
 export const PreviewColumn = ({ selectedSectionSlugs, getTemplate, selectedTab }) => {
   selectedSectionSlugs = [...new Set(selectedSectionSlugs)]
   const markdown = selectedSectionSlugs.reduce((acc, section) => {
@@ -33,6 +34,7 @@ export const PreviewColumn = ({ selectedSectionSlugs, getTemplate, selectedTab }
                 {props.children}
               </a>
             ),
+            code: ({ language, value }) => <CodeBlock language={language} value={value} />,
           }}
         />
       ) : (
