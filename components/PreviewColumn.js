@@ -1,9 +1,12 @@
 import ReactMarkdown from 'react-markdown'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { dark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 import { TAB } from '../utils/constants'
 import RawPreview from './RawPreview'
 
 const gfm = require('remark-gfm')
+
 export const PreviewColumn = ({ selectedSectionSlugs, getTemplate, selectedTab }) => {
   selectedSectionSlugs = [...new Set(selectedSectionSlugs)]
   const markdown = selectedSectionSlugs.reduce((acc, section) => {
@@ -28,6 +31,9 @@ export const PreviewColumn = ({ selectedSectionSlugs, getTemplate, selectedTab }
           plugins={[gfm]}
           children={markdown}
           renderers={{
+            code: ({ language, value }) => {
+              return <SyntaxHighlighter style={dark} language={language} children={value} />
+            },
             link: (props) => (
               <a href={props.href} target="_blank">
                 {props.children}
