@@ -1,4 +1,4 @@
-export const en_EN = [
+export const bg_BG = [
     {
       slug: 'title-and-description',
       name: 'Title and Description',
