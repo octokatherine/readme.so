@@ -69,7 +69,7 @@ Start the server
     markdown: `
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://placehold.co/468x300?text=App+Screenshot+Here)
 
 `,
   },
