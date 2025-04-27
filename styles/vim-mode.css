@@ -1,0 +1,83 @@
+.vim-mode-indicator {
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+.vim-mode-indicator.normal {
+  background-color: #fbbf24;
+  color: #000;
+}
+
+.vim-mode-indicator.insert {
+  background-color: #10b981;
+  color: #fff;
+}
+
+.vim-mode-indicator.visual {
+  background-color: #ef4444;
+  color: #fff;
+}
+
+.vim-mode-normal {
+  border: 2px solid #fbbf24;
+}
+
+.vim-mode-insert {
+  border: 2px solid #10b981;
+}
+
+.vim-mode-visual {
+  border: 2px solid #ef4444;
+}
+
+.last-action {
+  margin-left: 8px;
+  opacity: 0.7;
+  font-size: 10px;
+}
+
+.vim-mode-toggle {
+  padding: 8px 12px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  margin: 8px 0;
+}
+
+.vim-mode-toggle label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #374151;
+}
+
+.vim-mode-toggle input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.vim-shortcut-help {
+  margin-top: 8px;
+  padding: 6px 8px;
+  background-color: #f3f4f6;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.vim-shortcut-help kbd {
+  font-family: 'Monaco', 'Consolas', monospace;
+  padding: 2px 6px;
+  background-color: #e5e7eb;
+  border-radius: 3px;
+  border: 1px solid #d1d5db;
+  font-size: 11px;
+  font-weight: bold;
+}

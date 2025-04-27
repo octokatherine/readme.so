@@ -4,6 +4,7 @@ import { useTranslation } from 'next-i18next'
 import Menu from './icons/Menu'
 import Close from './icons/Close'
 import useDeviceDetect from '../hooks/useDeviceDetect'
+import { VimModeToggle } from './VimModeToggle'
 
 export const Nav = ({
   selectedSectionSlugs,
@@ -43,12 +44,9 @@ export const Nav = ({
   return (
     <nav className="flex justify-between p-4 bg-gray-800 align-center w-full">
       <Link href="/">
-        <a className="focus:outline-none focus:ring-2 focus:ring-emerald-400 flex items-center">
-          <img className="w-auto h-12" src="readme.svg" alt="readme.so logo" />
-        </a>
+        <a className="focus:outline-none focus:ring-2 focus:ring-emerald-400 flex items-center"></a>
       </Link>
-      <div className="flex flex-row-reverse md:flex-row">
-        {/* visible for sm only */}
+      <div className="flex flex-row-reverse md:flex-row items-center">
         <button
           className="focus:outline-none focus:ring-2 focus:ring-emerald-400"
           onClick={onMenuClick}
@@ -59,12 +57,14 @@ export const Nav = ({
             <Menu className="w-10 h-10 md:hidden fill-current text-emerald-500" />
           )}
         </button>
-        {/* visible for md and above */}
+
+        <VimModeToggle />
+
         {focusedSectionSlug !== 'noEdit' && (
           <button
             onClick={() => setDarkMode(!darkMode)}
             aria-label="Color Mode"
-            className="toggle-dark-mode focus:outline-none transition transform motion-reduce:transition-none motion-reduce:transform-none  pr-4"
+            className="toggle-dark-mode focus:outline-none transition transform motion-reduce:transition-none motion-reduce:transform-none pr-4"
           >
             <Image
               className="w-auto h-8 mr-2"
@@ -82,7 +82,6 @@ export const Nav = ({
           className="flex flex-row relative items-center mr-4 md:mr-0 px-4 py-2 text-sm font-bold tracking-wide text-white border border-transparent rounded-md shadow-sm bg-emerald-500 hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-emerald-500"
           onClick={downloadMarkdownFile}
         >
-          <img className="w-auto h-6 cursor-pointer" src="download.svg" />
           <span className="hidden md:inline-block ml-2">{t('nav-download')}</span>
         </button>
       </div>

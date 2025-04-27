@@ -69,7 +69,7 @@ Sunucuyu çalıştırın
     markdown: `
 ## Ekran Görüntüleri
 
-![Uygulama Ekran Görüntüsü](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Uygulama Ekran Görüntüsü](https://dummyimage.com/468x300?text=App+Screenshot+Here)
 
   `,
   },
@@ -366,9 +366,9 @@ Herhangi bir ek bilgi buraya gelir
 
 | Renk             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| örnek renk | ![#0a192f](https://via.placeholder.com/10/0a192f?text=+) #0a192f |
-| örnek renk | ![#f8f8f8](https://via.placeholder.com/10/f8f8f8?text=+) #f8f8f8 |
-| örnek renk | ![#00b48a](https://via.placeholder.com/10/00b48a?text=+) #00b48a |
-| örnek renk | ![#00d1a0](https://via.placeholder.com/10/00b48a?text=+) #00d1a0 | `,
+| örnek renk | ![#0a192f](https://dummyimage.com/10/0a192f/white?text=+) #0a192f |
+| örnek renk | ![#f8f8f8](https://dummyimage.com/10/f8f8f8/white?text=+) #f8f8f8 |
+| örnek renk | ![#00b48a](https://dummyimage.com/10/00b48a/white?text=+) #00b48a |
+| örnek renk | ![#00d1a0](https://dummyimage.com/10/00b48a/white?text=+) #00d1a0 | `,
   },
 ]

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import useDeviceDetect from '../hooks/useDeviceDetect'
 import useLocalStorage from '../hooks/useLocalStorage'
 import { useTranslation } from 'next-i18next'
+import { useVimMode } from '../hooks/useVimMode'
 
 export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, theme }) => {
   const getMarkdown = () => {
@@ -14,7 +15,9 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, them
   const [isFocused, setFocus] = useState(false)
   const { isMobile } = useDeviceDetect()
   const [MonacoEditor, setMonacoEditor] = useState(null)
+  const [editorError, setEditorError] = useState(null)
   const { saveBackup } = useLocalStorage()
+  const { isVimMode } = useVimMode()
 
   const monacoEditorRef = useRef(null)
   const textEditorRef = useRef(null)
@@ -41,12 +44,18 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, them
   }
 
   useEffect(() => {
-    if (!isMobile && !MonacoEditor) {
-      import('@monaco-editor/react').then((EditorComp) => {
-        setMonacoEditor(EditorComp.default)
-      })
+    if (!isMobile && !MonacoEditor && !editorError) {
+      import('@monaco-editor/react')
+        .then((EditorComp) => {
+          setMonacoEditor(EditorComp.default)
+          setEditorError(null)
+        })
+        .catch((error) => {
+          console.error('Failed to load Monaco Editor:', error)
+          setEditorError('Failed to load editor')
+        })
     }
-  }, [MonacoEditor, isMobile, setMonacoEditor])
+  }, [MonacoEditor, isMobile, editorError])
 
   const { t } = useTranslation('editor')
 
@@ -55,6 +64,14 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, them
       <p className="font-sm text-emerald-500 max-w-[28rem] text-center mx-auto mt-10">
         {t('editor-select')}
       </p>
+    )
+  }
+
+  if (editorError) {
+    return (
+      <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+        {t('editor-load-error')}
+      </div>
     )
   }
 
@@ -77,19 +94,26 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, them
           <MonacoEditor
             onMount={handleEditorDidMount}
             wrapperClassName="rounded-sm border border-gray-500"
-            className="full-screen" // By default, it fully fits with its parent
-            theme={theme}
+            className="full-screen"
+            theme={theme === 'dark' ? 'vs-dark' : 'vs'}
             language="markdown"
             value={markdown}
             onChange={onEdit}
-            loading={'Loading...'}
+            loading={<div>Loading Editor...</div>}
             aria-label="Markdown Editor"
             options={{
               minimap: {
                 enabled: false,
               },
-              lineNumbers: false,
-              wordWrap: true,
+              lineNumbers: isVimMode ? 'on' : 'off',
+              wordWrap: 'on',
+              lineNumbersMinChars: 3,
+              fontSize: 14,
+              scrollBeyondLastLine: false,
+              automaticLayout: true,
+              fontFamily: 'Monaco, Menlo, "Ubuntu Mono", monospace',
+              cursorStyle: isVimMode ? 'block' : 'line',
+              cursorBlinking: isVimMode ? 'solid' : 'blink',
             }}
           />
         )
