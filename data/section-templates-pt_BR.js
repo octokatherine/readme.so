@@ -69,7 +69,7 @@ Inicie o servidor
     markdown: `
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://dummyimage.com/468x300?text=App+Screenshot+Here)
 
 `,
   },
@@ -438,10 +438,10 @@ Javascript, HTML, CSS...
 
 | Cor               | Hexadecimal                                                |
 | ----------------- | ---------------------------------------------------------------- |
-| Cor exemplo       | ![#0a192f](https://via.placeholder.com/10/0a192f?text=+) #0a192f |
-| Cor exemplo       | ![#f8f8f8](https://via.placeholder.com/10/f8f8f8?text=+) #f8f8f8 |
-| Cor exemplo       | ![#00b48a](https://via.placeholder.com/10/00b48a?text=+) #00b48a |
-| Cor exemplo       | ![#00d1a0](https://via.placeholder.com/10/00b48a?text=+) #00d1a0 |
+| Cor exemplo       | ![#0a192f](https://dummyimage.com/10/0a192f/white?text=+) #0a192f |
+| Cor exemplo       | ![#f8f8f8](https://dummyimage.com/10/f8f8f8/white?text=+) #f8f8f8 |
+| Cor exemplo       | ![#00b48a](https://dummyimage.com/10/00b48a/white?text=+) #00b48a |
+| Cor exemplo       | ![#00d1a0](https://dummyimage.com/10/00b48a/white?text=+) #00d1a0 |
 
 `,
   },
