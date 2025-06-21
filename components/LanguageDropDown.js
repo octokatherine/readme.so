@@ -10,6 +10,10 @@ export const languageSupports = [
     route: '/ar',
   },
   {
+    label: 'Hrvatski',
+    route: '/hr',
+  },
+  {
     label: 'Français',
     route: '/fr',
   },
