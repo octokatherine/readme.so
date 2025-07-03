@@ -70,6 +70,10 @@ export const languageSupports = [
     route: '/hi',
   },
   {
+    label: 'मराठी',
+    route: '/mr',
+  },
+  {
     label: '中文简体',
     route: '/cn',
   },
