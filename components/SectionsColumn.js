@@ -10,12 +10,13 @@ import {
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers'
 import { arrayMove, SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable'
 import { useTranslation } from 'next-i18next'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import Image from 'next/image'
 import useLocalStorage from '../hooks/useLocalStorage'
 import { SortableItem } from './SortableItem'
 import CustomSection from './CustomSection'
 import SectionFilter from './SectionFilter'
+import SearchBox from './SearchBox' // 新增 - 搜索框组件
 
 const kebabCaseToTitleCase = (str) => {
   return str
@@ -53,6 +54,7 @@ export const SectionsColumn = ({
   const [slugsFromPreviousSession, setSlugsFromPreviousSession] = useState([])
   const [searchFilter, setSearchFilter] = useState('')
   const [filteredSlugs, setFilteredSlugs] = useState([])
+  const [query, setQuery] = useState('') // 新增：用于过滤已添加的 sections
   const { saveBackup, deleteBackup } = useLocalStorage()
 
   useEffect(() => {
@@ -74,9 +76,11 @@ export const SectionsColumn = ({
       })
       setCurrentSlugList(slugList)
       setSelectedSectionSlugs(slugList)
-      setFocusedSectionSlug(currentSlugList[0])
+      // 注意：currentSlugList 可能在首次渲染时还是空数组，这里尽量直接使用 slugList
+      setFocusedSectionSlug(slugList[0])
       localStorage.setItem('current-focused-slug', slugList[0])
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const updateSlugsOnAdd = (previousState, section) => {
@@ -100,11 +104,12 @@ export const SectionsColumn = ({
 
   const handleDragEnd = (event) => {
     const { active, over } = event
+    if (!over || !active) return
     if (active.id !== over.id) {
       setSelectedSectionSlugs((sections) => {
         const oldIndex = sections.findIndex((s) => s === active.id)
         const newIndex = sections.findIndex((s) => s === over.id)
-
+        if (oldIndex === -1 || newIndex === -1) return sections
         return arrayMove(sections, oldIndex, newIndex)
       })
     }
@@ -170,7 +175,23 @@ export const SectionsColumn = ({
 
   const { t } = useTranslation('editor')
 
-  let alphabetizedSectionSlugs = sectionSlugs.sort()
+  // 计算已添加的 sections，根据 query 过滤
+  const filteredAdded = useMemo(() => {
+    const q = (query || '').toLowerCase().trim()
+    if (!q) return selectedSectionSlugs
+    return selectedSectionSlugs.filter((slug) => {
+      const template = getTemplate(slug) || {}
+      const name = (template.name || '').toLowerCase()
+      const body = (template.markdown || '').toLowerCase()
+      return name.includes(q) || body.includes(q)
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedSectionSlugs, query])
+
+  // 原始未添加的 sections，按字母排序的副本（不直接修改 props）
+  const alphabetizedSectionSlugs = useMemo(() => {
+    return sectionSlugs ? sectionSlugs.slice().sort() : []
+  }, [sectionSlugs])
 
   const getAutoCompleteResults = (searchQuery) => {
     const suggestedSlugs = sectionSlugs.filter((slug) => {
@@ -191,6 +212,7 @@ export const SectionsColumn = ({
     const suggestedSlugs = getAutoCompleteResults(searchFilter.trim())
 
     setFilteredSlugs(suggestedSlugs)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchFilter])
 
   return (
@@ -216,10 +238,17 @@ export const SectionsColumn = ({
       </h3>
       <div className="px-3 pr-4 overflow-y-scroll full-screen">
         {selectedSectionSlugs.length > 0 && (
+          <div className="my-2">
+            <SearchBox placeholder="Search added sections..." onSearch={setQuery} />
+          </div>
+        )}
+
+        {selectedSectionSlugs.length > 0 && (
           <h4 className="mb-3 text-xs leading-6 text-gray-900 dark:text-gray-300">
             {t('section-column-click-edit')}
           </h4>
         )}
+
         <ul className="mb-12 space-y-3">
           <DndContext
             sensors={sensors}
@@ -227,28 +256,24 @@ export const SectionsColumn = ({
             onDragEnd={handleDragEnd}
             modifiers={[restrictToVerticalAxis]}
           >
-            <SortableContext items={selectedSectionSlugs}>
-              {
-                (pageRefreshed || addAction
-                  ? (selectedSectionSlugs = [...new Set(selectedSectionSlugs)])
-                  : ' ',
-                selectedSectionSlugs.map((s) => {
-                  const template = getTemplate(s)
-                  if (template) {
-                    return (
-                      <SortableItem
-                        key={s}
-                        id={s}
-                        section={template}
-                        focusedSectionSlug={focusedSectionSlug}
-                        setFocusedSectionSlug={setFocusedSectionSlug}
-                        onDeleteSection={onDeleteSection}
-                        onResetSection={onResetSection}
-                      />
-                    )
-                  }
-                }))
-              }
+            <SortableContext items={filteredAdded}>
+              {filteredAdded.map((s) => {
+                const template = getTemplate(s)
+                if (template) {
+                  return (
+                    <SortableItem
+                      key={s}
+                      id={s}
+                      section={template}
+                      focusedSectionSlug={focusedSectionSlug}
+                      setFocusedSectionSlug={setFocusedSectionSlug}
+                      onDeleteSection={onDeleteSection}
+                      onResetSection={onResetSection}
+                    />
+                  )
+                }
+                return null
+              })}
             </SortableContext>
           </DndContext>
         </ul>
@@ -266,18 +291,14 @@ export const SectionsColumn = ({
           setAddAction={setAddAction}
           setTemplates={setTemplates}
         />
+
+        {/* 未添加列表：根据 filteredSlugs 或 alphabetizedSectionSlugs 显示 */}
         <ul className="mb-12 space-y-3">
-          {
-            (pageRefreshed && slugsFromPreviousSession.indexOf('title-and-description') == -1
-              ? sectionSlugs.push('title-and-description')
-              : ' ',
-            (alphabetizedSectionSlugs = !filteredSlugs.length
-              ? sectionSlugs.sort()
-              : filteredSlugs.sort()),
-            pageRefreshed || addAction
-              ? (alphabetizedSectionSlugs = [...new Set(alphabetizedSectionSlugs)])
-              : ' ',
-            alphabetizedSectionSlugs.map((s) => {
+          {(() => {
+            const list = !filteredSlugs.length
+              ? alphabetizedSectionSlugs
+              : filteredSlugs.slice().sort()
+            return list.map((s) => {
               if (s === undefined) {
                 return (
                   <h4
@@ -287,24 +308,25 @@ export const SectionsColumn = ({
                     The section you're looking for is unavailable
                   </h4>
                 )
-              } else {
-                const template = getTemplate(s)
-                if (template) {
-                  return (
-                    <li key={s}>
-                      <button
-                        className="flex items-center block w-full h-full py-2 pl-3 pr-6 bg-white dark:bg-gray-200 rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
-                        type="button"
-                        onClick={(e) => onAddSection(e, s)}
-                      >
-                        <span>{template.name}</span>
-                      </button>
-                    </li>
-                  )
-                }
               }
-            }))
-          }
+
+              const template = getTemplate(s)
+              if (template) {
+                return (
+                  <li key={s}>
+                    <button
+                      className="flex items-center block w-full h-full py-2 pl-3 pr-6 bg-white dark:bg-gray-200 rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
+                      type="button"
+                      onClick={(e) => onAddSection(e, s)}
+                    >
+                      <span>{template.name}</span>
+                    </button>
+                  </li>
+                )
+              }
+              return null
+            })
+          })()}
         </ul>
       </div>
     </div>
