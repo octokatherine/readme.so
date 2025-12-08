@@ -17,7 +17,7 @@ Install my-project with npm
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/your-username/your-repo.git
 ```
 
 Go to the project directory
@@ -117,9 +117,14 @@ To run tests, run the following command
 
 Add badges from somewhere like: [shields.io](https://shields.io/)
 
-[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
-[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
+![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
+[MIT License](https://opensource.org/licenses/MIT)
+
+![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)
+[GPLv3 License](https://opensource.org/licenses/GPL-3.0)
+
+![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)
+[AGPL License](https://www.gnu.org/licenses/agpl-3.0)
 
 ## Roadmap
 
@@ -182,7 +187,7 @@ This project is used by the following companies:
 
 ## Documentation
 
-[Documentation](https://linktodocumentation)
+[Documentation](https://example.com)
 
 ## Deployment
 
