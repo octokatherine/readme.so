@@ -81,6 +81,10 @@ export const languageSupports = [
     label: "O'zbekcha",
     route: '/uz',
   },
+  {
+    label: 'kirundi',
+    route: '/rn', // 建议用 ISO 639-1: rn
+  },
 ]
 
 export function LanguageDropDown({ posts }) {
