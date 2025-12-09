@@ -4,6 +4,7 @@ import { useTranslation } from 'next-i18next'
 import Menu from './icons/Menu'
 import Close from './icons/Close'
 import useDeviceDetect from '../hooks/useDeviceDetect'
+import ThemeToggle from '../components/ThemeToggle'
 
 export const Nav = ({
   selectedSectionSlugs,
@@ -61,19 +62,12 @@ export const Nav = ({
         </button>
         {/* visible for md and above */}
         {focusedSectionSlug !== 'noEdit' && (
-          <button
-            onClick={() => setDarkMode(!darkMode)}
+          <ThemeToggle
+            darkMode={darkMode}
+            setDarkMode={setDarkMode}
             aria-label="Color Mode"
-            className="toggle-dark-mode focus:outline-none transition transform motion-reduce:transition-none motion-reduce:transform-none  pr-4"
-          >
-            <Image
-              className="w-auto h-8 mr-2"
-              alt={darkMode ? 'dark' : 'light'}
-              src={darkMode ? '/toggle_sun.svg' : '/toggle_moon.svg'}
-              width={40}
-              height={40}
-            />
-          </button>
+            className="toggle-dark-mode focus:outline-none transition transform motion-reduce:transition-none motion-reduce:transform-none pr-4"
+          />
         )}
 
         <button

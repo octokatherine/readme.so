@@ -4,6 +4,7 @@ import { LanguageDropDown } from '../components/LanguageDropDown'
 import Link from 'next/link'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
+import ThemeToggle from '../components/ThemeToggle'
 
 const Home = () => {
   const { t } = useTranslation('common')
@@ -182,6 +183,48 @@ const Home = () => {
               </a>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div>
+        <Head>
+          <title>Home Page - Dark Mode Supported</title>
+          <meta name="description" content="支持深色模式切换的示例页面" />
+        </Head>
+
+        <div className="container">
+          {/* Navigation bar: includes theme toggle button */}
+          <header
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginBottom: '20px',
+            }}
+          >
+            <h1>项目首页</h1>
+            <ThemeToggle />
+          </header>
+
+          {/* Content area example */}
+          <main>
+            <div className="card">
+              <h2>Welcome</h2>
+              <p>
+                This is an example page with dark mode support. You can switch themes using the
+                button in the top right corner.
+              </p>
+            </div>
+
+            <div className="card">
+              <h3>Feature Description</h3>
+              <ul>
+                <li>Automatically remembers user's theme preference</li>
+                <li>Color design that meets contrast standards</li>
+                <li>Smooth transition effect for theme switching</li>
+              </ul>
+            </div>
+          </main>
         </div>
       </div>
     </>

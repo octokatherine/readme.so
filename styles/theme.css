@@ -1,0 +1,163 @@
+/* 基础变量 - 浅色模式默认值 */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --border-color: #e0e0e0;
+  --button-bg: #0070f3;
+  --button-text: #ffffff;
+  --card-bg: #f5f5f5;
+}
+
+/* 深色模式变量 */
+[data-theme='dark'] {
+  --bg-color: #1a1a1a;
+  --text-color: #f0f0f0;
+  --border-color: #333333;
+  --button-bg: #0066cc;
+  --button-text: #ffffff;
+  --card-bg: #2d2d2d;
+}
+
+/* 全局样式应用 */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* 组件样式示例 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.theme-toggle {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  opacity: 0.9;
+}
+
+/* 按钮交互状态 */
+.theme-toggle {
+  /* 基础样式已在之前定义，此处补充状态样式 */
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* 通用按钮样式 */
+.btn {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* 浅色模式按钮状态 */
+.btn:hover {
+  background-color: #005cc8;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+  background-color: #004199;
+  box-shadow: none;
+}
+
+/* 深色模式按钮状态 */
+[data-theme='dark'] .btn:hover {
+  background-color: #0077ff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .btn:active {
+  background-color: #005fcc;
+}
+
+/* 表单元素样式 */
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 8px 12px;
+  margin: 8px 0;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: border-color 0.2s ease;
+}
+
+/* 表单元素聚焦状态 */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--button-bg);
+  box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.2);
+}
+
+/* 深色模式表单聚焦状态 */
+[data-theme='dark'] input:focus,
+[data-theme='dark'] textarea:focus,
+[data-theme='dark'] select:focus {
+  box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.4);
+}
+
+/* 复选框和单选框 */
+input[type='checkbox'],
+input[type='radio'] {
+  width: auto;
+  margin-right: 8px;
+  accent-color: var(--button-bg);
+}
+
+/* 链接样式 */
+a {
+  color: var(--button-bg);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #005cc8;
+  text-decoration: underline;
+}
+
+[data-theme='dark'] a:hover {
+  color: #66b2ff;
+}

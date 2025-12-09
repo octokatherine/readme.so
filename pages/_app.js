@@ -1,3 +1,4 @@
+import '../styles/theme.css'
 import '../styles/globals.css'
 
 import { DefaultSeo } from 'next-seo'
