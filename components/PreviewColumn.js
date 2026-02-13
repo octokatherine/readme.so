@@ -25,6 +25,7 @@ export const PreviewColumn = ({ selectedSectionSlugs, getTemplate, selectedTab }
     >
       {showPreview ? (
         <ReactMarkdown
+          allowDangerousHtml
           plugins={[gfm]}
           children={markdown}
           renderers={{
