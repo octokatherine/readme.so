@@ -4,6 +4,7 @@ import { LanguageDropDown } from '../components/LanguageDropDown'
 import Link from 'next/link'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
+import DarkModeToggle from '../components/DarkModeToggle' // 👈 新增
 
 const Home = () => {
   const { t } = useTranslation('common')
@@ -91,12 +92,15 @@ const Home = () => {
                     className="w-auto h-12 cursor-pointer"
                     src="readme.svg"
                     alt="readme.so logo"
-                    // style={{ height: '3rem' }}
                   />
                 </Link>
 
                 <div className="relative items-center w-28 z-10 md:absolute md:inset-y-0 md:right-0">
                   <LanguageDropDown />
+                </div>
+
+                <div className="ml-4 hidden md:block">
+                  <DarkModeToggle />
                 </div>
               </nav>
             </div>
