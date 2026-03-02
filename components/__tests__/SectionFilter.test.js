@@ -3,10 +3,6 @@ import userEvent from '@testing-library/user-event'
 
 import SectionFilter from '../SectionFilter'
 
-jest.mock('next-i18next', () => ({
-  useTranslation: () => ({ t: jest.fn() }),
-}))
-
 describe('<SectionFilter />', () => {
   const props = {
     searchFilter: '',

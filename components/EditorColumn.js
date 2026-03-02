@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 
 import useDeviceDetect from '../hooks/useDeviceDetect'
 import useLocalStorage from '../hooks/useLocalStorage'
-import { useTranslation } from 'next-i18next'
 
 export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, theme }) => {
   const getMarkdown = () => {
@@ -48,12 +47,10 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, them
     }
   }, [MonacoEditor, isMobile, setMonacoEditor])
 
-  const { t } = useTranslation('editor')
-
   if (focusedSectionSlug == 'noEdit') {
     return (
       <p className="font-sm text-emerald-500 max-w-[28rem] text-center mx-auto mt-10">
-        {t('editor-select')}
+        Select a section from the left sidebar to edit the contents
       </p>
     )
   }

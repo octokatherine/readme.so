@@ -9,7 +9,6 @@ import {
 } from '@dnd-kit/core'
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers'
 import { arrayMove, SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable'
-import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import useLocalStorage from '../hooks/useLocalStorage'
@@ -168,8 +167,6 @@ export const SectionsColumn = ({
     setFocusedSectionSlug(localStorage.getItem('current-focused-slug'))
   }, [focusedSectionSlug])
 
-  const { t } = useTranslation('editor')
-
   let alphabetizedSectionSlugs = sectionSlugs.sort()
 
   const getAutoCompleteResults = (searchQuery) => {
@@ -196,14 +193,14 @@ export const SectionsColumn = ({
   return (
     <div className="sections w-80">
       <h3 className="px-1 text-sm font-medium border-b-2 border-transparent text-emerald-500 whitespace-nowrap focus:outline-none">
-        {t('section-column-section')}
+        Sections
         {
           <button
             className="focus:outline-none float-right"
             type="button"
             onClick={resetSelectedSections}
           >
-            <span className="pl-2 float-right">{t('section-column-click-reset')}</span>
+            <span className="pl-2 float-right">Reset</span>
             <Image
               className="w-auto h-5 inline-block"
               src={darkMode ? '/reset-light.svg' : '/reset.svg'}
@@ -217,7 +214,7 @@ export const SectionsColumn = ({
       <div className="px-3 pr-4 overflow-y-scroll full-screen">
         {selectedSectionSlugs.length > 0 && (
           <h4 className="mb-3 text-xs leading-6 text-gray-900 dark:text-gray-300">
-            {t('section-column-click-edit')}
+            Click on a section below to edit the contents
           </h4>
         )}
         <ul className="mb-12 space-y-3">
@@ -255,7 +252,7 @@ export const SectionsColumn = ({
 
         {sectionSlugs.length > 0 && (
           <h4 className="mb-3 text-xs leading-6 text-gray-900 dark:text-gray-300 overflow-ellipsis">
-            {t('section-column-click-add')}
+            Click on a section below to add it to your readme
           </h4>
         )}
         <SectionFilter searchFilter={searchFilter} setSearchFilter={setSearchFilter} />

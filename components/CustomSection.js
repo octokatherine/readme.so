@@ -1,4 +1,3 @@
-import { useTranslation } from 'next-i18next'
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import useLocalStorage from '../hooks/useLocalStorage'
@@ -13,8 +12,6 @@ const CustomSection = ({
   const [showModal, setShowModal] = useState(false)
   const [title, setTitle] = useState('')
   const { saveBackup } = useLocalStorage()
-
-  const { t } = useTranslation('editor')
 
   const inputRef = useRef(null)
 
@@ -135,7 +132,7 @@ const CustomSection = ({
               clipRule="evenodd"
             />
           </svg>
-          <span className="ml-1">{t('custom-section')}</span>
+          <span className="ml-1">Custom Section</span>
         </button>
       </div>
     </>

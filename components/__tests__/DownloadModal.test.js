@@ -3,10 +3,6 @@ import userEvent from '@testing-library/user-event'
 
 import { DownloadModal } from '../DownloadModal'
 
-jest.mock('next-i18next', () => ({
-  useTranslation: () => ({ t: jest.fn() }),
-}))
-
 describe('<DownloadModal />', () => {
   it('should render', () => {
     const { container } = render(<DownloadModal />)

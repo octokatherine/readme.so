@@ -1,14 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { LanguageDropDown } from '../components/LanguageDropDown'
 import Link from 'next/link'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useTranslation } from 'next-i18next'
-import nextI18NextConfig from '../next-i18next.config.js'
 
 const Home = () => {
-  const { t } = useTranslation('common')
-
   return (
     <>
       <Head>
@@ -94,21 +88,18 @@ const Home = () => {
                     alt="readme.so logo"
                   />
                 </Link>
-
-                <div className="relative items-center w-28 z-10 md:absolute md:inset-y-0 md:right-0">
-                  <LanguageDropDown />
-                </div>
               </nav>
             </div>
 
             <div className="px-4 mx-auto mt-16 max-w-7xl sm:mt-24 sm:px-6">
               <div className="text-center">
                 <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-                  <span className="block">{t('title')}</span>
-                  <span className="block text-emerald-500">{t('readme')}</span>
+                  <span className="block">The easiest way to create a</span>
+                  <span className="block text-emerald-500">README</span>
                 </h1>
                 <p className="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                  {t('description')}
+                  Our simple editor allows you to quickly add and customize all the sections you
+                  need for your project&apos;s readme
                 </p>
               </div>
               <div className="flex justify-center mt-6">
@@ -118,7 +109,7 @@ const Home = () => {
                       href="/editor"
                       className="inline-flex items-center px-4 py-2 font-medium text-xl bg-emerald-500 hover:bg-emerald-400 border border-transparent rounded-lg text-white w-[250px] h-[54px] justify-center"
                     >
-                      {t('get-started')}
+                      Get Started
                     </Link>
                   </span>
                 </div>
@@ -138,7 +129,7 @@ const Home = () => {
                       alt="sponsorship heart"
                     />
                   </div>
-                  {t('Sponsor')}
+                  Sponsor
                 </a>
               </div>
             </div>
@@ -162,7 +153,7 @@ const Home = () => {
         <div className="bg-gray-800">
           <div className="px-4 py-16 mx-auto max-w-7xl sm:py-24 sm:px-6 lg:px-8">
             <h2 className="text-sm font-semibold tracking-wide text-center text-gray-400">
-              {t('made-with-love')}&#9825;{t('by')}{' '}
+              Made with &#9825; by{' '}
               <a
                 className="hover:text-emerald-500"
                 target="_blank"
@@ -188,11 +179,5 @@ const Home = () => {
     </>
   )
 }
-
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...(await serverSideTranslations(locale, ['common', 'footer'], nextI18NextConfig)),
-  },
-})
 
 export default Home

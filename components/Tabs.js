@@ -1,9 +1,7 @@
 import ColumnHeader from './ColumnHeader'
-import { useTranslation } from 'next-i18next'
 import { TAB } from '../utils/constants'
 
 const Tabs = ({ selectedTab, setSelectedTab, focusedSectionSlug, toggleTheme, toggleState }) => {
-  const { t } = useTranslation('editor')
   return (
     <div className="flex">
       <div className="flex flex-0 pb-3">
@@ -12,7 +10,7 @@ const Tabs = ({ selectedTab, setSelectedTab, focusedSectionSlug, toggleTheme, to
           className="flex-1"
           onClick={() => setSelectedTab(TAB.EDITOR)}
         >
-          {t('editor-column-editor')}
+          Editor
         </ColumnHeader.Tab>
       </div>
 
@@ -23,14 +21,14 @@ const Tabs = ({ selectedTab, setSelectedTab, focusedSectionSlug, toggleTheme, to
             className="pb-3"
             onClick={() => setSelectedTab(TAB.PREVIEW)}
           >
-            {t('preview-column-preview')}
+            Preview
           </ColumnHeader.Tab>
           <ColumnHeader.Tab
             isActive={selectedTab === TAB.RAW}
             className="pb-3"
             onClick={() => setSelectedTab(TAB.RAW)}
           >
-            {t('preview-column-raw')}
+            Raw
           </ColumnHeader.Tab>
         </nav>
       </div>

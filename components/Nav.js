@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { useTranslation } from 'next-i18next'
 import Menu from './icons/Menu'
 import Close from './icons/Close'
 import useDeviceDetect from '../hooks/useDeviceDetect'
@@ -37,8 +36,6 @@ export const Nav = ({
     }
     setShowModal(true)
   }
-
-  const { t } = useTranslation('editor')
 
   return (
     <nav className="flex justify-between p-4 bg-gray-800 align-center w-full">
@@ -84,7 +81,7 @@ export const Nav = ({
           onClick={downloadMarkdownFile}
         >
           <img className="w-auto h-6 cursor-pointer" src="download.svg" />
-          <span className="hidden md:inline-block ml-2">{t('nav-download')}</span>
+          <span className="hidden md:inline-block ml-2">Download</span>
         </button>
       </div>
     </nav>

@@ -4,10 +4,6 @@ import userEvent from '@testing-library/user-event'
 
 import { en_EN } from '../../data/section-templates-en_EN'
 
-jest.mock('next-i18next', () => ({
-  useTranslation: () => ({ t: jest.fn() }),
-}))
-
 describe('<EditorPreviewColumn />', () => {
   beforeEach(() => {
     jest.useFakeTimers()

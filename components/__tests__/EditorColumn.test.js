@@ -12,10 +12,6 @@ jest.mock(
     }
 )
 
-jest.mock('next-i18next', () => ({
-  useTranslation: () => ({ t: jest.fn() }),
-}))
-
 describe('<EditorColumn />', () => {
   beforeEach(() => {
     jest.useFakeTimers()

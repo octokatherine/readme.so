@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { PreviewColumn } from '../components/PreviewColumn'
 import { EditorColumn } from '../components/EditorColumn'
 import ColumnHeader from '../components/ColumnHeader'
-import { useTranslation } from 'next-i18next'
 import { TAB } from '../utils/constants'
 import Tabs from './Tabs'
 import useDeviceDetect from '../hooks/useDeviceDetect'
@@ -16,7 +15,6 @@ const EditPreviewContainer = ({
   setSelectedSectionSlugs,
   darkMode,
 }) => {
-  const { t } = useTranslation('editor')
   const [toggleState, setToggleState] = useState({ theme: 'dark', img: 'toggle_sun.svg' })
   const [selectedTab, setSelectedTab] = useState(TAB.PREVIEW)
   const { isMobile } = useDeviceDetect()
@@ -41,9 +39,7 @@ const EditPreviewContainer = ({
 
       {showEditorColumn ? (
         <div className="w-full md:w-1/2 px-3 full-screen">
-          {!isMobile ? (
-            <ColumnHeader.Heading>{t('editor-column-editor')}</ColumnHeader.Heading>
-          ) : null}
+          {!isMobile ? <ColumnHeader.Heading>Editor</ColumnHeader.Heading> : null}
           <EditorColumn
             focusedSectionSlug={focusedSectionSlug}
             selectedSectionSlugs={selectedSectionSlugs}
@@ -65,14 +61,14 @@ const EditPreviewContainer = ({
                   className="pb-3"
                   onClick={() => setSelectedTab(TAB.PREVIEW)}
                 >
-                  {t('preview-column-preview')}
+                  Preview
                 </ColumnHeader.Tab>
                 <ColumnHeader.Tab
                   isActive={selectedTab === TAB.RAW}
                   className="pb-3"
                   onClick={() => setSelectedTab(TAB.RAW)}
                 >
-                  {t('preview-column-raw')}
+                  Raw
                 </ColumnHeader.Tab>
               </nav>
             </div>

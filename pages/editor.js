@@ -1,16 +1,15 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { DownloadModal } from '../components/DownloadModal'
 import EditPreviewContainer from '../components/EditPreviewContainer'
 import { Nav } from '../components/Nav'
 import { SectionsColumn } from '../components/SectionsColumn'
-import allSectionTemplates from '../data/index'
+import { en_EN } from '../data/section-templates-en_EN'
 import useLocalStorage from '../hooks/useLocalStorage'
 import useDarkMode from '../hooks/useDarkMode'
-import nextI18NextConfig from '../next-i18next.config.js'
 
-export default function Editor({ sectionTemplates }) {
+export default function Editor() {
+  const sectionTemplates = en_EN
   const [selectedSectionSlugs, setSelectedSectionSlugs] = useState([])
   const [sectionSlugs, setSectionSlugs] = useState(sectionTemplates.map((t) => t.slug))
   const [focusedSectionSlug, setFocusedSectionSlug] = useState(null)
@@ -111,17 +110,4 @@ export default function Editor({ sectionTemplates }) {
       </div>
     </div>
   )
-}
-
-export const getStaticProps = async ({ locale }) => {
-  const sectionTemplates = allSectionTemplates[locale]
-    ? allSectionTemplates[locale]
-    : allSectionTemplates['en']
-  const i18n = await serverSideTranslations(locale, ['editor'], nextI18NextConfig)
-  return {
-    props: {
-      sectionTemplates,
-      ...i18n,
-    },
-  }
 }

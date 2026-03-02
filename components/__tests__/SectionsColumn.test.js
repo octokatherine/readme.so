@@ -5,10 +5,6 @@ import { SectionsColumn } from '../SectionsColumn'
 
 import { en_EN } from '../../data/section-templates-en_EN'
 
-jest.mock('next-i18next', () => ({
-  useTranslation: () => ({ t: jest.fn() }),
-}))
-
 describe('<SectionsColumn />', () => {
   const props = {
     selectedSectionSlugs: ['title-and-description'],
