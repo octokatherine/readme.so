@@ -28,6 +28,9 @@
     "remark-gfm": "^4.0.1",
     "set-value": ">=4.0.1"
   },
+  "overrides": {
+    "serialize-javascript": ">=7.0.3"
+  },
   "devDependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
