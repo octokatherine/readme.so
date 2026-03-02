@@ -8,6 +8,7 @@ import { SectionsColumn } from '../components/SectionsColumn'
 import allSectionTemplates from '../data/index'
 import useLocalStorage from '../hooks/useLocalStorage'
 import useDarkMode from '../hooks/useDarkMode'
+import nextI18NextConfig from '../next-i18next.config.js'
 
 export default function Editor({ sectionTemplates }) {
   const [selectedSectionSlugs, setSelectedSectionSlugs] = useState([])
@@ -116,7 +117,7 @@ export const getStaticProps = async ({ locale }) => {
   const sectionTemplates = allSectionTemplates[locale]
     ? allSectionTemplates[locale]
     : allSectionTemplates['en']
-  const i18n = await serverSideTranslations(locale, ['editor'])
+  const i18n = await serverSideTranslations(locale, ['editor'], nextI18NextConfig)
   return {
     props: {
       sectionTemplates,

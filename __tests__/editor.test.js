@@ -19,20 +19,20 @@ describe('editor page', () => {
   afterEach(cleanup)
 
   it('should render', () => {
-    const { container } = render(<Editor sectionTemplate={en_EN} />)
+    const { container } = render(<Editor sectionTemplates={en_EN} />)
     expect(container).toBeInTheDocument()
   })
 
   it('should show DownloadModal component if showModal is true', () => {
     global.URL.createObjectURL = jest.fn()
-    render(<Editor sectionTemplate={en_EN} />)
+    render(<Editor sectionTemplates={en_EN} />)
 
     userEvent.click(screen.getByLabelText('Download Markdown'))
     expect(screen.getByText('🎉')).toBeInTheDocument()
   })
 
   it('should add section', () => {
-    render(<Editor sectionTemplate={en_EN} />)
+    render(<Editor sectionTemplates={en_EN} />)
 
     userEvent.click(screen.getByText(/FAQ/))
     // selected sections

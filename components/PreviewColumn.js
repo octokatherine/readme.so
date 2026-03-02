@@ -2,8 +2,7 @@ import ReactMarkdown from 'react-markdown'
 
 import { TAB } from '../utils/constants'
 import RawPreview from './RawPreview'
-
-const gfm = require('remark-gfm')
+import remarkGfm from 'remark-gfm'
 export const PreviewColumn = ({ selectedSectionSlugs, getTemplate, selectedTab }) => {
   selectedSectionSlugs = [...new Set(selectedSectionSlugs)]
   const markdown = selectedSectionSlugs.reduce((acc, section) => {
@@ -25,16 +24,17 @@ export const PreviewColumn = ({ selectedSectionSlugs, getTemplate, selectedTab }
     >
       {showPreview ? (
         <ReactMarkdown
-          plugins={[gfm]}
-          children={markdown}
-          renderers={{
-            link: (props) => (
-              <a href={props.href} target="_blank">
+          remarkPlugins={[remarkGfm]}
+          components={{
+            a: ({ node, ...props }) => (
+              <a href={props.href} target="_blank" rel="noopener noreferrer">
                 {props.children}
               </a>
             ),
           }}
-        />
+        >
+          {markdown}
+        </ReactMarkdown>
       ) : (
         <RawPreview text={markdown} />
       )}

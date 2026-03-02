@@ -4,6 +4,7 @@ import { LanguageDropDown } from '../components/LanguageDropDown'
 import Link from 'next/link'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
+import nextI18NextConfig from '../next-i18next.config.js'
 
 const Home = () => {
   const { t } = useTranslation('common')
@@ -91,7 +92,6 @@ const Home = () => {
                     className="w-auto h-12 cursor-pointer"
                     src="readme.svg"
                     alt="readme.so logo"
-                    // style={{ height: '3rem' }}
                   />
                 </Link>
 
@@ -114,10 +114,11 @@ const Home = () => {
               <div className="flex justify-center mt-6">
                 <div className="flex flex-col items-center">
                   <span className="inline-flex rounded-md shadow ">
-                    <Link href="/editor">
-                      <a className="inline-flex items-center px-4 py-2 font-medium text-xl bg-emerald-500 hover:bg-emerald-400 border border-transparent rounded-lg text-white w-[250px] h-[54px] justify-center">
-                        {t('get-started')}
-                      </a>
+                    <Link
+                      href="/editor"
+                      className="inline-flex items-center px-4 py-2 font-medium text-xl bg-emerald-500 hover:bg-emerald-400 border border-transparent rounded-lg text-white w-[250px] h-[54px] justify-center"
+                    >
+                      {t('get-started')}
                     </Link>
                   </span>
                 </div>
@@ -190,7 +191,7 @@ const Home = () => {
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ['common', 'footer'])),
+    ...(await serverSideTranslations(locale, ['common', 'footer'], nextI18NextConfig)),
   },
 })
 
