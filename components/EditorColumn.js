@@ -4,7 +4,14 @@ import useDeviceDetect from '../hooks/useDeviceDetect'
 import useLocalStorage from '../hooks/useLocalStorage'
 import { useTranslation } from 'next-i18next'
 
-export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, theme }) => {
+export const EditorColumn = ({
+  focusedSectionSlug,
+  templates,
+  setTemplates,
+  theme,
+  selectedSectionSlugs,
+  setSelectedSectionSlugs,
+}) => {
   const getMarkdown = () => {
     const section = templates.find((s) => s.slug === focusedSectionSlug)
     return section ? section.markdown : ''
@@ -16,13 +23,26 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, them
   const [MonacoEditor, setMonacoEditor] = useState(null)
   const { saveBackup } = useLocalStorage()
 
+  // Refs for editor focus
   const monacoEditorRef = useRef(null)
   const textEditorRef = useRef(null)
 
+  // Update markdown when focused section changes
   useEffect(() => {
     const markdown = getMarkdown()
     setMarkdown(markdown)
   }, [focusedSectionSlug, templates])
+
+  // Auto-focus editor when section is selected
+  useEffect(() => {
+    if (!focusedSectionSlug || focusedSectionSlug === 'noEdit') return
+
+    if (isMobile && textEditorRef.current) {
+      textEditorRef.current.focus()
+    } else if (!isMobile && monacoEditorRef.current) {
+      monacoEditorRef.current.focus()
+    }
+  }, [focusedSectionSlug, isMobile])
 
   const onEdit = (val) => {
     setMarkdown(val)
@@ -40,13 +60,14 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, them
     monacoEditorRef.current = editor
   }
 
+  // Lazy load Monaco editor for desktop
   useEffect(() => {
     if (!isMobile && !MonacoEditor) {
       import('@monaco-editor/react').then((EditorComp) => {
         setMonacoEditor(EditorComp.default)
       })
     }
-  }, [MonacoEditor, isMobile, setMonacoEditor])
+  }, [MonacoEditor, isMobile])
 
   const { t } = useTranslation('editor')
 
@@ -77,7 +98,7 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, them
           <MonacoEditor
             onMount={handleEditorDidMount}
             wrapperClassName="rounded-sm border border-gray-500"
-            className="full-screen" // By default, it fully fits with its parent
+            className="full-screen"
             theme={theme}
             language="markdown"
             value={markdown}
