@@ -42,7 +42,7 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, them
   useEffect(() => {
     if (!isMobile && !MonacoEditor) {
       import('@monaco-editor/react').then((EditorComp) => {
-        setMonacoEditor(EditorComp.default)
+        setMonacoEditor(() => EditorComp.default)
       })
     }
   }, [MonacoEditor, isMobile, setMonacoEditor])

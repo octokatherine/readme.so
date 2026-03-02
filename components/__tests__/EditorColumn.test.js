@@ -4,27 +4,24 @@ import { EditorColumn } from '../EditorColumn'
 
 import { en_EN } from '../../data/section-templates-en_EN'
 
-jest.mock(
-  '@monaco-editor/react',
-  () =>
-    function Editor({ value, onChange }) {
-      return <input aria-label="Markdown Editor" value={value} onChange={() => onChange('test')} />
-    }
-)
+jest.mock('@monaco-editor/react', () => {
+  function Editor({ value, onChange }) {
+    return <input aria-label="Markdown Editor" value={value} onChange={() => onChange('test')} />
+  }
+  Editor.default = Editor
+  return { __esModule: true, default: Editor }
+})
 
 describe('<EditorColumn />', () => {
-  beforeEach(() => {
-    jest.useFakeTimers()
-  })
-
   it('should render', () => {
     const { container } = render(<EditorColumn templates={en_EN} />)
     expect(container).toBeInTheDocument()
   })
 
-  it('should show <Editor /> if focusedSectionSlug is truthy', () => {
+  it('should show <Editor /> if focusedSectionSlug is truthy', async () => {
     render(<EditorColumn templates={en_EN} focusedSectionSlug={'title-and-description'} />)
-    expect(screen.getByLabelText('Markdown Editor').value).toEqual(
+    const editor = await screen.findByLabelText('Markdown Editor')
+    expect(editor.value).toEqual(
       "# Project TitleA brief description of what this project does and who it's for"
     )
   })
@@ -39,9 +36,10 @@ describe('<EditorColumn />', () => {
       />
     )
 
-    userEvent.type(screen.getByLabelText('Markdown Editor'), 'test')
+    const editor = await screen.findByLabelText('Markdown Editor')
+    userEvent.type(editor, 'test')
 
     expect(setTemplatesHandler).toHaveBeenCalledTimes(4)
-    expect(screen.getByLabelText('Markdown Editor')).toHaveValue('test')
+    expect(editor).toHaveValue('test')
   })
 })
