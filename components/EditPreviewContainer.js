@@ -28,7 +28,7 @@ const EditPreviewContainer = ({
   const showEditorColumn = !isMobile || selectedTab === TAB.EDITOR
   const showPreviewColumn = !isMobile || selectedTab === TAB.PREVIEW || selectedTab === TAB.RAW
   return (
-    <div className="flex flex-1 pt-6 px-6 md:p-0 flex-col md:flex-row">
+    <div className="min-w-0 flex flex-1 pt-6 px-6 md:p-0 flex-col md:flex-row">
       {isMobile ? (
         <Tabs
           selectedTab={selectedTab}
@@ -40,9 +40,11 @@ const EditPreviewContainer = ({
       ) : null}
 
       {showEditorColumn ? (
-        <div className="w-full md:w-1/2 px-3 full-screen">
+        <div className="min-w-0 px-3 flex-1 full-screen">
           {!isMobile ? (
-            <ColumnHeader.Heading>{t('editor-column-editor')}</ColumnHeader.Heading>
+            <ColumnHeader.Heading className="pb-3">
+              {t('editor-column-editor')}
+            </ColumnHeader.Heading>
           ) : null}
           <EditorColumn
             focusedSectionSlug={focusedSectionSlug}
@@ -56,7 +58,7 @@ const EditPreviewContainer = ({
       ) : null}
 
       {showPreviewColumn ? (
-        <div className="px-3 flex-1">
+        <div className="min-w-0 px-3 flex-1">
           {!isMobile ? (
             <div className="border-b border-gray-200">
               <nav className="-mb-px flex space-x-8" aria-label="Tabs">
