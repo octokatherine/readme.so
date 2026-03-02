@@ -42,7 +42,7 @@ Mobile uses a tab-based UI instead of side-by-side columns.
 ## Conventions
 
 - **Formatting:** Prettier with no semicolons, single quotes, trailing commas (es5), 2-space indent, 100 char print width
-- **Styling:** TailwindCSS utility classes with `class` dark mode strategy. Color palette is limited to emerald, gray, black, white, transparent, and current
+- **Styling:** TailwindCSS utility classes. Color palette is limited to emerald, gray, black, white, transparent, and current
 - **Components:** Functional components only. Mix of named exports (`export const Foo`) and default exports — no consistent pattern
 - **Testing:** Jest + React Testing Library. Tests live in `__tests__/` (page-level) and `components/__tests__/` (component-level). Coverage is collected for `components/*` and `pages/editor.js`
 - **Static export:** The app uses `output: 'export'` in `next.config.js` — no server-side features (no API routes, no SSR, no `getServerSideProps`)

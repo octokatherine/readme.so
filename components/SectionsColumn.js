@@ -10,7 +10,6 @@ import {
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers'
 import { arrayMove, SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable'
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 import useLocalStorage from '../hooks/useLocalStorage'
 import { SortableItem } from './SortableItem'
 import CustomSection from './CustomSection'
@@ -36,7 +35,6 @@ export const SectionsColumn = ({
   originalTemplate,
   setTemplates,
   getTemplate,
-  darkMode,
 }) => {
   const sensors = useSensors(
     useSensor(MouseSensor),
@@ -201,19 +199,13 @@ export const SectionsColumn = ({
             onClick={resetSelectedSections}
           >
             <span className="pl-2 float-right">Reset</span>
-            <Image
-              className="w-auto h-5 inline-block"
-              src={darkMode ? '/reset-light.svg' : '/reset.svg'}
-              alt="Delete"
-              width={16}
-              height={16}
-            />
+            <img className="w-auto h-5 inline-block" src="reset.svg" alt="Delete" />
           </button>
         }
       </h3>
       <div className="px-3 pr-4 overflow-y-scroll full-screen">
         {selectedSectionSlugs.length > 0 && (
-          <h4 className="mb-3 text-xs leading-6 text-gray-900 dark:text-gray-300">
+          <h4 className="mb-3 text-xs leading-6 text-gray-900">
             Click on a section below to edit the contents
           </h4>
         )}
@@ -251,7 +243,7 @@ export const SectionsColumn = ({
         </ul>
 
         {sectionSlugs.length > 0 && (
-          <h4 className="mb-3 text-xs leading-6 text-gray-900 dark:text-gray-300 overflow-ellipsis">
+          <h4 className="mb-3 text-xs leading-6 text-gray-900 overflow-ellipsis">
             Click on a section below to add it to your readme
           </h4>
         )}
@@ -277,10 +269,7 @@ export const SectionsColumn = ({
             alphabetizedSectionSlugs.map((s) => {
               if (s === undefined) {
                 return (
-                  <h4
-                    className="mb-3 text-xs leading-6 text-gray-900 dark:text-gray-300"
-                    key="unavailable-section"
-                  >
+                  <h4 className="mb-3 text-xs leading-6 text-gray-900" key="unavailable-section">
                     The section you're looking for is unavailable
                   </h4>
                 )
@@ -290,7 +279,7 @@ export const SectionsColumn = ({
                   return (
                     <li key={s}>
                       <button
-                        className="flex items-center block w-full h-full py-2 pl-3 pr-6 bg-white dark:bg-gray-200 rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
+                        className="flex items-center block w-full h-full py-2 pl-3 pr-6 bg-white rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
                         type="button"
                         onClick={(e) => onAddSection(e, s)}
                       >

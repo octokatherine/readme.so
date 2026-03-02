@@ -9,7 +9,6 @@ describe('<Tabs />', () => {
       <Tabs
         selectedTab={TAB.EDITOR}
         focusedSectionSlug={'title-and-description'}
-        toggleState={{ theme: 'light', img: 'toggle_moon.svg' }}
         selectedSectionSlugs={['title-and-description']}
         getTemplate={(slug) => en_EN.find((t) => t.slug === slug)}
       />

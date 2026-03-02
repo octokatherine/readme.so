@@ -29,13 +29,4 @@ describe('<EditorPreviewColumn />', () => {
     userEvent.click(screen.getByText(/Raw/))
     expect(screen.getByText(/Raw/)).toHaveClass('text-emerald-500')
   })
-
-  it('should toggle dark/light mode', () => {
-    render(<EditorPreviewColumn templates={en_EN} />)
-    userEvent.click(screen.getByLabelText('Color Mode'))
-    expect(screen.getByAltText('light')).toBeInTheDocument()
-
-    userEvent.click(screen.getByLabelText('Color Mode'))
-    expect(screen.getByAltText('dark')).toBeInTheDocument()
-  })
 })

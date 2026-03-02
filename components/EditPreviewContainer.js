@@ -13,9 +13,7 @@ const EditPreviewContainer = ({
   focusedSectionSlug,
   selectedSectionSlugs,
   setSelectedSectionSlugs,
-  darkMode,
 }) => {
-  const [toggleState, setToggleState] = useState({ theme: 'dark', img: 'toggle_sun.svg' })
   const [selectedTab, setSelectedTab] = useState(TAB.PREVIEW)
   const { isMobile } = useDeviceDetect()
 
@@ -32,8 +30,6 @@ const EditPreviewContainer = ({
           selectedTab={selectedTab}
           setSelectedTab={setSelectedTab}
           focusedSectionSlug={focusedSectionSlug}
-          toggleState={toggleState}
-          toggleTheme={() => setDarkMode(!darkMode)}
         />
       ) : null}
 
@@ -82,16 +78,6 @@ const EditPreviewContainer = ({
       ) : null}
     </div>
   )
-}
-
-const toggleDarkMode = (toggleState, setToggleState) => {
-  if (toggleState.theme == 'dark') {
-    setToggleState({ theme: 'light', img: 'toggle_moon.svg' })
-    localStorage.setItem('color-theme', 'light')
-  } else {
-    setToggleState({ theme: 'dark', img: 'toggle_sun.svg' })
-    localStorage.setItem('color-theme', 'dark')
-  }
 }
 
 export default EditPreviewContainer
