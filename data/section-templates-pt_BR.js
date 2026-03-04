@@ -445,4 +445,14 @@ Javascript, HTML, CSS...
 
 `,
   },
+  {
+    slug: 'sponsor',
+    name: 'Patrocinador',
+    markdown: `
+## Patrocinador
+Se você gosta do meu trabalho, pode me apoiar se tornando um patrocinador.
+
+[![Tip in Crypto](https://tip.md/badge.svg)](https://tip.md/change-me)
+`,
+  },
 ]
