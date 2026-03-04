@@ -22,7 +22,15 @@ const CustomSection = ({
 
   const inputRef = useRef(null)
 
-  const addCustomSection = () => {
+  const addCustomSection = (e) => {
+    if (e) {
+      e.preventDefault()
+    }
+
+    if (!title) {
+      return
+    }
+
     setShowModal(false)
 
     const section = {
@@ -78,7 +86,7 @@ const CustomSection = ({
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <DialogPanel className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
-                <div>
+                <form onSubmit={addCustomSection}>
                   <div className="mt-3 text-center sm:mt-5">
                     <DialogTitle as="h3" className="text-lg leading-6 font-medium text-gray-900">
                       New Custom Section
@@ -95,10 +103,10 @@ const CustomSection = ({
                       />
                     </div>
                   </div>
-                </div>
+                </form>
                 <div className="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
                   <button
-                    type="button"
+                    type="submit"
                     className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-emerald-500 text-base font-medium text-white hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 sm:col-start-2 sm:text-sm disabled:opacity-50"
                     disabled={!title}
                     onClick={addCustomSection}

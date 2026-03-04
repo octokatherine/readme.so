@@ -88,4 +88,24 @@ describe('<CustomSection />', () => {
       expect(screen.queryByText('New Custom Section')).not.toBeInTheDocument()
     })
   })
+
+  it('should submit the form when Enter key is pressed', async () => {
+    render(<CustomSection {...defaultProps} />)
+
+    userEvent.click(screen.getByText('Custom Section'))
+
+    await screen.findByPlaceholderText('Section Title')
+    const input = screen.getByPlaceholderText('Section Title')
+
+    userEvent.type(input, 'My Section{enter}')
+
+    expect(defaultProps.setSelectedSectionSlugs).toHaveBeenCalled()
+    expect(defaultProps.setFocusedSectionSlug).toHaveBeenCalledWith('custom-my-section')
+    expect(defaultProps.setpageRefreshed).toHaveBeenCalledWith(false)
+    expect(defaultProps.setAddAction).toHaveBeenCalledWith(true)
+
+    await waitFor(() => {
+      expect(screen.queryByText('New Custom Section')).not.toBeInTheDocument()
+    })
+  })
 })
