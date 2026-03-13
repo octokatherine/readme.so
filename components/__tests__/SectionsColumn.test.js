@@ -23,7 +23,7 @@ describe('<SectionsColumn />', () => {
 
   it('should remove a selected section', () => {
     render(<SectionsColumn {...props} />)
-    const trashIcon = screen.getByAltText('trash-icon')
+    const trashIcon = screen.getByAltText('Delete section')
 
     expect(trashIcon).toBeInTheDocument()
     userEvent.click(trashIcon)

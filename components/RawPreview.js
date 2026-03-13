@@ -1,15 +1,28 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 export default function RawPreview({ text }) {
   const textAreaRef = useRef(null)
   const [copySuccess, setCopySuccess] = useState(false)
+  const timerRef = useRef(null)
 
-  const copyToClipBoard = (e) => {
-    textAreaRef.current.select()
-    document.execCommand('copy')
-    e.target.focus()
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current)
+      }
+    }
+  }, [])
+
+  const copyToClipBoard = async () => {
+    try {
+      await navigator.clipboard.writeText(text)
+    } catch {
+      // Fallback for older browsers or insecure contexts
+      textAreaRef.current.select()
+      document.execCommand('copy')
+    }
     setCopySuccess(true)
-    setTimeout(() => {
+    timerRef.current = setTimeout(() => {
       setCopySuccess(false)
     }, 3000)
   }
@@ -17,15 +30,15 @@ export default function RawPreview({ text }) {
   return (
     <div className="h-full relative">
       <button
-        className="absolute top-0 right-7 focus:outline-none"
+        className="absolute top-0 right-7 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
         type="button"
-        aria-label={!copySuccess ? 'To Copy' : 'Copied Success'}
+        aria-label={copySuccess ? 'Copied' : 'Copy to clipboard'}
         onClick={copyToClipBoard}
       >
         {!copySuccess ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 hover:text-emerald-500 focus:outline-none"
+            className="h-6 w-6 hover:text-emerald-500 transition-colors"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -40,7 +53,7 @@ export default function RawPreview({ text }) {
         ) : (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-emerald-500 focus:outline-none"
+            className="h-6 w-6 text-emerald-500"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

@@ -1,7 +1,7 @@
 import ColumnHeader from './ColumnHeader'
 import { TAB } from '../utils/constants'
 
-const Tabs = ({ selectedTab, setSelectedTab, focusedSectionSlug }) => {
+const Tabs = ({ selectedTab, setSelectedTab }) => {
   return (
     <div className="flex">
       <div className="flex flex-0 pb-3">

@@ -7,23 +7,35 @@ describe('<RawPreview />', () => {
   beforeAll(() => {
     jest.useFakeTimers()
   })
+
+  afterAll(() => {
+    jest.useRealTimers()
+  })
+
   it('should render', () => {
     const { container } = render(<RawPreview text="test" />)
     expect(container).toBeInTheDocument()
   })
 
-  it('should copy and setCopy when clicking on ', async () => {
-    document.execCommand = jest.fn()
+  it('should copy and setCopy when clicking on copy button', async () => {
+    // Mock the clipboard API
+    const writeText = jest.fn().mockResolvedValue(undefined)
+    Object.assign(navigator, {
+      clipboard: { writeText },
+    })
+
     render(<RawPreview text="test" />)
 
-    userEvent.click(screen.getByLabelText('To Copy'))
+    await act(async () => {
+      userEvent.click(screen.getByLabelText('Copy to clipboard'))
+    })
 
-    expect(document.execCommand).toHaveBeenCalledWith('copy')
-    expect(screen.getByLabelText('Copied Success')).toBeInTheDocument()
+    expect(writeText).toHaveBeenCalledWith('test')
+    expect(screen.getByLabelText('Copied')).toBeInTheDocument()
 
     act(() => {
       jest.advanceTimersByTime(3000)
     })
-    expect(screen.findByLabelText('To Copy')).not.toBeNull()
+    expect(screen.getByLabelText('Copy to clipboard')).toBeInTheDocument()
   })
 })

@@ -31,18 +31,6 @@ export default function Editor() {
     setFocusedSectionSlug(null)
   }, [])
 
-  useEffect(() => {
-    let currentSlugList = localStorage.getItem('current-slug-list')
-    if (
-      currentSlugList.indexOf('title-and-description') == -1 &&
-      selectedSectionSlugs.indexOf('title-and-description') > -1
-    ) {
-      selectedSectionSlugs.splice(selectedSectionSlugs.indexOf('title-and-description'), 1)
-    }
-    setFocusedSectionSlug(localStorage.getItem('current-slug-list').split(',')[0])
-    localStorage.setItem('current-slug-list', selectedSectionSlugs)
-  }, [selectedSectionSlugs])
-
   const drawerClass = showDrawer ? '' : '-translate-x-full md:transform-none'
 
   return (
@@ -72,11 +60,11 @@ export default function Editor() {
         isDrawerOpen={showDrawer}
         focusedSectionSlug={focusedSectionSlug}
       />
-      {showModal && <DownloadModal setShowModal={setShowModal} />}
-      <div className="flex md:px-6 md:pt-6 ">
+      <DownloadModal showModal={showModal} setShowModal={setShowModal} />
+      <div className="flex md:px-6 md:pt-6">
         <div
           className={`flex flex-0 drawer-height absolute md:static p-6 md:p-0 bg-white md:bg-transparent shadow md:shadow-none z-10 md:z-0
-        transform  transition-transform duration-500 ease-in-out ${drawerClass}`}
+        transform transition-transform duration-300 ease-out ${drawerClass}`}
         >
           <SectionsColumn
             selectedSectionSlugs={selectedSectionSlugs}
@@ -97,9 +85,7 @@ export default function Editor() {
           setTemplates={setTemplates}
           getTemplate={getTemplate}
           focusedSectionSlug={focusedSectionSlug}
-          setFocusedSectionSlug={setFocusedSectionSlug}
           selectedSectionSlugs={selectedSectionSlugs}
-          setSelectedSectionSlugs={setSelectedSectionSlugs}
         />
       </div>
     </div>

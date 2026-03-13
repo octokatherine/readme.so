@@ -10,7 +10,6 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, them
   }
 
   const [markdown, setMarkdown] = useState(getMarkdown())
-  const [isFocused, setFocus] = useState(false)
   const { isMobile } = useDeviceDetect()
   const [MonacoEditor, setMonacoEditor] = useState(null)
   const { saveBackup } = useLocalStorage()
@@ -47,9 +46,9 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, them
     }
   }, [MonacoEditor, isMobile, setMonacoEditor])
 
-  if (focusedSectionSlug == 'noEdit') {
+  if (focusedSectionSlug === 'noEdit') {
     return (
-      <p className="font-sm text-emerald-500 max-w-[28rem] text-center mx-auto mt-10">
+      <p className="text-sm text-emerald-500 max-w-[28rem] text-center mx-auto mt-10">
         Select a section from the left sidebar to edit the contents
       </p>
     )
@@ -59,15 +58,10 @@ export const EditorColumn = ({ focusedSectionSlug, templates, setTemplates, them
     <>
       {isMobile ? (
         <textarea
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
           ref={textEditorRef}
-          type="text"
           onChange={(e) => onEdit(e.target.value)}
           value={markdown}
-          className={`full-screen rounded-sm border border-gray-500 w-full p-6 resize-none ${
-            theme === 'dark' ? 'bg-gray-800 text-white' : ''
-          }`}
+          className="full-screen rounded-sm border border-gray-500 w-full p-6 resize-none"
         />
       ) : (
         MonacoEditor && (
