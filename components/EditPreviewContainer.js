@@ -12,7 +12,6 @@ const EditPreviewContainer = ({
   getTemplate,
   focusedSectionSlug,
   selectedSectionSlugs,
-  setSelectedSectionSlugs,
 }) => {
   const [selectedTab, setSelectedTab] = useState(TAB.PREVIEW)
   const { isMobile } = useDeviceDetect()
@@ -25,21 +24,13 @@ const EditPreviewContainer = ({
   const showPreviewColumn = !isMobile || selectedTab === TAB.PREVIEW || selectedTab === TAB.RAW
   return (
     <div className="flex flex-1 pt-6 px-6 md:p-0 flex-col md:flex-row">
-      {isMobile ? (
-        <Tabs
-          selectedTab={selectedTab}
-          setSelectedTab={setSelectedTab}
-          focusedSectionSlug={focusedSectionSlug}
-        />
-      ) : null}
+      {isMobile ? <Tabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} /> : null}
 
       {showEditorColumn ? (
         <div className="w-full md:w-1/2 px-3 full-screen">
           {!isMobile ? <ColumnHeader.Heading>Editor</ColumnHeader.Heading> : null}
           <EditorColumn
             focusedSectionSlug={focusedSectionSlug}
-            selectedSectionSlugs={selectedSectionSlugs}
-            setSelectedSectionSlugs={setSelectedSectionSlugs}
             templates={templates}
             setTemplates={setTemplates}
             theme="vs-dark"

@@ -104,7 +104,7 @@ export function LanguageDropDown({ posts }) {
         {languageSupports.map(({ label, route }, index) => (
           <li key={`${label}_${index}`} className="">
             <a
-              className="block w-32 px-4 py-2 whitespace-no-wrap bg-gray-200 hover:bg-emerald-400"
+              className="block w-32 px-4 py-2 whitespace-nowrap bg-gray-200 hover:bg-emerald-400"
               href={route}
             >
               {label}
@@ -113,7 +113,7 @@ export function LanguageDropDown({ posts }) {
         ))}
         <li className="">
           <a
-            className="block w-32 px-4 py-2 text-xs break-words whitespace-no-wrap bg-gray-200 hover:bg-emerald-400"
+            className="block w-32 px-4 py-2 text-xs break-words whitespace-nowrap bg-gray-200 hover:bg-emerald-400"
             href="https://github.com/octokatherine/readme.so/issues/new"
             target="_blank"
             rel="noopener noreferrer"

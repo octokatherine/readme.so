@@ -9,7 +9,7 @@ import {
 } from '@dnd-kit/core'
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers'
 import { arrayMove, SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import useLocalStorage from '../hooks/useLocalStorage'
 import { SortableItem } from './SortableItem'
 import CustomSection from './CustomSection'
@@ -46,32 +46,25 @@ export const SectionsColumn = ({
 
   const [pageRefreshed, setpageRefreshed] = useState(false)
   const [addAction, setAddAction] = useState(false)
-  const [currentSlugList, setCurrentSlugList] = useState([])
   const [slugsFromPreviousSession, setSlugsFromPreviousSession] = useState([])
   const [searchFilter, setSearchFilter] = useState('')
   const [filteredSlugs, setFilteredSlugs] = useState([])
   const { saveBackup, deleteBackup } = useLocalStorage()
 
   useEffect(() => {
-    var slugsFromPreviousSession =
-      localStorage.getItem('current-slug-list') == null
+    const storedSlugs =
+      localStorage.getItem('current-slug-list') === null
         ? 'title-and-description'
         : localStorage.getItem('current-slug-list')
-    setSlugsFromPreviousSession(slugsFromPreviousSession)
-    if (slugsFromPreviousSession.length > 0) {
+    setSlugsFromPreviousSession(storedSlugs)
+    if (storedSlugs.length > 0) {
       setpageRefreshed(true)
-      let slugList = []
-
-      var hasMultipleSlugsFromPrevSession = slugsFromPreviousSession.indexOf(',') > -1
-      hasMultipleSlugsFromPrevSession
-        ? (slugList = slugsFromPreviousSession.split(','))
-        : slugList.push(slugsFromPreviousSession)
+      const slugList = storedSlugs.split(',')
       slugList.forEach(function (entry) {
-        setSectionSlugs((prev) => prev.filter((s) => s != entry))
+        setSectionSlugs((prev) => prev.filter((s) => s !== entry))
       })
-      setCurrentSlugList(slugList)
       setSelectedSectionSlugs(slugList)
-      setFocusedSectionSlug(currentSlugList[0])
+      setFocusedSectionSlug(slugList[0])
       localStorage.setItem('current-focused-slug', slugList[0])
     }
   }, [])
@@ -161,11 +154,22 @@ export const SectionsColumn = ({
     }
   }
 
-  useEffect(() => {
-    setFocusedSectionSlug(localStorage.getItem('current-focused-slug'))
-  }, [focusedSectionSlug])
+  const dedupedSelectedSlugs = useMemo(() => {
+    return pageRefreshed || addAction ? [...new Set(selectedSectionSlugs)] : selectedSectionSlugs
+  }, [selectedSectionSlugs, pageRefreshed, addAction])
 
-  let alphabetizedSectionSlugs = sectionSlugs.sort()
+  const availableSlugs = useMemo(() => {
+    let slugs = [...sectionSlugs]
+    if (pageRefreshed && slugsFromPreviousSession.indexOf('title-and-description') === -1) {
+      if (!slugs.includes('title-and-description')) {
+        slugs.push('title-and-description')
+      }
+    }
+
+    const sorted = filteredSlugs.length ? [...filteredSlugs].sort() : [...slugs].sort()
+
+    return pageRefreshed || addAction ? [...new Set(sorted)] : sorted
+  }, [sectionSlugs, filteredSlugs, pageRefreshed, addAction, slugsFromPreviousSession])
 
   const getAutoCompleteResults = (searchQuery) => {
     const suggestedSlugs = sectionSlugs.filter((slug) => {
@@ -189,17 +193,17 @@ export const SectionsColumn = ({
   }, [searchFilter])
 
   return (
-    <div className="sections w-80">
+    <div className="sections w-full md:w-64 lg:w-80">
       <h3 className="px-1 text-sm font-medium border-b-2 border-transparent text-emerald-500 whitespace-nowrap focus:outline-none">
         Sections
         {
           <button
-            className="focus:outline-none float-right"
+            className="focus:outline-none focus:ring-2 focus:ring-emerald-400 float-right hover:text-emerald-600 transition-colors"
             type="button"
             onClick={resetSelectedSections}
           >
             <span className="pl-2 float-right">Reset</span>
-            <img className="w-auto h-5 inline-block" src="reset.svg" alt="Delete" />
+            <img className="w-auto h-5 inline-block" src="reset.svg" alt="Reset" />
           </button>
         }
       </h3>
@@ -216,28 +220,23 @@ export const SectionsColumn = ({
             onDragEnd={handleDragEnd}
             modifiers={[restrictToVerticalAxis]}
           >
-            <SortableContext items={selectedSectionSlugs}>
-              {
-                (pageRefreshed || addAction
-                  ? (selectedSectionSlugs = [...new Set(selectedSectionSlugs)])
-                  : ' ',
-                selectedSectionSlugs.map((s) => {
-                  const template = getTemplate(s)
-                  if (template) {
-                    return (
-                      <SortableItem
-                        key={s}
-                        id={s}
-                        section={template}
-                        focusedSectionSlug={focusedSectionSlug}
-                        setFocusedSectionSlug={setFocusedSectionSlug}
-                        onDeleteSection={onDeleteSection}
-                        onResetSection={onResetSection}
-                      />
-                    )
-                  }
-                }))
-              }
+            <SortableContext items={dedupedSelectedSlugs}>
+              {dedupedSelectedSlugs.map((s) => {
+                const template = getTemplate(s)
+                if (template) {
+                  return (
+                    <SortableItem
+                      key={s}
+                      id={s}
+                      section={template}
+                      focusedSectionSlug={focusedSectionSlug}
+                      setFocusedSectionSlug={setFocusedSectionSlug}
+                      onDeleteSection={onDeleteSection}
+                      onResetSection={onResetSection}
+                    />
+                  )
+                }
+              })}
             </SortableContext>
           </DndContext>
         </ul>
@@ -256,41 +255,30 @@ export const SectionsColumn = ({
           setTemplates={setTemplates}
         />
         <ul className="mb-12 space-y-3">
-          {
-            (pageRefreshed && slugsFromPreviousSession.indexOf('title-and-description') == -1
-              ? sectionSlugs.push('title-and-description')
-              : ' ',
-            (alphabetizedSectionSlugs = !filteredSlugs.length
-              ? sectionSlugs.sort()
-              : filteredSlugs.sort()),
-            pageRefreshed || addAction
-              ? (alphabetizedSectionSlugs = [...new Set(alphabetizedSectionSlugs)])
-              : ' ',
-            alphabetizedSectionSlugs.map((s) => {
-              if (s === undefined) {
+          {availableSlugs.map((s) => {
+            if (s === undefined) {
+              return (
+                <h4 className="mb-3 text-xs leading-6 text-gray-900" key="unavailable-section">
+                  The section you're looking for is unavailable
+                </h4>
+              )
+            } else {
+              const template = getTemplate(s)
+              if (template) {
                 return (
-                  <h4 className="mb-3 text-xs leading-6 text-gray-900" key="unavailable-section">
-                    The section you're looking for is unavailable
-                  </h4>
+                  <li key={s}>
+                    <button
+                      className="flex items-center w-full h-full py-2 pl-3 pr-6 bg-white rounded-md shadow cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 transition-colors"
+                      type="button"
+                      onClick={(e) => onAddSection(e, s)}
+                    >
+                      <span>{template.name}</span>
+                    </button>
+                  </li>
                 )
-              } else {
-                const template = getTemplate(s)
-                if (template) {
-                  return (
-                    <li key={s}>
-                      <button
-                        className="flex items-center block w-full h-full py-2 pl-3 pr-6 bg-white rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
-                        type="button"
-                        onClick={(e) => onAddSection(e, s)}
-                      >
-                        <span>{template.name}</span>
-                      </button>
-                    </li>
-                  )
-                }
               }
-            }))
-          }
+            }
+          })}
         </ul>
       </div>
     </div>

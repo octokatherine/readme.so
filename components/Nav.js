@@ -46,6 +46,7 @@ export const Nav = ({
         {/* visible for sm only */}
         <button
           className="focus:outline-none focus:ring-2 focus:ring-emerald-400"
+          aria-label={isDrawerOpen ? 'Close menu' : 'Open menu'}
           onClick={onMenuClick}
         >
           {isDrawerOpen ? (
@@ -62,7 +63,7 @@ export const Nav = ({
           className="flex flex-row relative items-center mr-4 md:mr-0 px-4 py-2 text-sm font-bold tracking-wide text-white border border-transparent rounded-md shadow-sm bg-emerald-500 hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-emerald-500"
           onClick={downloadMarkdownFile}
         >
-          <img className="w-auto h-6 cursor-pointer" src="download.svg" />
+          <img className="w-auto h-6 cursor-pointer" src="download.svg" alt="Download" />
           <span className="hidden md:inline-block ml-2">Download</span>
         </button>
       </div>

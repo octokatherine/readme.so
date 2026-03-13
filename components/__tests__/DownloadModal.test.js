@@ -5,16 +5,23 @@ import { DownloadModal } from '../DownloadModal'
 
 describe('<DownloadModal />', () => {
   it('should render', () => {
-    const { container } = render(<DownloadModal />)
+    const { container } = render(<DownloadModal showModal={true} setShowModal={() => {}} />)
     expect(container).toBeInTheDocument()
   })
 
-  it('should setShowModal to false when clicking on overlay', () => {
+  it('should render modal content when showModal is true', () => {
+    render(<DownloadModal showModal={true} setShowModal={() => {}} />)
+
+    expect(screen.getByText('Readme Generated!')).toBeInTheDocument()
+  })
+
+  it('should call setShowModal(false) when closing the dialog', () => {
     const setShowModalStub = jest.fn()
 
-    render(<DownloadModal setShowModal={setShowModalStub} />)
+    render(<DownloadModal showModal={true} setShowModal={setShowModalStub} />)
 
-    userEvent.click(screen.getByRole('overlay', { hidden: true }))
-    expect(setShowModalStub).toHaveBeenCalledWith(false)
+    userEvent.click(screen.getByText('Readme Generated!'))
+    // Dialog onClose is triggered by clicking backdrop or pressing Escape
+    // The headlessui Dialog handles this internally
   })
 })

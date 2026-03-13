@@ -100,13 +100,14 @@ const CustomSection = ({
                         onChange={(e) => setTitle(e.target.value)}
                         className="shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-emerald-400 block w-full sm:text-sm border border-gray-300 rounded-md"
                         placeholder="Section Title"
+                        aria-label="Section title"
                       />
                     </div>
                   </div>
                 </form>
                 <div className="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
                   <button
-                    type="submit"
+                    type="button"
                     className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-emerald-500 text-base font-medium text-white hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 sm:col-start-2 sm:text-sm disabled:opacity-50"
                     disabled={!title}
                     onClick={addCustomSection}
@@ -129,7 +130,7 @@ const CustomSection = ({
 
       <div className="mb-3">
         <button
-          className="flex items-center justify-center block w-full h-full py-2 pl-3 pr-6 bg-white font-bold rounded-md shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400"
+          className="flex items-center justify-center w-full h-full py-2 pl-3 pr-6 bg-white font-bold rounded-md shadow cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 transition-colors"
           type="button"
           onClick={() => setShowModal(true)}
         >
