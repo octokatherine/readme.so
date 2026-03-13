@@ -371,4 +371,14 @@ Herhangi bir ek bilgi buraya gelir
 | örnek renk | ![#00b48a](https://dummyimage.com/10/00b48a/white?text=+) #00b48a |
 | örnek renk | ![#00d1a0](https://dummyimage.com/10/00b48a/white?text=+) #00d1a0 | `,
   },
+  {
+    slug: 'sponsor',
+    name: 'Sponsor',
+    markdown: `
+## Sponsor
+Çalışmalarımı beğeniyorsanız, sponsor olarak beni destekleyebilirsiniz.
+
+[![Tip in Crypto](https://tip.md/badge.svg)](https://tip.md/change-me)
+`,
+  },
 ]
