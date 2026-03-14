@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Menu from './icons/Menu'
 import Close from './icons/Close'
 import useDeviceDetect from '../hooks/useDeviceDetect'
+import { ShareDropDown } from './ShareDropDown'
 
 export const Nav = ({
   selectedSectionSlugs,
@@ -35,14 +36,14 @@ export const Nav = ({
   }
 
   return (
-    <nav className="flex justify-between p-4 bg-gray-800 align-center w-full">
+    <nav className="flex justify-between items-center p-4 bg-gray-800 w-full">
       <Link
         href="/"
         className="focus:outline-none focus:ring-2 focus:ring-emerald-400 flex items-center"
       >
         <img className="w-auto h-12" src="readme.svg" alt="readme.so logo" />
       </Link>
-      <div className="flex flex-row-reverse md:flex-row">
+      <div className="flex flex-row-reverse md:flex-row items-center">
         {/* visible for sm only */}
         <button
           className="focus:outline-none focus:ring-2 focus:ring-emerald-400"
@@ -57,10 +58,12 @@ export const Nav = ({
         </button>
         {/* visible for md and above */}
 
+        <ShareDropDown markdown={markdown} />
+
         <button
           type="button"
           aria-label="Download Markdown"
-          className="flex flex-row relative items-center mr-4 md:mr-0 px-4 py-2 text-sm font-bold tracking-wide text-white border border-transparent rounded-md shadow-sm bg-emerald-500 hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-emerald-500"
+          className="flex flex-row relative items-center mr-4 md:mr-0 px-4 py-2 h-10 text-sm font-bold tracking-wide text-white border border-transparent rounded-md shadow-sm bg-emerald-500 hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-emerald-500"
           onClick={downloadMarkdownFile}
         >
           <img className="w-auto h-6 cursor-pointer" src="download.svg" alt="Download" />
