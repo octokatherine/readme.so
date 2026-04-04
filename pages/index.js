@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Script from 'next/script'
 
 const DotPattern = ({ id, className }) => (
   <svg
@@ -22,11 +21,6 @@ const DotPattern = ({ id, className }) => (
 const Home = () => {
   return (
     <>
-      <Script
-        data-domain="readme.so"
-        src="https://plausible.io/js/plausible.js"
-        strategy="afterInteractive"
-      />
       <div className="bg-gray-50">
         <div className="relative overflow-hidden">
           <div className="absolute inset-y-0 w-full h-full" aria-hidden="true">
