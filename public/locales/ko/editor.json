@@ -1,0 +1,18 @@
+{
+  "editor-desktop-optimized": "이 사이트는 데스크톱에 최적화되어 있습니다",
+  "editor-visit-desktop": "README를 작성하려면 데스크톱에서 readme.so에 접속해 주세요!",
+  "nav-download": "다운로드",
+  "download-readme-generated": "Readme가 생성되었습니다!",
+  "download-reach-out": "readme.so를 이용해 주셔서 감사합니다! 편하게 연락 주세요",
+  "download-feedback": "어떤 의견이든 환영합니다.",
+  "download-coffee": "이 제품이 도움이 되셨다면 커피 한 잔으로 후원을 고려해 주세요!",
+  "editor-column-editor": "에디터",
+  "editor-select": "왼쪽 사이드바에서 섹션을 선택하면 내용을 편집할 수 있습니다",
+  "preview-column-preview": "미리보기",
+  "preview-column-raw": "원본",
+  "section-column-section": "섹션",
+  "section-column-click-edit": "아래 섹션을 클릭하면 내용을 편집할 수 있습니다",
+  "section-column-click-add": "아래 섹션을 클릭하면 README에 추가됩니다",
+  "section-column-click-reset": "초기화",
+  "custom-section": "사용자 지정 섹션"
+}
